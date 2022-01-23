@@ -18,7 +18,7 @@ public class LoginInteractor implements LoginContract.Interactor {
                     if (task.isSuccessful()) {
                         loginListener.onSuccess("User logged in successfully");
                     } else {
-                        loginListener.onFailure(task.getException().toString());
+                        loginListener.onFailure(task.getException().getMessage());
                     }
                 });
     }

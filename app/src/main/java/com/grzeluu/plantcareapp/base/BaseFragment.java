@@ -58,19 +58,6 @@ public abstract class BaseFragment extends Fragment implements BaseMvpView {
         super.onDetach();
     }
 
-    @Override
-    public void showProgress() {
-        hideProgress();
-        progressDialog = CommonUtils.showLoadingDialog(getContext());
-    }
-
-    @Override
-    public void hideProgress() {
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.cancel();
-        }
-    }
-
     public BaseActivity getBaseActivity() {
         return activity;
     }

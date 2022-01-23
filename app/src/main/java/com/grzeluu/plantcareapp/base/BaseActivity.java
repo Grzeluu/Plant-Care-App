@@ -38,17 +38,4 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvpV
     public void showMessage(int resId) {
         showMessage(getString(resId));
     }
-
-    @Override
-    public void showProgress() {
-        hideProgress();
-        progressDialog = CommonUtils.showLoadingDialog(this);
-    }
-
-    @Override
-    public void hideProgress() {
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.cancel();
-        }
-    }
 }

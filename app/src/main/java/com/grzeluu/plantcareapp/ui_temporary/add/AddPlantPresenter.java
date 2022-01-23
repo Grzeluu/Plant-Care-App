@@ -73,7 +73,7 @@ public class AddPlantPresenter implements AddPlantMvpPresenter {
         }
 
         if (!hasErrors) {
-            addPlantView.showProgress();
+            addPlantView.showLoading();
 
             String filePathAndName = "user_plant_images/" + timestamp;
             SimpleDateFormat ISO_8601_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
@@ -100,14 +100,14 @@ public class AddPlantPresenter implements AddPlantMvpPresenter {
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            addPlantView.hideProgress();
+                            addPlantView.hideLoading();
                             addPlantView.showMessage("Plant added to our database");
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            addPlantView.hideProgress();
+                            addPlantView.hideLoading();
                             addPlantView.showMessage(e.getMessage());
                         }
                     });

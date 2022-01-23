@@ -14,7 +14,8 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.Lo
 
     @Override
     public void login(String email, String password) {
-        if(checkLoginRequirements(email, password))
+        loginView.showLoading();
+        if (checkLoginRequirements(email, password))
             loginInteractor.performLogin(email, password);
     }
 
@@ -37,11 +38,13 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.Lo
 
     @Override
     public void onSuccess(String message) {
+        loginView.hideLoading();
         loginView.onLoginSuccess(message);
     }
 
     @Override
     public void onFailure(String message) {
+        loginView.showLoading();
         loginView.onLoginFailure(message);
     }
 }

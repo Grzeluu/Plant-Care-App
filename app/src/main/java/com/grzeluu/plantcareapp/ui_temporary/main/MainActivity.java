@@ -2,29 +2,29 @@ package com.grzeluu.plantcareapp.ui_temporary.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
 import android.widget.TextView;
 
-import com.google.android.material.navigation.NavigationView;
-import com.grzeluu.plantcareapp.R;
-import com.grzeluu.plantcareapp.databinding.ActivityMainBinding;
-import com.grzeluu.plantcareapp.base.App;
-import com.grzeluu.plantcareapp.base.BaseActivity;
-import com.grzeluu.plantcareapp.ui_temporary.discover.DiscoverFragment;
-import com.grzeluu.plantcareapp.view.LoginActivity;
-import com.grzeluu.plantcareapp.ui_temporary.myPlants.MyPlantsFragment;
-import com.grzeluu.plantcareapp.ui_temporary.suggest.SuggestFragment;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.navigation.NavigationView;
+import com.grzeluu.plantcareapp.R;
+import com.grzeluu.plantcareapp.base.App;
+import com.grzeluu.plantcareapp.base.BaseActivity;
+import com.grzeluu.plantcareapp.databinding.ActivityMainBinding;
+import com.grzeluu.plantcareapp.ui_temporary.discover.DiscoverFragment;
+import com.grzeluu.plantcareapp.ui_temporary.myPlants.MyPlantsFragment;
+import com.grzeluu.plantcareapp.ui_temporary.suggest.SuggestFragment;
+import com.grzeluu.plantcareapp.view.LoginActivity;
 
 public class MainActivity extends BaseActivity implements MainMvpView, NavigationView.OnNavigationItemSelectedListener {
 

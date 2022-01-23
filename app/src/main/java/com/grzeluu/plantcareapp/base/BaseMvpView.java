@@ -11,9 +11,4 @@ public interface BaseMvpView {
     void showMessage(String message);
 
     void showMessage(@StringRes int resId);
-
-    void showProgress();
-
-    void hideProgress();
-
 }

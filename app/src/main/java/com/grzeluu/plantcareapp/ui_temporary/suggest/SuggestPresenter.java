@@ -44,7 +44,7 @@ public class SuggestPresenter implements SuggestMvpPresenter {
         }
 
         if (!hasErrors) {
-            suggestView.showProgress();
+            suggestView.hideLoading();
 
             String filePathAndName = "plant_images/" + timestamp;
 
@@ -74,14 +74,14 @@ public class SuggestPresenter implements SuggestMvpPresenter {
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                suggestView.hideProgress();
+                                                suggestView.hideLoading();
                                                 suggestView.showMessage("Plant added to our database");
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-                                                suggestView.hideProgress();
+                                                suggestView.hideLoading();
                                                 suggestView.showMessage(e.getMessage());
                                             }
                                         });

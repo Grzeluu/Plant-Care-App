@@ -19,7 +19,7 @@ public class RegisterInteractor implements RegisterContract.Interactor {
                     if (registerUser.isSuccessful()) {
                         addUserToDatabase(username, email);
                     } else {
-                        registerListener.onFailure(registerUser.getException().toString());
+                        registerListener.onFailure(registerUser.getException().getMessage());
                     }
                 });
     }
@@ -36,7 +36,7 @@ public class RegisterInteractor implements RegisterContract.Interactor {
                     if (addUserTask.isSuccessful()) {
                         registerListener.onSuccess("User registered successfully");
                     } else {
-                        registerListener.onFailure(addUserTask.getException().toString());
+                        registerListener.onFailure(addUserTask.getException().getMessage());
                     }
                 });
     }

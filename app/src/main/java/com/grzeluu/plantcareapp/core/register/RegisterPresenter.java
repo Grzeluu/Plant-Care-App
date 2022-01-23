@@ -14,6 +14,7 @@ public class RegisterPresenter implements RegisterContract.Presenter, RegisterCo
 
     @Override
     public void register(String username, String email, String password, String repeatedPassword) {
+        registerView.showLoading();
         if (checkRegisterRequirements(username, email, password, repeatedPassword))
             registerInteractor.performRegister(username, email, password);
     }
@@ -50,11 +51,13 @@ public class RegisterPresenter implements RegisterContract.Presenter, RegisterCo
 
     @Override
     public void onSuccess(String message) {
+        registerView.hideLoading();
         registerView.onRegisterSuccess(message);
     }
 
     @Override
     public void onFailure(String message) {
+        registerView.hideLoading();
         registerView.onRegisterFailure(message);
     }
 }
