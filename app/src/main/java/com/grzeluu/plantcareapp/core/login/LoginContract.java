@@ -1,0 +1,26 @@
+package com.grzeluu.plantcareapp.core.login;
+
+public interface LoginContract {
+    interface View {
+        void setEmailError(String error);
+
+        void setPasswordError(String error);
+
+        void onLoginSuccess(String message);
+
+        void onLoginFailure(String message);
+    }
+
+    interface Presenter {
+        void login(String username, String password);
+    }
+
+    interface Interactor {
+        void performLogin( String email, String password);
+    }
+
+    interface LoginListener {
+        void onSuccess(String message);
+        void onFailure(String message);
+    }
+}

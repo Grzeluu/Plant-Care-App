@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_my_plants"
-        android:name="com.grzeluu.plantcareapp.ui.myPlants.MyPlantsFragment"
+        android:name="com.grzeluu.plantcareapp.ui_temporary.myPlants.MyPlantsFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_my_plants" />
 
     <fragment
         android:id="@+id/nav_discover"
-        android:name="com.grzeluu.plantcareapp.ui.discover.DiscoverFragment"
+        android:name="com.grzeluu.plantcareapp.ui_temporary.discover.DiscoverFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_discover" />
 
     <fragment
         android:id="@+id/nav_suggest_new_plant"
-        android:name="com.grzeluu.plantcareapp.ui.suggest.SuggestFragment"
+        android:name="com.grzeluu.plantcareapp.ui_temporary.suggest.SuggestFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_suggest" />
 </navigation>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_photo"
     android:orientation="vertical"
-    tools:context=".ui.discover.DiscoverFragment">
+    tools:context=".ui_temporary.discover.DiscoverFragment">
 
     <EditText
         android:id="@+id/et_search"

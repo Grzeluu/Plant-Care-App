@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_photo"
-    tools:context=".ui.check.CheckPlantActivity">
+    tools:context=".ui_temporary.check.CheckPlantActivity">
 
     <LinearLayout
         android:id="@+id/constraintLayout"

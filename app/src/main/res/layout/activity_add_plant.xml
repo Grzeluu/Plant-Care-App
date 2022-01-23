@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_photo"
-    tools:context=".ui.add.AddPlantActivity">
+    tools:context=".ui_temporary.add.AddPlantActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
