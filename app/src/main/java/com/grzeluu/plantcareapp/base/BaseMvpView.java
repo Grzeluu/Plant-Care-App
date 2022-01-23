@@ -1,4 +1,4 @@
-package com.grzeluu.plantcareapp.ui_temporary.base;
+package com.grzeluu.plantcareapp.base;
 
 import androidx.annotation.StringRes;
 

@@ -1,7 +1,7 @@
 package com.grzeluu.plantcareapp.ui_temporary.add;
 
 import com.grzeluu.plantcareapp.model.Plant;
-import com.grzeluu.plantcareapp.ui_temporary.base.BaseMvpView;
+import com.grzeluu.plantcareapp.base.BaseMvpView;
 
 public interface AddPlantMvpView extends BaseMvpView {
     void setPlantCommonName(String commonName);

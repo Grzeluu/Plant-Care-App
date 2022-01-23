@@ -1,6 +1,6 @@
 package com.grzeluu.plantcareapp.ui_temporary.register;
 
-import com.grzeluu.plantcareapp.ui_temporary.base.BaseMvpView;
+import com.grzeluu.plantcareapp.base.BaseMvpView;
 
 public interface RegisterMvpView extends BaseMvpView {
     void setUsernameError(String error);

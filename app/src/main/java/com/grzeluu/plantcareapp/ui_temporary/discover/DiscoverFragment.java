@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.grzeluu.plantcareapp.databinding.FragmentDiscoverBinding;
 import com.grzeluu.plantcareapp.model.Plant;
-import com.grzeluu.plantcareapp.ui_temporary.base.BaseFragment;
+import com.grzeluu.plantcareapp.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,7 +9,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.grzeluu.plantcareapp.ui_temporary.base.UserStorage;
+import com.grzeluu.plantcareapp.base.UserStorage;
 
 public class MainPresenter implements MainMvpPresenter {
     MainMvpView mainView;

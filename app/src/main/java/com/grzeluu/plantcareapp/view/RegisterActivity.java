@@ -1,16 +1,17 @@
-package com.grzeluu.plantcareapp.ui_temporary.register;
+package com.grzeluu.plantcareapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.grzeluu.plantcareapp.core.register.RegisterContract;
+import com.grzeluu.plantcareapp.core.register.RegisterPresenter;
 import com.grzeluu.plantcareapp.databinding.ActivityRegisterBinding;
-import com.grzeluu.plantcareapp.ui_temporary.base.BaseActivity;
-import com.grzeluu.plantcareapp.view.LoginActivity;
+import com.grzeluu.plantcareapp.base.BaseActivity;
 
-public class RegisterActivity extends BaseActivity implements RegisterMvpView {
+public class RegisterActivity extends BaseActivity implements RegisterContract.View {
 
     ActivityRegisterBinding binding;
-    RegisterMvpPresenter registerPresenter;
+    RegisterContract.Presenter registerPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +19,13 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        initViews();
+    }
+
+    private void initViews() {
         registerPresenter = new RegisterPresenter(this);
 
-        binding.btRegister.setOnClickListener(v -> registerPresenter.onRegisterClick(
+        binding.btRegister.setOnClickListener(v -> registerPresenter.register(
                 binding.etUsername.getText().toString(),
                 binding.etEmail.getText().toString(),
                 binding.etPassword.getText().toString(),
@@ -44,14 +49,19 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
     }
 
     @Override
-    public void setRepeatPasswordError(String error) {
+    public void setRepeatedPasswordError(String error) {
         binding.etRepeatPassword.setError(error);
     }
 
     @Override
-    public void openLoginActivity() {
+    public void onRegisterSuccess(String message) {
+        showMessage(message);
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 
+    @Override
+    public void onRegisterFailure(String message) {
+        showMessage(message);
+    }
 }

@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide;
 import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.databinding.ActivityAddPlantBinding;
 import com.grzeluu.plantcareapp.model.Plant;
-import com.grzeluu.plantcareapp.ui_temporary.base.BaseActivity;
+import com.grzeluu.plantcareapp.base.BaseActivity;
 
 public class AddPlantActivity extends BaseActivity implements AddPlantMvpView {
 

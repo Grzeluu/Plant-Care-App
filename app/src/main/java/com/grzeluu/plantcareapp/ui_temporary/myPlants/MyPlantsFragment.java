@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.databinding.FragmentMyPlantsBinding;
 import com.grzeluu.plantcareapp.model.UserPlant;
-import com.grzeluu.plantcareapp.ui_temporary.base.BaseFragment;
+import com.grzeluu.plantcareapp.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

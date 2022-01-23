@@ -1,7 +1,5 @@
 package com.grzeluu.plantcareapp.core.login;
 
-import android.app.Activity;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginInteractor implements LoginContract.Interactor {
@@ -18,7 +16,7 @@ public class LoginInteractor implements LoginContract.Interactor {
                 .signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        loginListener.onSuccess(task.getResult().toString());
+                        loginListener.onSuccess("User logged in successfully");
                     } else {
                         loginListener.onFailure(task.getException().toString());
                     }

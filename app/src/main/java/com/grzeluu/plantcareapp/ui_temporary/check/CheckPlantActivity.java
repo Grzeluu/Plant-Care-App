@@ -15,7 +15,7 @@ import com.grzeluu.plantcareapp.databinding.ActivityCheckPlantBinding;
 import com.grzeluu.plantcareapp.model.Advice;
 import com.grzeluu.plantcareapp.model.Post;
 import com.grzeluu.plantcareapp.ui_temporary.add.AddPlantActivity;
-import com.grzeluu.plantcareapp.ui_temporary.base.BaseActivity;
+import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.ui_temporary.check.advice.AdviceDialog;
 
 import java.util.ArrayList;

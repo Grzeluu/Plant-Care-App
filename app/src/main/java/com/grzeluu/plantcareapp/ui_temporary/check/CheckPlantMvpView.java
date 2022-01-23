@@ -1,7 +1,7 @@
 package com.grzeluu.plantcareapp.ui_temporary.check;
 
 import com.grzeluu.plantcareapp.model.Post;
-import com.grzeluu.plantcareapp.ui_temporary.base.BaseMvpView;
+import com.grzeluu.plantcareapp.base.BaseMvpView;
 
 import java.util.List;
 

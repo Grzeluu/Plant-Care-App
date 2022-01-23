@@ -14,9 +14,8 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.Lo
 
     @Override
     public void login(String email, String password) {
-        if(checkLoginRequirements(email, password)) {
+        if(checkLoginRequirements(email, password))
             loginInteractor.performLogin(email, password);
-        }
     }
 
     private boolean checkLoginRequirements(String email, String password) {

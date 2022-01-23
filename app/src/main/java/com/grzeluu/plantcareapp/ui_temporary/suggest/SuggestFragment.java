@@ -21,7 +21,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.databinding.FragmentSuggestBinding;
-import com.grzeluu.plantcareapp.ui_temporary.base.BaseFragment;
+import com.grzeluu.plantcareapp.base.BaseFragment;
 import com.grzeluu.plantcareapp.ui_temporary.main.MainActivity;
 
 import static android.app.Activity.RESULT_OK;

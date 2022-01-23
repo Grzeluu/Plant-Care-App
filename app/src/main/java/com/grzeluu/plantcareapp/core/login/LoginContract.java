@@ -1,7 +1,9 @@
 package com.grzeluu.plantcareapp.core.login;
 
+import com.grzeluu.plantcareapp.base.BaseMvpView;
+
 public interface LoginContract {
-    interface View {
+    interface View extends BaseMvpView {
         void setEmailError(String error);
 
         void setPasswordError(String error);

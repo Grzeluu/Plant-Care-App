@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/drawable/bg_white.xml" value="0.1" />
+        <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/activity_login.xml" value="0.21145833333333333" />
+        <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/activity_register.xml" value="0.21145833333333333" />
       </map>
     </option>
   </component>
