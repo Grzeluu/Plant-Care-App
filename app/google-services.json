@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "60736097863",
+    "project_id": "look-up-plant",
+    "storage_bucket": "look-up-plant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60736097863:android:7c3a53f9114a9d315ceb62",
+        "android_client_info": {
+          "package_name": "com.grzeluu.lookupplant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60736097863-4apls649k6seuoob29vfvioivts7euhh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDldTbZA5Z3LJvX9EZIf5zLoyx93uq0uT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60736097863-4apls649k6seuoob29vfvioivts7euhh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

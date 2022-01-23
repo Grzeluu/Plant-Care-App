@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">Plant Care App</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="some_error">Something wrong happened</string>
+    <string name="e_mail">E-mail</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="open_navigation_drawer">Open Navigation Drawer</string>
+    <string name="close_navigation_drawer">Close Navigation Drawer</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="my_plants">My Plants</string>
+    <string name="discover_plants">Discover Plants</string>
+    <string name="suggest_new_plant">Suggest New Plant</string>
+    <string name="logout">Logout</string>
+    <string name="settings">Settings</string>
+    <string name="search">Search</string>
+    <string name="common_name">Common Name</string>
+    <string name="choose_plant_photo">Choose plant photo</string>
+    <string name="latin_name">Latin Name (optional)</string>
+    <string name="add_to_my_plants">Add to my plants</string>
+    <string name="cancel">Cancel</string>
+    <string name="description">Description (optional)</string>
+    <string name="name">Name</string>
+    <string name="type">Type</string>
+    <string name="message_need_permission">Need permissions</string>
+    <string name="message_grant_permission">Grant permission</string>
+    <string name="label_setting">Settings</string>
+
+    <string name="leaf_plants">Leaf Plants</string>
+    <string name="flowers">Flowers</string>
+    <string name="succulents">Succulents</string>
+    <string name="never">-</string>
+    <string name="one_day">1 Day</string>
+    <string name="days">days</string>
+    <string name="months">months</string>
+    <string name="fertilizing">Fertilizing</string>
+    <string name="no_plants_added">
+        No plants added\n
+        To add, click (+),\n
+        or go to Discover </string>
+    <string name="add_new_plant">Add new plant</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="add_to_your_plants">Add to your plants</string>
+    <string name="spraying">Spraying</string>
+    <string name="watering">Watering</string>
+    <string name="spraying_frequency">Spraying Frequency</string>
+    <string name="watering_frequency">Watering Frequency</string>
+    <string name="fertilizing_frequency">Fertilizing Frequency</string>
+    <string name="ask_a_question">Ask a question</string>
+    <string name="none">---</string>
+    <string name="ask_question">Ask Question</string>
+    <string name="question">Your question</string>
+    <string name="add_your_solution_here">Add your solution here</string>
+    <string name="name_your_plant">Name your plant</string>
+    <string name="customize_frequency">Customize frequency</string>
+    <string name="choose_a_name_and_a_photo">Choose a name and a photo</string>
+    <string name="submit">Submit</string>
+    <string name="confirm">Confirm</string>
+    <string name="advices">Advices</string>
+    <string name="discussion">Discussion</string>
+    <string name="set_plant_requirements">Set plant requirements</string>
+    <string name="advice">Advice</string>
+    <string-array name="categories">
+        <item>@string/leaf_plants</item>
+        <item>@string/flowers</item>
+        <item>@string/succulents</item>
+    </string-array>
+
+</resources>

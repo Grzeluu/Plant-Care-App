@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_fertilizing"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/bg_white">
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/TextViewStyle"
+        android:layout_marginTop="8dp"
+        android:text="@string/spraying"
+        app:layout_constraintEnd_toEndOf="@+id/sb_frequency"
+        app:layout_constraintStart_toStartOf="@+id/sb_frequency"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <SeekBar
+        android:id="@+id/sb_frequency"
+        style="@style/SeekBarStyle"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:paddingStart="20dp"
+        android:layout_marginEnd="80dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/track_spraying"
+        android:thumb="@drawable/ic_spray"
+        android:thumbTint="@color/green_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_content"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_frequency"
+        style="@style/SmallTextViewStyle"
+        android:layout_marginEnd="16dp"
+        android:text="@string/never"
+        app:layout_constraintBottom_toBottomOf="@+id/sb_frequency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sb_frequency"
+        app:layout_constraintTop_toTopOf="@+id/sb_frequency" />
+
+    <ImageView
+        android:id="@+id/iv_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/ic_remove_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_content"
+        app:layout_constraintEnd_toStartOf="@+id/tv_content"
+        app:layout_constraintTop_toTopOf="@+id/tv_content"
+        />
+
+    <ImageView
+        android:id="@+id/iv_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:src="@drawable/ic_add_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_content"
+        app:layout_constraintStart_toEndOf="@+id/tv_content"
+        app:layout_constraintTop_toTopOf="@+id/tv_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

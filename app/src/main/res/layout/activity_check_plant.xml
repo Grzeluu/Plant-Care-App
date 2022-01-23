@@ -1,0 +1,383 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_photo"
+    tools:context=".ui.check.CheckPlantActivity">
+
+    <LinearLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="106dp"
+                android:layout_height="106dp"
+                android:layout_gravity="left"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@color/green_500"
+                app:cardCornerRadius="250dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="250dp">
+
+                    <ImageView
+                        android:id="@+id/iv_photo"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_add_photo" />
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="left"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/cardView"
+                android:hint="@string/type"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_latin_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_latin_name" />
+
+            <TextView
+                android:id="@+id/tv_common_name"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                android:drawablePadding="5dp"
+                android:hint="@string/common_name"
+                android:textSize="22sp"
+                app:layout_constraintStart_toEndOf="@+id/cardView"
+                app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+            <TextView
+                android:id="@+id/tv_latin_name"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="5dp"
+                android:text="@string/none"
+                app:layout_constraintStart_toStartOf="@+id/tv_common_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_common_name" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="15dp"
+                android:drawableStart="@drawable/ic_text"
+                android:drawablePadding="10dp"
+                android:gravity="center|left"
+                android:hint="@string/description"
+                android:inputType="textCapSentences|textMultiLine"
+                android:lines="10"
+                android:maxLines="15"
+                android:minLines="1"
+                android:textColor="@drawable/text_color_list"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Requirements"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_white">
+
+            <ProgressBar
+                android:id="@+id/pb_spraying"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
+                android:progress="10"
+                android:progressDrawable="@drawable/track_spraying"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_spraying_days"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_spraying" />
+
+            <TextView
+                android:id="@+id/tv_spraying_days"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="10 days"
+                app:layout_constraintBottom_toBottomOf="@+id/pb_spraying"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/pb_spraying"
+                app:layout_constraintTop_toTopOf="@+id/pb_spraying" />
+
+            <TextView
+                android:id="@+id/tv_spraying"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/spraying_frequency"
+                app:layout_constraintEnd_toEndOf="@+id/pb_spraying"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="@+id/pb_spraying"
+                app:layout_constraintTop_toBottomOf="@+id/pb_fertilizer" />
+
+            <TextView
+                android:id="@+id/tv_water"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/watering_frequency"
+                app:layout_constraintEnd_toEndOf="@+id/pb_water"
+                app:layout_constraintStart_toStartOf="@+id/pb_water"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/pb_water"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:progress="10"
+                android:progressDrawable="@drawable/track_watering"
+                app:layout_constraintEnd_toStartOf="@+id/tv_watering_days"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_water" />
+
+            <TextView
+                android:id="@+id/tv_watering_days"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="10 days"
+                app:layout_constraintBottom_toBottomOf="@+id/pb_water"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/pb_water"
+                app:layout_constraintTop_toTopOf="@+id/pb_water" />
+
+            <TextView
+                android:id="@+id/tv_fertilizer"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/fertilizing_frequency"
+                app:layout_constraintEnd_toEndOf="@+id/pb_fertilizer"
+                app:layout_constraintStart_toStartOf="@+id/pb_fertilizer"
+                app:layout_constraintTop_toBottomOf="@+id/pb_water" />
+
+            <TextView
+                android:id="@+id/tv_fertilizng_days"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="10 days"
+                app:layout_constraintBottom_toBottomOf="@+id/pb_fertilizer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/pb_fertilizer"
+                app:layout_constraintTop_toTopOf="@+id/pb_fertilizer"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ProgressBar
+                android:id="@+id/pb_fertilizer"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:progress="10"
+                android:progressDrawable="@drawable/track_fertilization"
+                app:layout_constraintEnd_toStartOf="@+id/tv_fertilizng_days"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_fertilizer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/advices"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_grey"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_advices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="5dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_ask_question"
+                style="@style/SecondButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginVertical="5dp"
+                android:layout_marginEnd="10dp"
+                android:drawableEnd="@drawable/ic_question"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/green_500"
+                android:padding="10dp"
+                android:paddingStart="15dp"
+                android:text="@string/ask_a_question" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/discussion"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_grey"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_discussion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="5dp" />
+
+            <EditText
+                android:id="@+id/et_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/bg_input"
+                android:drawableStart="@drawable/ic_text_selector"
+                android:drawablePadding="5dp"
+                android:gravity="center|left"
+                android:hint="Take part in discussion"
+                android:inputType="textCapSentences|textMultiLine"
+                android:lines="10"
+                android:maxHeight="300dp"
+                android:maxLines="15"
+                android:minLines="3"
+                android:padding="10dp"
+                android:textColor="@drawable/text_color_list" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_add_post"
+                style="@style/SecondButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:drawableEnd="@drawable/ic_add_circle"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/green_500"
+                android:padding="10dp"
+                android:paddingStart="15dp"
+                android:text="Submit reply" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Add"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_white"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_add_plant"
+                style="@style/FirstButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_weight="1"
+                android:drawableEnd="@drawable/ic_add"
+                android:drawableTint="@color/white"
+                android:padding="10dp"
+                android:text="@string/add_to_your_plants" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/inset_dialog">
+
+    <TextView
+        style="@style/TextHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:layout_gravity="center|top"
+        android:text="@string/advice" />
+
+    <EditText
+        android:layout_marginTop="16dp"
+        android:id="@+id/et_question"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:textColor="@drawable/text_color_list"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_question"
+        android:hint="@string/question" />
+
+    <EditText
+        android:layout_marginTop="16dp"
+        android:id="@+id/et_answer"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:textColor="@drawable/text_color_list"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:maxLines="3"
+        android:inputType="textCapSentences|textMultiLine"
+        android:minLines="2"
+        android:hint="Do you know the solution? " />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_ask_a_question"
+        style="@style/FirstButton"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="26dp"
+        android:text="@string/ask_a_question"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>
