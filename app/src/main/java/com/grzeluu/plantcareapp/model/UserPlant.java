@@ -16,25 +16,31 @@ public class UserPlant {
     String lastSpraying;
     String lastWatering;
 
-    String type;
-
     String image;
 
     public UserPlant() {
     }
 
-    public UserPlant(String id, String name, String commonName, String latinName, long wateringFrequency, long fertilizingFrequency, long sprayingFrequency, String lastFertilizing, String lastSpraying, String lastWatering, String type, String image) {
+    public UserPlant(
+            String id,
+            String name,
+            String commonName,
+            long wateringFrequency,
+            long fertilizingFrequency,
+            long sprayingFrequency,
+            String lastFertilizing,
+            String lastSpraying,
+            String lastWatering,
+            String image) {
         this.id = id;
         this.name = name;
         this.commonName = commonName;
-        this.latinName = latinName;
         this.wateringFrequency = wateringFrequency;
         this.fertilizingFrequency = fertilizingFrequency;
         this.sprayingFrequency = sprayingFrequency;
         this.lastFertilizing = lastFertilizing;
         this.lastSpraying = lastSpraying;
         this.lastWatering = lastWatering;
-        this.type = type;
         this.image = image;
     }
 
@@ -60,14 +66,6 @@ public class UserPlant {
 
     public void setCommonName(String commonName) {
         this.commonName = commonName;
-    }
-
-    public String getLatinName() {
-        return latinName;
-    }
-
-    public void setLatinName(String latinName) {
-        this.latinName = latinName;
     }
 
     public long getWateringFrequency() {
@@ -116,14 +114,6 @@ public class UserPlant {
 
     public void setLastWatering(String lastWatering) {
         this.lastWatering = lastWatering;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getImage() {

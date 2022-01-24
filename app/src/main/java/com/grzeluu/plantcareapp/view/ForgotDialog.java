@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import com.grzeluu.plantcareapp.core.forgot.ForgotContract;
 import com.grzeluu.plantcareapp.core.forgot.ForgotPresenter;
 import com.grzeluu.plantcareapp.databinding.DialogForgotPasswordBinding;
-import com.grzeluu.plantcareapp.utils.CommonUtils;
+import com.grzeluu.plantcareapp.utils.ProgressDialogUtils;
 
 public class ForgotDialog extends Dialog implements ForgotContract.View {
     private static final String TAG = "ForgotPasswordDialog";
@@ -56,7 +56,7 @@ public class ForgotDialog extends Dialog implements ForgotContract.View {
     @Override
     public void showLoading() {
         hideLoading();
-        progressDialog = CommonUtils.showLoadingDialog(getContext());
+        progressDialog = ProgressDialogUtils.showLoadingDialog(getContext());
     }
 
     @Override

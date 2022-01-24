@@ -7,10 +7,9 @@ import android.graphics.drawable.ColorDrawable;
 
 import com.grzeluu.plantcareapp.R;
 
-public class CommonUtils {
-    private static final String TAG = "CommonUtils";
+public class ProgressDialogUtils {
 
-    private CommonUtils() { }
+    private ProgressDialogUtils() { }
 
     public static ProgressDialog showLoadingDialog(Context context) {
         ProgressDialog progressDialog = new ProgressDialog(context);

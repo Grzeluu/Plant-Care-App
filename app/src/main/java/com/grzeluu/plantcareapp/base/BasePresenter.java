@@ -1,6 +1,6 @@
 package com.grzeluu.plantcareapp.base;
 
-public class BasePresenter implements BasePresenterContract, BaseListenerContract{
+public abstract class BasePresenter implements BasePresenterContract, BaseListenerContract{
 
     private BaseViewContract baseView;
 

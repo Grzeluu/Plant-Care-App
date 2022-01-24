@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
-import com.grzeluu.plantcareapp.utils.CommonUtils;
+import com.grzeluu.plantcareapp.utils.ProgressDialogUtils;
 
 public abstract class BaseFragment extends Fragment implements BaseViewContract {
     ProgressDialog progressDialog;
@@ -28,7 +28,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewContract 
     @Override
     public void showLoading() {
         hideLoading();
-        progressDialog = CommonUtils.showLoadingDialog(this.getContext());
+        progressDialog = ProgressDialogUtils.showLoadingDialog(this.getContext());
     }
 
     @Override

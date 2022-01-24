@@ -6,7 +6,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.grzeluu.plantcareapp.R;
-import com.grzeluu.plantcareapp.utils.CommonUtils;
+import com.grzeluu.plantcareapp.utils.ProgressDialogUtils;
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseViewContract {
 
@@ -15,7 +15,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     public void showLoading() {
         hideLoading();
-        progressDialog = CommonUtils.showLoadingDialog(this);
+        progressDialog = ProgressDialogUtils.showLoadingDialog(this);
     }
 
     @Override

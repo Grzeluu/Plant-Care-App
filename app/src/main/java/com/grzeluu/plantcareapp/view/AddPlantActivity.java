@@ -1,4 +1,4 @@
-package com.grzeluu.plantcareapp.ui_temporary.add;
+package com.grzeluu.plantcareapp.view;
 
 import android.os.Bundle;
 import android.widget.SeekBar;
@@ -6,14 +6,20 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.grzeluu.plantcareapp.R;
+import com.grzeluu.plantcareapp.base.BaseActivity;
+import com.grzeluu.plantcareapp.core.add.AddContract;
+import com.grzeluu.plantcareapp.core.add.AddPresenter;
 import com.grzeluu.plantcareapp.databinding.ActivityAddPlantBinding;
 import com.grzeluu.plantcareapp.model.Plant;
-import com.grzeluu.plantcareapp.base.BaseActivity;
+import com.grzeluu.plantcareapp.model.UserPlant;
 
-public class AddPlantActivity extends BaseActivity implements AddPlantMvpView {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class AddPlantActivity extends BaseActivity implements AddContract.View {
 
     ActivityAddPlantBinding binding;
-    AddPlantMvpPresenter presenter;
+    AddContract.Presenter presenter;
     private String plantId;
     Plant plant;
 
@@ -23,34 +29,40 @@ public class AddPlantActivity extends BaseActivity implements AddPlantMvpView {
 
         binding = ActivityAddPlantBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        presenter = new AddPlantPresenter(this);
-
+        presenter = new AddPresenter(this);
         plantId = getIntent().getStringExtra("plantId");
-        presenter.getPlant(plantId);
 
-        binding.btAddPlant.setOnClickListener(v-> presenter.onSuggestNewPlantClick(
-                binding.etName.getText().toString(),
-                plant.getImage(),
-                plant.getCommonName(),
-                plant.getLatinName(),
-                plant.getType(),
-                plant.getWateringFrequency(),
-                plant.getFertilizingFrequency(),
-                plant.getWateringFrequency()
+        SimpleDateFormat ISO_8601_FORMAT =
+                new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
+        String now = ISO_8601_FORMAT.format(new Date());
+        String timestamp = "" + (System.currentTimeMillis());
+
+        binding.btAddPlant.setOnClickListener(v -> presenter.addPlant(
+                new UserPlant(
+                        //TODO !!!
+                        timestamp,
+                        binding.etName.getText().toString(),
+                       // plant.getCommonName(),
+                        "TODO",
+                        //plant.getWateringFrequency(),
+                        11,
+                        //plant.getFertilizingFrequency(),
+                        111,
+                       // plant.getWateringFrequency(),
+                        111,
+                       // plant.getImage(),
+                        "TODO",
+                        now,
+                        now,
+                        now
+                )
         ));
     }
 
-    @Override
     public void setPlantCommonName(String commonName) {
         binding.tvCommonName.setText(commonName);
     }
 
-    @Override
-    public void setPlantLatinName(String latinName) {
-        binding.tvLatinName.setText(latinName);
-    }
-
-    @Override
     public void setWateringFrequency(long wateringFrequency) {
         SeekBar.OnSeekBarChangeListener listener = createProgressBarChangeListener(binding.wateringSettings.tvFrequency);
         binding.wateringSettings.sbFrequency.setOnSeekBarChangeListener(listener);
@@ -58,7 +70,6 @@ public class AddPlantActivity extends BaseActivity implements AddPlantMvpView {
         binding.wateringSettings.sbFrequency.setProgress(toProgress(wateringFrequency));
     }
 
-    @Override
     public void setFertilizingFrequency(long fertilizingFrequency) {
         SeekBar.OnSeekBarChangeListener listener = createProgressBarChangeListener(binding.fertilizingSettings.tvFrequency);
         binding.fertilizingSettings.sbFrequency.setOnSeekBarChangeListener(listener);
@@ -66,7 +77,6 @@ public class AddPlantActivity extends BaseActivity implements AddPlantMvpView {
         binding.fertilizingSettings.sbFrequency.setProgress(toProgress(fertilizingFrequency));
     }
 
-    @Override
     public void setSprayingFrequency(long sprayingFrequency) {
         SeekBar.OnSeekBarChangeListener listener = createProgressBarChangeListener(binding.sprayingSettings.tvFrequency);
         binding.sprayingSettings.sbFrequency.setOnSeekBarChangeListener(listener);
@@ -74,27 +84,23 @@ public class AddPlantActivity extends BaseActivity implements AddPlantMvpView {
         binding.sprayingSettings.sbFrequency.setProgress(toProgress(sprayingFrequency));
     }
 
-    @Override
     public void setNameError(String error) {
         binding.etName.setError(error);
     }
 
-    @Override
+    public void plantAdded(String message) {
+
+    }
+
     public void setPlant(Plant newPlant) {
         plant = newPlant;
     }
 
-    @Override
     public void setPlantPhoto(String uri) {
         Glide
                 .with(this)
                 .load(uri)
                 .into(binding.ivPhoto);
-    }
-
-    @Override
-    public void setPlantType(String type) {
-        binding.tvCategory.setText(type);
     }
 
     private int toProgress(long frequency) {
@@ -112,27 +118,29 @@ public class AddPlantActivity extends BaseActivity implements AddPlantMvpView {
         return new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if (progress == 0) {
-                        tv.setText(getString(R.string.never));
-                    } else if (progress == 1) {
-                        tv.setText(getString(R.string.one_day));
-                    } else if (progress > 1 && progress <= 30) {
-                        String daysString = String.valueOf(progress) + " ";
-                        tv.setText(daysString + getString(R.string.days));
-                    } else if (progress > 30 && progress <= 35) {
-                        String daysString = String.valueOf(30 + (progress - 30) * 5) + " ";
-                        tv.setText(daysString + getString(R.string.days));
-                    } else {
-                        String monthsString = String.valueOf(progress - 34) + " ";
-                        tv.setText(monthsString + getString(R.string.months));
-                    }
+                if (progress == 0) {
+                    tv.setText(getString(R.string.never));
+                } else if (progress == 1) {
+                    tv.setText(getString(R.string.one_day));
+                } else if (progress > 1 && progress <= 30) {
+                    String daysString = String.valueOf(progress) + " ";
+                    tv.setText(daysString + getString(R.string.days));
+                } else if (progress > 30 && progress <= 35) {
+                    String daysString = String.valueOf(30 + (progress - 30) * 5) + " ";
+                    tv.setText(daysString + getString(R.string.days));
+                } else {
+                    String monthsString = String.valueOf(progress - 34) + " ";
+                    tv.setText(monthsString + getString(R.string.months));
+                }
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar){}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         };
     }
 }

@@ -19,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LookUpPlant">
-        <activity android:name="com.grzeluu.plantcareapp.ui_temporary.add.AddPlantActivity" />
+        <activity android:name="com.grzeluu.plantcareapp.view.AddPlantActivity" />
         <activity android:name="com.grzeluu.plantcareapp.ui_temporary.check.CheckPlantActivity" />
         <activity
             android:name="com.grzeluu.plantcareapp.view.MainActivity"
