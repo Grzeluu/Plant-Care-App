@@ -22,7 +22,6 @@ import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.core.main.MainContract;
 import com.grzeluu.plantcareapp.core.main.MainPresenter;
 import com.grzeluu.plantcareapp.databinding.ActivityMainBinding;
-import com.grzeluu.plantcareapp.ui_temporary.discover.DiscoverFragment;
 import com.grzeluu.plantcareapp.ui_temporary.myPlants.MyPlantsFragment;
 import com.grzeluu.plantcareapp.ui_temporary.suggest.SuggestFragment;
 
@@ -33,7 +32,6 @@ public class MainActivity extends BaseActivity
     private MainPresenter presenter;
     private ActivityMainBinding binding;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +40,7 @@ public class MainActivity extends BaseActivity
         setContentView(binding.getRoot());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Your Plants");
         setSupportActionBar(toolbar);
 
         presenter = new MainPresenter(this);
@@ -85,7 +84,6 @@ public class MainActivity extends BaseActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -97,19 +95,19 @@ public class MainActivity extends BaseActivity
                 || super.onSupportNavigateUp();
     }
 
-    public void openDiscover() {
+    private void openDiscover() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, new DiscoverFragment())
                 .commit();
     }
 
-    public void openMyPlants() {
+    private void openMyPlants() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, new MyPlantsFragment())
                 .commit();
     }
 
-    public void openSuggest() {
+    private void openSuggest() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, new SuggestFragment())
                 .commit();
@@ -124,7 +122,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void setUsername(String username) {
-        View headerView = binding.navView.getHeaderView(0);
+        View headerView = binding.navView.getHeaderView(0).findViewById(R.id.tv_username);
         TextView drawerNameTextView = headerView.findViewById(R.id.tv_username);
         drawerNameTextView.setText(username);
     }

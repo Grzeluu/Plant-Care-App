@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_discover"
-        android:name="com.grzeluu.plantcareapp.ui_temporary.discover.DiscoverFragment"
+        android:name="com.grzeluu.plantcareapp.view.DiscoverFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_discover" />
 
