@@ -1,8 +1,8 @@
 package com.grzeluu.plantcareapp.ui_temporary.main;
 
-import com.grzeluu.plantcareapp.base.BaseMvpView;
+import com.grzeluu.plantcareapp.base.BaseView;
 
-public interface MainMvpView extends BaseMvpView {
+public interface MainMvpView extends BaseView {
 
     void goToLogin();
 

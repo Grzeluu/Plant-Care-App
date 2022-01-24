@@ -1,9 +1,9 @@
 package com.grzeluu.plantcareapp.core.register;
 
-import com.grzeluu.plantcareapp.base.BaseMvpView;
+import com.grzeluu.plantcareapp.base.BaseView;
 
 public interface RegisterContract {
-    interface View extends BaseMvpView {
+    interface View extends BaseView {
         void setUsernameError(String error);
 
         void setEmailError(String error);

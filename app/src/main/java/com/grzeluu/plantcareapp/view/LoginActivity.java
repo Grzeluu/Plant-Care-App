@@ -1,6 +1,7 @@
 package com.grzeluu.plantcareapp.view;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import com.grzeluu.plantcareapp.base.BaseActivity;
@@ -54,7 +55,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     public void showForgotPasswordDialog() {
-        //TODO
+        ForgotDialog forgotDialog = new ForgotDialog(this);
+        forgotDialog.getWindow()
+                .setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        forgotDialog.show();
     }
 
     @Override

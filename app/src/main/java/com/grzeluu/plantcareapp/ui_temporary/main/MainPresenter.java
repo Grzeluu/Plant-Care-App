@@ -22,7 +22,6 @@ public class MainPresenter implements MainMvpPresenter {
         this.userStorage = userStorage;
     }
 
-
     @Override
     public void onNavMenuCreated() {
         if (firebaseAuth.getCurrentUser() != null) {

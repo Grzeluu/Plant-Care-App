@@ -2,7 +2,7 @@ package com.grzeluu.plantcareapp.base;
 
 import androidx.annotation.StringRes;
 
-public interface BaseMvpView {
+public interface BaseView {
 
     void showLoading();
 

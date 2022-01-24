@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/drawable/bg_white.xml" value="0.1" />
+        <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/drawable/inset_dialog.xml" value="0.39166666666666666" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/activity_login.xml" value="0.21145833333333333" />
+        <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/activity_main.xml" value="0.37552083333333336" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/activity_register.xml" value="0.21145833333333333" />
+        <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/dialog_forgot_password.xml" value="0.37552083333333336" />
       </map>
     </option>
   </component>

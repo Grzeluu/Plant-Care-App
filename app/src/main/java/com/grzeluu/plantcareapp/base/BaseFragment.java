@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.grzeluu.plantcareapp.utils.CommonUtils;
 
-public abstract class BaseFragment extends Fragment implements BaseMvpView {
+public abstract class BaseFragment extends Fragment implements BaseView {
     ProgressDialog progressDialog;
     private BaseActivity activity;
 

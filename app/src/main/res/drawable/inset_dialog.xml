@@ -4,5 +4,6 @@
     android:drawable="@drawable/bg_white"
     android:insetRight="15dp"
     android:insetBottom="15dp"
+    android:insetTop="15dp"
     android:insetLeft="15dp">
 </inset>
