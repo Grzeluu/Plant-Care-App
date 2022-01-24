@@ -16,7 +16,7 @@ import com.grzeluu.plantcareapp.core.discover.DiscoverContract;
 import com.grzeluu.plantcareapp.core.discover.DiscoverPresenter;
 import com.grzeluu.plantcareapp.databinding.FragmentDiscoverBinding;
 import com.grzeluu.plantcareapp.model.Plant;
-import com.grzeluu.plantcareapp.ui_temporary.discover.DiscoverAdapter;
+import com.grzeluu.plantcareapp.view.adapter.DiscoverAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,6 @@ public class DiscoverFragment extends BaseFragment implements DiscoverContract.V
 
     private FragmentDiscoverBinding binding;
     private DiscoverPresenter presenter;
-    private RecyclerView.LayoutManager plantsLayoutManager;
     private RecyclerView.Adapter discoverAdapter;
 
     @Override
@@ -68,7 +67,7 @@ public class DiscoverFragment extends BaseFragment implements DiscoverContract.V
     }
 
     private void initAdapter() {
-        plantsLayoutManager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager plantsLayoutManager = new LinearLayoutManager(getContext());
         binding.rvPlants.setLayoutManager(plantsLayoutManager);
 
         discoverAdapter = new DiscoverAdapter(getContext(), new ArrayList<Plant>());

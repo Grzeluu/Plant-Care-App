@@ -1,4 +1,4 @@
-    package com.grzeluu.plantcareapp.ui_temporary.discover;
+    package com.grzeluu.plantcareapp.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;

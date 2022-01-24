@@ -1,4 +1,4 @@
-package com.grzeluu.plantcareapp.ui_temporary.myPlants;
+package com.grzeluu.plantcareapp.view.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class MyPlantsAdapter extends RecyclerView.Adapter<com.grzeluu.plantcareapp.ui_temporary.myPlants.MyPlantsAdapter.ViewHolder> {
+public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHolder> {
 
     private Context context;
     private List<UserPlant> plantList;
@@ -45,13 +45,13 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<com.grzeluu.plantcarea
 
     @NonNull
     @Override
-    public com.grzeluu.plantcareapp.ui_temporary.myPlants.MyPlantsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new com.grzeluu.plantcareapp.ui_temporary.myPlants.MyPlantsAdapter.ViewHolder (ItemMyPlantBinding.inflate(LayoutInflater.from(context),
+    public MyPlantsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MyPlantsAdapter.ViewHolder (ItemMyPlantBinding.inflate(LayoutInflater.from(context),
                 parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull com.grzeluu.plantcareapp.ui_temporary.myPlants.MyPlantsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyPlantsAdapter.ViewHolder holder, int position) {
         UserPlant plant = plantList.get(position);
         Glide
                 .with(context)

@@ -22,7 +22,6 @@ import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.core.main.MainContract;
 import com.grzeluu.plantcareapp.core.main.MainPresenter;
 import com.grzeluu.plantcareapp.databinding.ActivityMainBinding;
-import com.grzeluu.plantcareapp.ui_temporary.myPlants.MyPlantsFragment;
 import com.grzeluu.plantcareapp.ui_temporary.suggest.SuggestFragment;
 
 public class MainActivity extends BaseActivity
