@@ -1,9 +1,11 @@
 package com.grzeluu.plantcareapp.core.register;
 
-import com.grzeluu.plantcareapp.base.BaseView;
+import com.grzeluu.plantcareapp.base.BaseListenerContract;
+import com.grzeluu.plantcareapp.base.BasePresenterContract;
+import com.grzeluu.plantcareapp.base.BaseViewContract;
 
 public interface RegisterContract {
-    interface View extends BaseView {
+    interface View extends BaseViewContract {
         void setUsernameError(String error);
 
         void setEmailError(String error);
@@ -17,7 +19,7 @@ public interface RegisterContract {
         void onRegisterFailure(String message);
     }
 
-    interface Presenter {
+    interface Presenter extends BasePresenterContract {
         void register(String username, String email, String password, String repeatedPassword);
     }
 
@@ -25,7 +27,7 @@ public interface RegisterContract {
         void performRegister(String username, String email, String password);
     }
 
-    interface RegisterListener {
+    interface Listener extends BaseListenerContract {
         void onSuccess(String message);
 
         void onFailure(String message);

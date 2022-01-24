@@ -22,7 +22,7 @@
         <activity android:name="com.grzeluu.plantcareapp.ui_temporary.add.AddPlantActivity" />
         <activity android:name="com.grzeluu.plantcareapp.ui_temporary.check.CheckPlantActivity" />
         <activity
-            android:name="com.grzeluu.plantcareapp.ui_temporary.main.MainActivity"
+            android:name="com.grzeluu.plantcareapp.view.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.LookUpPlant.NoActionBar">
             <intent-filter>

@@ -1,9 +1,10 @@
 package com.grzeluu.plantcareapp.core.forgot;
 
-import com.grzeluu.plantcareapp.base.BaseView;
+import com.grzeluu.plantcareapp.base.BaseListenerContract;
+import com.grzeluu.plantcareapp.base.BaseViewContract;
 
 public interface ForgotContract {
-    interface View extends BaseView {
+    interface View extends BaseViewContract {
         void onSendEmailSuccess(String message);
 
         void setEmailError(String message);
@@ -11,7 +12,7 @@ public interface ForgotContract {
         void onSendEmailFailure(String message);
     }
 
-    interface Presenter {
+    interface Presenter extends BaseListenerContract{
         void resetPassword(String email);
     }
 
@@ -19,7 +20,7 @@ public interface ForgotContract {
         void performResetPassword(String email);
     }
 
-    interface ForgotListener {
+    interface ForgotListener extends BaseListenerContract {
         void onSuccess(String message);
         void onFailure(String message);
     }

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.utils.CommonUtils;
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseView {
+public abstract class BaseActivity extends AppCompatActivity implements BaseViewContract {
 
     ProgressDialog progressDialog;
 

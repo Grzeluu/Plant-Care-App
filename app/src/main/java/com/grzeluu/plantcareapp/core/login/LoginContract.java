@@ -1,9 +1,11 @@
 package com.grzeluu.plantcareapp.core.login;
 
-import com.grzeluu.plantcareapp.base.BaseView;
+import com.grzeluu.plantcareapp.base.BaseListenerContract;
+import com.grzeluu.plantcareapp.base.BasePresenterContract;
+import com.grzeluu.plantcareapp.base.BaseViewContract;
 
 public interface LoginContract {
-    interface View extends BaseView {
+    interface View extends BaseViewContract {
         void setEmailError(String error);
 
         void setPasswordError(String error);
@@ -13,7 +15,7 @@ public interface LoginContract {
         void onLoginFailure(String message);
     }
 
-    interface Presenter {
+    interface Presenter extends BasePresenterContract {
         void login(String username, String password);
     }
 
@@ -21,7 +23,7 @@ public interface LoginContract {
         void performLogin( String email, String password);
     }
 
-    interface LoginListener {
+    interface Listener extends BaseListenerContract {
         void onSuccess(String message);
         void onFailure(String message);
     }

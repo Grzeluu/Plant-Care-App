@@ -2,19 +2,22 @@ package com.grzeluu.plantcareapp.core.login;
 
 import android.util.Patterns;
 
-public class LoginPresenter implements LoginContract.Presenter, LoginContract.LoginListener {
+import com.grzeluu.plantcareapp.base.BasePresenter;
+
+public class LoginPresenter extends BasePresenter
+        implements LoginContract.Presenter, LoginContract.Listener {
 
     private LoginContract.View loginView;
     private LoginInteractor loginInteractor;
 
     public LoginPresenter(LoginContract.View loginView) {
+        super(loginView);
         this.loginView = loginView;
         loginInteractor = new LoginInteractor(this);
     }
 
     @Override
     public void login(String email, String password) {
-        loginView.showLoading();
         if (checkLoginRequirements(email, password))
             loginInteractor.performLogin(email, password);
     }
@@ -38,13 +41,11 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.Lo
 
     @Override
     public void onSuccess(String message) {
-        loginView.hideLoading();
         loginView.onLoginSuccess(message);
     }
 
     @Override
     public void onFailure(String message) {
-        loginView.showLoading();
         loginView.onLoginFailure(message);
     }
 }

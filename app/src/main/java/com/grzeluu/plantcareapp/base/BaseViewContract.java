@@ -2,7 +2,7 @@ package com.grzeluu.plantcareapp.base;
 
 import androidx.annotation.StringRes;
 
-public interface BaseView {
+public interface BaseViewContract {
 
     void showLoading();
 

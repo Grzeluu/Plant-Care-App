@@ -1,4 +1,4 @@
-package com.grzeluu.plantcareapp.ui_temporary.main;
+package com.grzeluu.plantcareapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,18 +18,19 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.grzeluu.plantcareapp.R;
-import com.grzeluu.plantcareapp.base.App;
 import com.grzeluu.plantcareapp.base.BaseActivity;
+import com.grzeluu.plantcareapp.core.main.MainContract;
+import com.grzeluu.plantcareapp.core.main.MainPresenter;
 import com.grzeluu.plantcareapp.databinding.ActivityMainBinding;
 import com.grzeluu.plantcareapp.ui_temporary.discover.DiscoverFragment;
 import com.grzeluu.plantcareapp.ui_temporary.myPlants.MyPlantsFragment;
 import com.grzeluu.plantcareapp.ui_temporary.suggest.SuggestFragment;
-import com.grzeluu.plantcareapp.view.LoginActivity;
 
-public class MainActivity extends BaseActivity implements MainMvpView, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity
+        implements MainContract.View, NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private MainMvpPresenter presenter;
+    private MainPresenter presenter;
     private ActivityMainBinding binding;
 
 
@@ -43,10 +44,8 @@ public class MainActivity extends BaseActivity implements MainMvpView, Navigatio
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        presenter = new MainPresenter(this, ((App) getApplication()).getUserStorage());
-
-        presenter.checkUser();
-        presenter.onNavMenuCreated();
+        presenter = new MainPresenter(this);
+        presenter.checkIfUserIsLoggedIn();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -98,28 +97,18 @@ public class MainActivity extends BaseActivity implements MainMvpView, Navigatio
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    public void goToLogin() {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
     public void openDiscover() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, new DiscoverFragment())
                 .commit();
     }
 
-    @Override
     public void openMyPlants() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, new MyPlantsFragment())
                 .commit();
     }
 
-    @Override
     public void openSuggest() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, new SuggestFragment())
@@ -127,17 +116,23 @@ public class MainActivity extends BaseActivity implements MainMvpView, Navigatio
     }
 
     @Override
-    public void updateUsername(String username) {
+    public void requireLogin() {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void setUsername(String username) {
         View headerView = binding.navView.getHeaderView(0);
         TextView drawerNameTextView = headerView.findViewById(R.id.tv_username);
         drawerNameTextView.setText(username);
     }
 
     @Override
-    public void updateEmail(String email) {
+    public void setEmail(String email) {
         View headerView = binding.navView.getHeaderView(0);
         TextView drawerEmailTextView = headerView.findViewById(R.id.tv_email);
         drawerEmailTextView.setText(email);
     }
-
 }

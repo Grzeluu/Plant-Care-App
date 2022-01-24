@@ -2,12 +2,15 @@ package com.grzeluu.plantcareapp.core.forgot;
 
 import android.util.Patterns;
 
-public class ForgotPresenter implements ForgotContract.Presenter, ForgotContract.ForgotListener {
+import com.grzeluu.plantcareapp.base.BasePresenter;
+
+public class ForgotPresenter extends BasePresenter implements ForgotContract.Presenter, ForgotContract.ForgotListener {
 
     private ForgotContract.View forgotView;
     private ForgotContract.Interactor forgotInteractor;
 
     public ForgotPresenter(ForgotContract.View forgotView) {
+        super(forgotView);
         this.forgotView = forgotView;
         forgotInteractor = new ForgotInteractor(this);
     }
@@ -15,7 +18,7 @@ public class ForgotPresenter implements ForgotContract.Presenter, ForgotContract
     @Override
     public void resetPassword(String email) {
         forgotView.showLoading();
-        if(checkResetPasswordRequirements(email)) {
+        if (checkResetPasswordRequirements(email)) {
             forgotInteractor.performResetPassword(email);
         }
     }

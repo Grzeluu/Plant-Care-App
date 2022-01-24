@@ -12,11 +12,14 @@ public class ForgotInteractor implements ForgotContract.Interactor {
 
     @Override
     public void performResetPassword(String email) {
+        forgotListener.onStart();
         FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        forgotListener.onEnd();
                         forgotListener.onSuccess("Email sent.");
                     } else {
+                        forgotListener.onEnd();
                         forgotListener.onFailure("Something wrong happened");
                     }
                 });

@@ -1,11 +1,11 @@
 package com.grzeluu.plantcareapp.ui_temporary.check;
 
 import com.grzeluu.plantcareapp.model.Post;
-import com.grzeluu.plantcareapp.base.BaseView;
+import com.grzeluu.plantcareapp.base.BaseViewContract;
 
 import java.util.List;
 
-public interface CheckPlantMvpView extends BaseView {
+public interface CheckPlantMvpView extends BaseViewContract {
     void setPlantName(String commonName);
 
     void setPlantLatinName(String latinName);

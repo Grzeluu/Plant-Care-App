@@ -8,7 +8,6 @@ import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.core.login.LoginContract;
 import com.grzeluu.plantcareapp.core.login.LoginPresenter;
 import com.grzeluu.plantcareapp.databinding.ActivityLoginBinding;
-import com.grzeluu.plantcareapp.ui_temporary.main.MainActivity;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 

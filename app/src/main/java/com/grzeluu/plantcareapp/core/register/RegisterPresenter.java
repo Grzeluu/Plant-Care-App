@@ -2,19 +2,22 @@ package com.grzeluu.plantcareapp.core.register;
 
 import android.util.Patterns;
 
-public class RegisterPresenter implements RegisterContract.Presenter, RegisterContract.RegisterListener {
+import com.grzeluu.plantcareapp.base.BasePresenter;
+
+public class RegisterPresenter extends BasePresenter
+        implements RegisterContract.Presenter, RegisterContract.Listener {
 
     private RegisterContract.View registerView;
     private RegisterContract.Interactor registerInteractor;
 
     public RegisterPresenter(RegisterContract.View registerView) {
+        super(registerView);
         this.registerView = registerView;
         registerInteractor = new RegisterInteractor(this);
     }
 
     @Override
     public void register(String username, String email, String password, String repeatedPassword) {
-        registerView.showLoading();
         if (checkRegisterRequirements(username, email, password, repeatedPassword))
             registerInteractor.performRegister(username, email, password);
     }
@@ -51,13 +54,11 @@ public class RegisterPresenter implements RegisterContract.Presenter, RegisterCo
 
     @Override
     public void onSuccess(String message) {
-        registerView.hideLoading();
         registerView.onRegisterSuccess(message);
     }
 
     @Override
     public void onFailure(String message) {
-        registerView.hideLoading();
         registerView.onRegisterFailure(message);
     }
 }

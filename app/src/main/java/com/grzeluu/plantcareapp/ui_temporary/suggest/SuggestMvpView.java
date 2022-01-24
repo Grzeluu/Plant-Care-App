@@ -2,9 +2,9 @@ package com.grzeluu.plantcareapp.ui_temporary.suggest;
 
 import android.view.View;
 
-import com.grzeluu.plantcareapp.base.BaseView;
+import com.grzeluu.plantcareapp.base.BaseViewContract;
 
-public interface SuggestMvpView extends BaseView {
+public interface SuggestMvpView extends BaseViewContract {
 
     void setUp(View view);
 
