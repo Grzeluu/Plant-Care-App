@@ -1,206 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:background="@drawable/bg_white"
+    android:layout_marginBottom="8dp"
+    android:paddingVertical="4dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_white"
-        android:paddingBottom="10dp">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="78dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="8dp"
+        app:cardBackgroundColor="@color/green_500"
+        app:cardCornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="78dp"
-            android:layout_height="78dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:cardBackgroundColor="@color/green_500"
-            app:cardCornerRadius="100dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="250dp">
 
-
-            <androidx.cardview.widget.CardView
+            <ImageView
+                android:id="@+id/iv_photo"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_gravity="center"
-                app:cardCornerRadius="250dp">
-
-                <ImageView
-                    android:id="@+id/iv_photo"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_flower" />
-
-            </androidx.cardview.widget.CardView>
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_flower" />
 
         </androidx.cardview.widget.CardView>
 
-        <ImageView
-            android:id="@+id/warning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="45dp"
-            android:elevation="2dp"
-            android:minWidth="36dp"
-            android:minHeight="36dp"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:srcCompat="@drawable/ic_warning" />
+    </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-            android:id="@+id/ll_tracks"
+    <ImageView
+        android:id="@+id/warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="45dp"
+        android:elevation="2dp"
+        android:minWidth="36dp"
+        android:minHeight="36dp"
+        app:layout_constraintBottom_toBottomOf="@id/cardView"
+        app:layout_constraintEnd_toEndOf="@id/cardView"
+        app:srcCompat="@drawable/ic_warning" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="1"
+        android:text="@string/name"
+        android:textColor="@color/green_700"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@id/cardView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_tracks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="58dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name">
+
+        <RelativeLayout
+            android:id="@+id/rl_water"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="58dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:paddingVertical="2dp">
 
-            <RelativeLayout
-                android:id="@+id/rl_water"
+            <ProgressBar
+                android:id="@+id/pb_water"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="2dp">
+                android:progressDrawable="@drawable/track_watering" />
 
-                <ProgressBar
-                    android:id="@+id/pb_water"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@drawable/track_watering" />
+            <TextView
+                android:id="@+id/tv_water"
+                style="@style/progress_bar_text_style"
+                android:layout_toEndOf="@id/iv_water"
+                android:text="Water" />
 
-                <TextView
-                    android:id="@+id/tv_water"
-                    style="@style/progress_bar_text_style"
-                    android:layout_toEndOf="@id/iv_water"
-                    android:text="Water" />
+            <ImageView
+                android:id="@+id/iv_water"
+                style="@style/small_icon_style"
+                android:layout_alignStart="@+id/pb_water"
+                android:layout_alignTop="@+id/pb_water"
+                android:layout_alignBottom="@+id/pb_water"
+                app:srcCompat="@drawable/ic_water"
+                app:tint="@color/white" />
 
-                <ImageView
-                    android:id="@+id/iv_water"
-                    style="@style/small_icon_style"
-                    android:layout_alignStart="@+id/pb_water"
-                    android:layout_alignTop="@+id/pb_water"
-                    android:layout_alignBottom="@+id/pb_water"
-                    app:srcCompat="@drawable/ic_water"
-                    app:tint="@color/white" />
+        </RelativeLayout>
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_fertilization"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="2dp">
-
-                <ProgressBar
-                    android:id="@+id/pb_fertilizer"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@drawable/track_fertilization" />
-
-                <TextView
-                    android:id="@+id/tv_fertilization"
-                    style="@style/progress_bar_text_style"
-                    android:layout_toEndOf="@id/iv_fertilization"
-                    android:text="Fertilizer" />
-
-                <ImageView
-                    android:id="@+id/iv_fertilization"
-                    style="@style/small_icon_style"
-                    android:layout_alignStart="@+id/pb_fertilizer"
-                    android:layout_alignTop="@+id/pb_fertilizer"
-                    android:layout_alignBottom="@+id/pb_fertilizer"
-                    app:srcCompat="@drawable/ic_fertilizer"
-                    app:tint="@color/white" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_spraying"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="2dp">
-
-                <ProgressBar
-                    android:id="@+id/pb_spraying"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@drawable/track_spraying" />
-
-                <TextView
-                    android:id="@+id/tv_spraying"
-                    style="@style/progress_bar_text_style"
-                    android:layout_toEndOf="@id/iv_rotate"
-                    android:text="Spraying" />
-
-                <ImageView
-                    android:id="@+id/iv_rotate"
-                    style="@style/small_icon_style"
-                    android:layout_alignStart="@+id/pb_spraying"
-                    android:layout_alignTop="@+id/pb_spraying"
-                    android:layout_alignBottom="@+id/pb_spraying"
-                    app:srcCompat="@drawable/ic_spray"
-                    app:tint="@color/white" />
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/iv_care"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/iv_delete"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_goneMarginBottom="8dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintStart_toStartOf="@+id/iv_delete"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_water"
-            app:tint="@color/blue_500" />
-
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/rl_fertilization"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/name"
-            android:maxLines="1"
-            android:layout_marginEnd="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/ll_tracks"
-            app:layout_constraintStart_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:paddingVertical="2dp">
 
-        <ImageView
-            android:id="@+id/iv_delete"
-            android:layout_marginTop="4dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_care"
-            app:srcCompat="@drawable/ic_delete" />
+            <ProgressBar
+                android:id="@+id/pb_fertilizer"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressDrawable="@drawable/track_fertilization" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_fertilization"
+                style="@style/progress_bar_text_style"
+                android:layout_toEndOf="@id/iv_fertilization"
+                android:text="Fertilizer" />
 
-</LinearLayout>
+            <ImageView
+                android:id="@+id/iv_fertilization"
+                style="@style/small_icon_style"
+                android:layout_alignStart="@+id/pb_fertilizer"
+                android:layout_alignTop="@+id/pb_fertilizer"
+                android:layout_alignBottom="@+id/pb_fertilizer"
+                app:srcCompat="@drawable/ic_fertilizer"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_spraying"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="2dp">
+
+            <ProgressBar
+                android:id="@+id/pb_spraying"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressDrawable="@drawable/track_spraying" />
+
+            <TextView
+                android:id="@+id/tv_spraying"
+                style="@style/progress_bar_text_style"
+                android:layout_toEndOf="@id/iv_rotate"
+                android:text="Spraying" />
+
+            <ImageView
+                android:id="@+id/iv_rotate"
+                style="@style/small_icon_style"
+                android:layout_alignStart="@+id/pb_spraying"
+                android:layout_alignTop="@+id/pb_spraying"
+                android:layout_alignBottom="@+id/pb_spraying"
+                app:srcCompat="@drawable/ic_spray"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_care"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_more"
+        app:tint="@color/green_500" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

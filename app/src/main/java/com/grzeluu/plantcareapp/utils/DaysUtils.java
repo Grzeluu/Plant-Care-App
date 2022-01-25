@@ -1,5 +1,8 @@
 package com.grzeluu.plantcareapp.utils;
 
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 public class DaysUtils {
     static public int progressToDays(int frequency) {
 
@@ -21,5 +24,11 @@ public class DaysUtils {
         } else {
             return ((frequency / 30) + 35);
         }
+    }
+
+    static public int daysFromLastAction(Date lastDate) {
+        Date currentDate = new Date();
+        long diff = currentDate.getTime() - lastDate.getTime();
+        return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 }

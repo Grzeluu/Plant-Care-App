@@ -1,14 +1,16 @@
 package com.grzeluu.plantcareapp.model;
 
+import static com.grzeluu.plantcareapp.utils.Constants.iso_8601_format;
+import static com.grzeluu.plantcareapp.utils.DaysUtils.daysFromLastAction;
+
 import java.io.Serializable;
+import java.text.ParseException;
 
 public class UserPlant implements Serializable {
 
     String id;
 
     String name;
-    String commonName;
-    String latinName;
 
     long wateringFrequency;
     long fertilizingFrequency;
@@ -35,7 +37,6 @@ public class UserPlant implements Serializable {
             String image) {
         this.id = id;
         this.name = name;
-        this.commonName = commonName;
         this.wateringFrequency = wateringFrequency;
         this.fertilizingFrequency = fertilizingFrequency;
         this.sprayingFrequency = sprayingFrequency;
@@ -43,6 +44,26 @@ public class UserPlant implements Serializable {
         this.lastSpraying = lastSpraying;
         this.lastWatering = lastWatering;
         this.image = image;
+    }
+
+    public Boolean isCareNeeded() {
+        try {
+            long daysFromWatering = daysFromLastAction(iso_8601_format.parse(lastWatering));
+            long daysFromFertilizing = daysFromLastAction(iso_8601_format.parse(lastFertilizing));
+            long daysFromSpraying = daysFromLastAction(iso_8601_format.parse(lastSpraying));
+
+            if (wateringFrequency != 0 && daysFromWatering >= wateringFrequency)
+                return true;
+            if (fertilizingFrequency != 0 && daysFromFertilizing >= fertilizingFrequency)
+                return true;
+            if (sprayingFrequency != 0 && daysFromSpraying >= sprayingFrequency)
+                return true;
+            return false;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public String getId() {
@@ -59,14 +80,6 @@ public class UserPlant implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCommonName() {
-        return commonName;
-    }
-
-    public void setCommonName(String commonName) {
-        this.commonName = commonName;
     }
 
     public long getWateringFrequency() {

@@ -14,8 +14,6 @@ public class Plant implements Serializable {
     long fertilizingFrequency;
     long sprayingFrequency;
 
-    String type;
-
     String image;
 
     boolean isVerified;
@@ -39,7 +37,6 @@ public class Plant implements Serializable {
         this.sprayingFrequency = sprayingFrequency;
         this.image = photoUri;
         this.isVerified = isVerified;
-        this.type = type;
     }
 
     public String getId() {
@@ -96,14 +93,6 @@ public class Plant implements Serializable {
 
     public void setSprayingFrequency(long sprayingFrequency) {
         this.sprayingFrequency = sprayingFrequency;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getImage() {
