@@ -1,6 +1,8 @@
 package com.grzeluu.plantcareapp.model;
 
-public class Plant {
+import java.io.Serializable;
+
+public class Plant implements Serializable {
 
     String id;
 
@@ -18,9 +20,17 @@ public class Plant {
 
     boolean isVerified;
 
-    public Plant() { }
+    public Plant() {
+    }
 
-    public Plant(String commonName, String latinName, String description, long wateringFrequency, long fertilizingFrequency, long sprayingFrequency, String photoUri, boolean isVerified) {
+    public Plant(String commonName,
+                 String latinName,
+                 String description,
+                 long wateringFrequency,
+                 long fertilizingFrequency,
+                 long sprayingFrequency,
+                 String photoUri,
+                 boolean isVerified) {
         this.commonName = commonName;
         this.latinName = latinName;
         this.description = description;

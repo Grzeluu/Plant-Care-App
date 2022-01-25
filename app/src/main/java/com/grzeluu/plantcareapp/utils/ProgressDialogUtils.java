@@ -9,8 +9,6 @@ import com.grzeluu.plantcareapp.R;
 
 public class ProgressDialogUtils {
 
-    private ProgressDialogUtils() { }
-
     public static ProgressDialog showLoadingDialog(Context context) {
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.show();

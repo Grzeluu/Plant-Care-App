@@ -6,28 +6,18 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_my_plants"
+            android:checked="true"
             android:icon="@drawable/ic_favourite"
-            android:title="@string/my_plants"
-            android:checked="true"/>
+            android:title="@string/my_plants" />
         <item
             android:id="@+id/nav_discover"
             android:icon="@drawable/ic_search"
             android:title="@string/discover_plants" />
-
-        <item
-            android:id="@+id/nav_suggest_new_plant"
-            android:icon="@drawable/ic_add"
-            android:title="@string/suggest_new_plant" />
-
     </group>
+
     <group
         android:id="@+id/second_actions"
         android:checkableBehavior="single">
-
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_settings"
-            android:title="@string/settings" />
 
         <item
             android:id="@+id/nav_logout"

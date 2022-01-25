@@ -226,28 +226,25 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
 
 
             confirmButton.setOnClickListener(v1 -> {
-                Date currentDate = new Date();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getUid());
+                String now = iso_8601_format.format(new Date());
                 if (watering.isChecked()) {
                     plant.setLastWatering(iso_8601_format.format(new Date()));
+                    ref.child("UserPlants").child(plant.getId()).child("lastWatering").setValue(now);
                 }
 
                 if (fertilizing.isChecked()) {
                     plant.setLastFertilizing(iso_8601_format.format(new Date()));
+                    ref.child("UserPlants").child(plant.getId()).child("lastFertilizing").setValue(now);
                 }
 
                 if (spraying.isChecked()) {
                     plant.setLastSpraying(iso_8601_format.format(new Date()));
+                    ref.child("UserPlants").child(plant.getId()).child("lastSpraying").setValue(now);
                 }
 
                 notifyDataSetChanged();
                 careDialog.dismiss();
-
-                String now = iso_8601_format.format(new Date());
-
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getUid());
-                ref.child("UserPlants").child(plant.getId()).child("lastFertilizing").setValue(now);
-                ref.child("UserPlants").child(plant.getId()).child("lastWatering").setValue(now);
-                ref.child("UserPlants").child(plant.getId()).child("lastSpraying").setValue(now);
             });
             careDialog.show();
         };

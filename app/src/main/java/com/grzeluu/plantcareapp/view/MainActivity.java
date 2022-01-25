@@ -22,7 +22,6 @@ import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.core.main.MainContract;
 import com.grzeluu.plantcareapp.core.main.MainPresenter;
 import com.grzeluu.plantcareapp.databinding.ActivityMainBinding;
-import com.grzeluu.plantcareapp.ui_temporary.suggest.SuggestFragment;
 
 public class MainActivity extends BaseActivity
         implements MainContract.View, NavigationView.OnNavigationItemSelectedListener {
@@ -66,9 +65,6 @@ public class MainActivity extends BaseActivity
             case R.id.nav_discover:
                 openDiscover();
                 break;
-            case R.id.nav_suggest_new_plant:
-                openSuggest();
-                break;
             case R.id.nav_logout:
                 presenter.onDrawerOptionLogoutClick();
                 return true;
@@ -103,12 +99,6 @@ public class MainActivity extends BaseActivity
     private void openMyPlants() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, new MyPlantsFragment())
-                .commit();
-    }
-
-    private void openSuggest() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, new SuggestFragment())
                 .commit();
     }
 

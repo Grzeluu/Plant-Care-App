@@ -21,7 +21,7 @@
         android:progress="10"
         android:progressDrawable="@drawable/track_fertilization"
         android:thumb="@drawable/thumb_fertilizer"
-        android:thumbTint="@color/bronze_300"
+        android:thumbTint="@color/bronze_thumb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_plus"
         app:layout_constraintStart_toEndOf="@+id/iv_minus"
@@ -43,6 +43,7 @@
         style="@style/medium_icon_style"
         android:src="@drawable/ic_remove_circle"
         app:layout_constraintBottom_toBottomOf="@+id/sb_frequency"
+        android:layout_marginStart="10dp"
         app:layout_constraintStart_toEndOf="@+id/iv_water"
         app:layout_constraintTop_toTopOf="@+id/sb_frequency"
         app:tint="@color/bronze_300" />
@@ -60,7 +61,6 @@
     <ImageView
         android:id="@+id/iv_water"
         style="@style/big_icon_style"
-        android:layout_marginBottom="10dp"
         android:layout_marginStart="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

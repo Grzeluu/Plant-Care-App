@@ -1,6 +1,8 @@
 package com.grzeluu.plantcareapp.model;
 
-public class UserPlant {
+import java.io.Serializable;
+
+public class UserPlant implements Serializable {
 
     String id;
 
@@ -24,7 +26,6 @@ public class UserPlant {
     public UserPlant(
             String id,
             String name,
-            String commonName,
             long wateringFrequency,
             long fertilizingFrequency,
             long sprayingFrequency,

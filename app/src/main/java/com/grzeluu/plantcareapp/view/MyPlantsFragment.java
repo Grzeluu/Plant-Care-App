@@ -1,5 +1,6 @@
 package com.grzeluu.plantcareapp.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,16 +38,14 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_my_plants, container, false);
+        binding = FragmentMyPlantsBinding.inflate(getLayoutInflater());
+        presenter = new MyPlantsPresenter(this);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         recyclerView = view.findViewById(R.id.rv_my_plants);
-
-        binding = FragmentMyPlantsBinding.inflate(getLayoutInflater());
-        presenter =  new MyPlantsPresenter(this);
-
         init();
 
         presenter.getMyPlantsList();
@@ -57,9 +56,10 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
         plantsLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(plantsLayoutManager);
         myPlantsAdapter = new MyPlantsAdapter(getContext(), new ArrayList<UserPlant>());
-
-        if (myPlantsAdapter.getItemCount() == 0)
-            binding.tvHint.setVisibility(View.VISIBLE);
+        binding.fabAddPlant.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), AddPlantActivity.class);
+            startActivity(intent);
+        });
 
         recyclerView.setAdapter(myPlantsAdapter);
     }
@@ -67,22 +67,16 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
     @Override
     public void onResume() {
         super.onResume();
-        checkPlantList();
-    }
-
-    private void checkPlantList() {
-        if (myPlantsAdapter.getItemCount() > 0)
-            binding.tvHint.setVisibility(View.INVISIBLE);
-        else
-            binding.tvHint.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void updateMyPlants(List<UserPlant> plantList) {
-        if (plantList != null){
+        if (plantList != null) {
             myPlantsAdapter = new MyPlantsAdapter(getContext(), plantList);
             recyclerView.setAdapter(myPlantsAdapter);
             myPlantsAdapter.notifyDataSetChanged();
         }
+        if (myPlantsAdapter.getItemCount() == 0)
+            binding.tvHint.setVisibility(View.VISIBLE);
     }
 }

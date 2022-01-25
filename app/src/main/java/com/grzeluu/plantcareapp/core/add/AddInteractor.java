@@ -1,8 +1,12 @@
 package com.grzeluu.plantcareapp.core.add;
 
+import android.net.Uri;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.grzeluu.plantcareapp.model.UserPlant;
 
 public class AddInteractor implements AddContract.Interactor {
@@ -15,50 +19,29 @@ public class AddInteractor implements AddContract.Interactor {
 
     @Override
     public void performAddPlant(UserPlant plant) {
-        String timestamp = "" + (System.currentTimeMillis());
 
         addListener.onStart();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(FirebaseAuth.getInstance().getUid())
-                .child("UserPlants").child(timestamp).setValue(plant)
-                .addOnSuccessListener(lister -> {
-                    addListener.onEnd();
-                    addListener.onSuccess("Your plant has been added");
-                })
-                .addOnFailureListener(listener -> {
-                    addListener.onEnd();
-                    addListener.onFailure(listener.getMessage());
+        String filePathAndName = "plant_images/" + plant.getId();
+
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
+        storageReference.putFile(Uri.parse(plant.getImage()))
+                .addOnSuccessListener(taskSnapshot -> {
+
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                            .getReference("Users")
+                            .child(FirebaseAuth.getInstance().getUid())
+                            .child("UserPlants");
+
+                    databaseReference.child(plant.getId()).setValue(plant)
+                            .addOnSuccessListener(aVoid -> {
+                                addListener.onEnd();
+                                addListener.onSuccess("Plant added to our database");
+                            })
+                            .addOnFailureListener(e -> {
+                                addListener.onEnd();
+                                addListener.onFailure(e.getMessage());
+                            });
                 });
+
     }
-
-   /* public void getPlant(String id) {
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                addPlantView.showLoading();
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    Plant plant = ds.getValue(Plant.class);
-                    if (plant.getId().equals(id)) {
-                        addPlantView.setPlantCommonName(plant.getCommonName());
-                        addPlantView.setPlantLatinName(plant.getLatinName());
-                        addPlantView.setPlantType(plant.getType());
-
-                        addPlantView.setPlantPhoto(plant.getImage());
-
-                        addPlantView.setWateringFrequency(plant.getWateringFrequency());
-                        addPlantView.setFertilizingFrequency(plant.getFertilizingFrequency());
-                        addPlantView.setSprayingFrequency(plant.getSprayingFrequency());
-
-                        addPlantView.setPlant(plant);
-                        addPlantView.hideLoading();
-                        return;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }*/
 }

@@ -11,16 +11,19 @@
     <color name="green_300">#4F9E0B</color>
     <color name="green_500">#409116</color>
     <color name="green_700">#288F10</color>
+    <color name="green_thumb">#82FF64</color>
     <color name="transparent_white">#FAFFFFFF</color>
     <color name="dark_grey">#919191</color>
     <color name="blue_200">#4AC2F1</color>
     <color name="blue_300">#3DABD6</color>
     <color name="blue_500">#347BE4</color>
     <color name="blue_700">#235DD3</color>
+    <color name="blue_thumb">#5E93FF</color>
     <color name="bronze_200">#A37953</color>
     <color name="bronze_300">#95653A</color>
     <color name="bronze_500">#8A5533</color>
     <color name="bronze_700">#67401F</color>
+    <color name="bronze_thumb">#FFA458</color>
     <color name="red">#EF0F0F</color>
     <color name="grey">#D5D5D5</color>
 </resources>
