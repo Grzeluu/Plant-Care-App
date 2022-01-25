@@ -84,19 +84,26 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
     private void initButtons() {
         binding.ivPhoto.setOnClickListener(v -> showChoosePhotoDialog());
 
-        binding.toolbar.btAddPlant.setOnClickListener(v -> presenter.addPlant(
-                new UserPlant(
-                        getTimestamp(),
-                        binding.etName.getText().toString(),
-                        progressToDays(binding.wateringSettings.sbFrequency.getProgress()),
-                        progressToDays(binding.fertilizingSettings.sbFrequency.getProgress()),
-                        progressToDays(binding.sprayingSettings.sbFrequency.getProgress()),
-                        getCurrentDate(),
-                        getCurrentDate(),
-                        getCurrentDate(),
-                        photoURI.toString()
-                )
-        ));
+
+        binding.toolbar.btAddPlant.setOnClickListener(v -> {
+            String photoURIString = null;
+            if(photoURI != null)
+                photoURIString = photoURI.toString();
+
+            presenter.addPlant(
+                    new UserPlant(
+                            getTimestamp(),
+                            binding.etName.getText().toString(),
+                            progressToDays(binding.wateringSettings.sbFrequency.getProgress()),
+                            progressToDays(binding.fertilizingSettings.sbFrequency.getProgress()),
+                            progressToDays(binding.sprayingSettings.sbFrequency.getProgress()),
+                            getCurrentDate(),
+                            getCurrentDate(),
+                            getCurrentDate(),
+                            photoURIString
+                    )
+            );
+        });
     }
 
     public void setPlant(Plant newPlant) {

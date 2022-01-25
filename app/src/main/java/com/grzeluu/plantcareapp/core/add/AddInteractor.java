@@ -21,27 +21,40 @@ public class AddInteractor implements AddContract.Interactor {
     public void performAddPlant(UserPlant plant) {
 
         addListener.onStart();
-        String filePathAndName = "plant_images/" + plant.getId();
+        if (plant.getImage() != null) {
+            addPlantWithImage(plant);
+        } else {
+            addPlant(plant);
+        }
+    }
 
+    private void addPlantWithImage(UserPlant plant) {
+        String filePathAndName = "plant_images/" + plant.getId();
         StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
         storageReference.putFile(Uri.parse(plant.getImage()))
                 .addOnSuccessListener(taskSnapshot -> {
-
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance()
-                            .getReference("Users")
-                            .child(FirebaseAuth.getInstance().getUid())
-                            .child("UserPlants");
-
-                    databaseReference.child(plant.getId()).setValue(plant)
-                            .addOnSuccessListener(aVoid -> {
-                                addListener.onEnd();
-                                addListener.onSuccess("Plant added to our database");
-                            })
-                            .addOnFailureListener(e -> {
-                                addListener.onEnd();
-                                addListener.onFailure(e.getMessage());
-                            });
+                    addPlant(plant);
+                })
+                .addOnFailureListener(e -> {
+                    addListener.onEnd();
+                    addListener.onFailure(e.getMessage());
                 });
+    }
 
+    private void addPlant(UserPlant plant) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                .getReference("Users")
+                .child(FirebaseAuth.getInstance().getUid())
+                .child("UserPlants");
+
+        databaseReference.child(plant.getId()).setValue(plant)
+                .addOnSuccessListener(aVoid -> {
+                    addListener.onEnd();
+                    addListener.onSuccess("Plant added to our database");
+                })
+                .addOnFailureListener(e -> {
+                    addListener.onEnd();
+                    addListener.onFailure(e.getMessage());
+                });
     }
 }

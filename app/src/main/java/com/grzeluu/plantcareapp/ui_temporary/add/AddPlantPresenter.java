@@ -2,8 +2,6 @@ package com.grzeluu.plantcareapp.ui_temporary.add;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -97,19 +95,13 @@ public class AddPlantPresenter implements AddPlantMvpPresenter {
 
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
             databaseReference.child(FirebaseAuth.getInstance().getUid()).child("UserPlants").child(timestamp).setValue(hashMap)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            addPlantView.hideLoading();
-                            addPlantView.showMessage("Plant added to our database");
-                        }
+                    .addOnSuccessListener(aVoid -> {
+                        addPlantView.hideLoading();
+                        addPlantView.showMessage("Plant added to our database");
                     })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            addPlantView.hideLoading();
-                            addPlantView.showMessage(e.getMessage());
-                        }
+                    .addOnFailureListener(e -> {
+                        addPlantView.hideLoading();
+                        addPlantView.showMessage(e.getMessage());
                     });
         }
     }

@@ -22,7 +22,7 @@ public class AddPresenter extends BasePresenter
     }
 
     private boolean isPlantCorrect(UserPlant plant) {
-        if (plant.getName() != null)
+        if (!plant.getName().isEmpty())
             return true;
 
         addView.setNameError("This field can\'t be empty.");
