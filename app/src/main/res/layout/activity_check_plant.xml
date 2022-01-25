@@ -64,7 +64,7 @@
 
             <TextView
                 android:id="@+id/tv_common_name"
-                style="@style/TextViewStyle"
+                style="@style/common_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -77,7 +77,7 @@
 
             <TextView
                 android:id="@+id/tv_latin_name"
-                style="@style/TextViewStyle"
+                style="@style/common_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -109,7 +109,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            style="@style/TextViewStyle"
+            style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -154,7 +154,7 @@
 
             <TextView
                 android:id="@+id/tv_spraying"
-                style="@style/TextViewStyle"
+                style="@style/common_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -166,7 +166,7 @@
 
             <TextView
                 android:id="@+id/tv_water"
-                style="@style/TextViewStyle"
+                style="@style/common_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -204,7 +204,7 @@
 
             <TextView
                 android:id="@+id/tv_fertilizer"
-                style="@style/TextViewStyle"
+                style="@style/common_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -244,7 +244,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            style="@style/TextViewStyle"
+            style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -268,7 +268,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_ask_question"
-                style="@style/SecondButton"
+                style="@style/secondary_button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -284,7 +284,7 @@
         </LinearLayout>
 
         <TextView
-            style="@style/TextViewStyle"
+            style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -328,7 +328,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_add_post"
-                style="@style/SecondButton"
+                style="@style/secondary_button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -344,7 +344,7 @@
         </LinearLayout>
 
         <TextView
-            style="@style/TextViewStyle"
+            style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -366,7 +366,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_add_plant"
-                style="@style/FirstButton"
+                style="@style/main_button_style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"

@@ -46,20 +46,23 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
     @NonNull
     @Override
     public MyPlantsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyPlantsAdapter.ViewHolder (ItemMyPlantBinding.inflate(LayoutInflater.from(context),
+        return new MyPlantsAdapter.ViewHolder(
+                ItemMyPlantBinding.inflate(LayoutInflater.from(context),
                 parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyPlantsAdapter.ViewHolder holder, int position) {
         UserPlant plant = plantList.get(position);
-        Glide
-                .with(context)
-                .load(plant.getImage())
-                .into(holder.binding.ivPhoto);
 
+        if (plant.getImage() != null) {
+            Glide
+                    .with(context)
+                    .load(plant.getImage())
+                    .into(holder.binding.ivPhoto);
+        }
         holder.binding.tvName.setText(plant.getName());
-        holder.binding.ivCare.setOnClickListener(v-> goToCheckPlant(plant.getId()));
+        holder.binding.ivCare.setOnClickListener(v -> goToCheckPlant(plant.getId()));
 
         iso_8601_format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'");
 
@@ -192,16 +195,15 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
             name.setText(plant.getName());
 
             try {
-                if(daysFromLastAction(iso_8601_format.parse(plant.getLastWatering())) >= plant.getWateringFrequency())
+                if (daysFromLastAction(iso_8601_format.parse(plant.getLastWatering())) >= plant.getWateringFrequency())
                     water.setColorFilter(context.getResources().getColor(R.color.red));
-                if(daysFromLastAction(iso_8601_format.parse(plant.getLastFertilizing())) >= plant.getFertilizingFrequency())
+                if (daysFromLastAction(iso_8601_format.parse(plant.getLastFertilizing())) >= plant.getFertilizingFrequency())
                     ferti.setColorFilter(context.getResources().getColor(R.color.red));
-                if(daysFromLastAction(iso_8601_format.parse(plant.getLastSpraying())) >= plant.getSprayingFrequency())
+                if (daysFromLastAction(iso_8601_format.parse(plant.getLastSpraying())) >= plant.getSprayingFrequency())
                     spray.setColorFilter(context.getResources().getColor(R.color.red));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
 
 
             if (plant.getWateringFrequency() == 0) {
@@ -226,7 +228,7 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
             confirmButton.setOnClickListener(v1 -> {
                 Date currentDate = new Date();
                 if (watering.isChecked()) {
-                    plant.setLastWatering( iso_8601_format.format(new Date()));
+                    plant.setLastWatering(iso_8601_format.format(new Date()));
                 }
 
                 if (fertilizing.isChecked()) {

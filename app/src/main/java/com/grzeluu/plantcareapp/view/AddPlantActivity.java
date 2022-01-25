@@ -59,10 +59,6 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
         ));
     }
 
-    public void setPlantCommonName(String commonName) {
-        binding.tvCommonName.setText(commonName);
-    }
-
     public void setWateringFrequency(long wateringFrequency) {
         SeekBar.OnSeekBarChangeListener listener = createProgressBarChangeListener(binding.wateringSettings.tvFrequency);
         binding.wateringSettings.sbFrequency.setOnSeekBarChangeListener(listener);

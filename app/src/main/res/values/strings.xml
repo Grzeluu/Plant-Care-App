@@ -27,7 +27,7 @@
     <string name="settings">Settings</string>
     <string name="search">Search</string>
     <string name="common_name">Common Name</string>
-    <string name="choose_plant_photo">Choose plant photo</string>
+    <string name="choose_plant_photo">Take or choose a new plant photo.</string>
     <string name="latin_name">Latin Name (optional)</string>
     <string name="add_to_my_plants">Add to my plants</string>
     <string name="cancel">Cancel</string>

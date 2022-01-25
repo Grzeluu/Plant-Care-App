@@ -62,7 +62,7 @@
 
             <EditText
                 android:id="@+id/et_name"
-                style="@style/EditTextStyle"
+                style="@style/common_edit_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
@@ -80,7 +80,7 @@
 
             <EditText
                 android:id="@+id/et_latin_name"
-                style="@style/EditTextStyle"
+                style="@style/common_edit_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
@@ -134,7 +134,7 @@
         </LinearLayout>
 
         <TextView
-            style="@style/TextViewStyle"
+            style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -173,7 +173,7 @@
         </LinearLayout>
 
         <TextView
-            style="@style/TextViewStyle"
+            style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -197,7 +197,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_confirm"
-                style="@style/FirstButton"
+                style="@style/main_button_style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

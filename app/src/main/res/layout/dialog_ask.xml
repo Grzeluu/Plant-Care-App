@@ -7,7 +7,7 @@
     android:background="@drawable/inset_dialog">
 
     <TextView
-        style="@style/TextHeading"
+        style="@style/header_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
@@ -17,7 +17,7 @@
     <EditText
         android:layout_marginTop="16dp"
         android:id="@+id/et_question"
-        style="@style/EditTextStyle"
+        style="@style/common_edit_text_style"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="10dp"
         android:textColor="@drawable/text_color_list"
@@ -28,7 +28,7 @@
     <EditText
         android:layout_marginTop="16dp"
         android:id="@+id/et_answer"
-        style="@style/EditTextStyle"
+        style="@style/common_edit_text_style"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="10dp"
         android:textColor="@drawable/text_color_list"
@@ -41,7 +41,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_ask_a_question"
-        style="@style/FirstButton"
+        style="@style/main_button_style"
         android:paddingHorizontal="20dp"
         android:layout_marginBottom="16dp"
         android:layout_width="wrap_content"

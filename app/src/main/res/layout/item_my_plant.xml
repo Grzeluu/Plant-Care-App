@@ -85,13 +85,13 @@
 
                 <TextView
                     android:id="@+id/tv_water"
-                    style="@style/ProgressBarTextViewStyle"
+                    style="@style/progress_bar_text_style"
                     android:layout_toEndOf="@id/iv_water"
                     android:text="Water" />
 
                 <ImageView
                     android:id="@+id/iv_water"
-                    style="@style/SmallIconStyle"
+                    style="@style/small_icon_style"
                     android:layout_alignStart="@+id/pb_water"
                     android:layout_alignTop="@+id/pb_water"
                     android:layout_alignBottom="@+id/pb_water"
@@ -115,13 +115,13 @@
 
                 <TextView
                     android:id="@+id/tv_fertilization"
-                    style="@style/ProgressBarTextViewStyle"
+                    style="@style/progress_bar_text_style"
                     android:layout_toEndOf="@id/iv_fertilization"
                     android:text="Fertilizer" />
 
                 <ImageView
                     android:id="@+id/iv_fertilization"
-                    style="@style/SmallIconStyle"
+                    style="@style/small_icon_style"
                     android:layout_alignStart="@+id/pb_fertilizer"
                     android:layout_alignTop="@+id/pb_fertilizer"
                     android:layout_alignBottom="@+id/pb_fertilizer"
@@ -144,13 +144,13 @@
 
                 <TextView
                     android:id="@+id/tv_spraying"
-                    style="@style/ProgressBarTextViewStyle"
+                    style="@style/progress_bar_text_style"
                     android:layout_toEndOf="@id/iv_rotate"
                     android:text="Spraying" />
 
                 <ImageView
                     android:id="@+id/iv_rotate"
-                    style="@style/SmallIconStyle"
+                    style="@style/small_icon_style"
                     android:layout_alignStart="@+id/pb_spraying"
                     android:layout_alignTop="@+id/pb_spraying"
                     android:layout_alignBottom="@+id/pb_spraying"
