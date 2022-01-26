@@ -10,13 +10,12 @@ import android.widget.LinearLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
+import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.databinding.ActivityCheckPlantBinding;
 import com.grzeluu.plantcareapp.model.Advice;
 import com.grzeluu.plantcareapp.model.Post;
-import com.grzeluu.plantcareapp.view.AddPlantActivity;
-import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.ui_temporary.check.advice.AdviceDialog;
+import com.grzeluu.plantcareapp.view.AddPlantActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +56,6 @@ public class CheckPlantActivity extends BaseActivity implements CheckPlantMvpVie
         binding.rvAdvices.setLayoutManager(advicesLayoutManager);
 
         discussionLayoutManager = new LinearLayoutManager(this);
-        binding.rvDiscussion.setLayoutManager(discussionLayoutManager);
 
         discussionAdapter = new CheckPlantDiscussionAdapter(this, new ArrayList<Post>());
         binding.rvAdvices.setAdapter(discussionAdapter);
@@ -68,12 +66,7 @@ public class CheckPlantActivity extends BaseActivity implements CheckPlantMvpVie
         presenter.refreshAdvicesList(plantId);
         presenter.refreshDiscussionList(plantId);
 
-        binding.btAskQuestion.setOnClickListener(v -> openAskQuestionDialog());
         binding.btAddPlant.setOnClickListener(v -> openAddActivity());
-        binding.btAddPost.setOnClickListener(v -> presenter.addPost(
-                plantId,
-                FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
-                binding.etPost.getText().toString()));
     }
 
     private void openAddActivity() {
@@ -105,7 +98,7 @@ public class CheckPlantActivity extends BaseActivity implements CheckPlantMvpVie
 
     @Override
     public void setFertilizingFrequency(long fertilizingFrequency) {
-        binding.tvFertilizngDays.setText(fertilizingFrequency + " Days");
+        binding.tvFertilizingDays.setText(fertilizingFrequency + " Days");
         binding.pbFertilizer.setProgress((int) getProgressBarFill(fertilizingFrequency));
     }
 
@@ -148,17 +141,11 @@ public class CheckPlantActivity extends BaseActivity implements CheckPlantMvpVie
 
     @Override
     public void setPostError(String message) {
-        binding.etPost.setError(message);
     }
 
     @Override
     public void updateDiscussion(List discussionList) {
-        if (discussionList != null) {
-            discussionAdapter = new CheckPlantDiscussionAdapter(this, discussionList);
-            binding.rvDiscussion.setAdapter(discussionAdapter);
-            discussionAdapter.notifyDataSetChanged();
-            binding.etPost.setText("");
-        }
+
     }
 
     private long getProgressBarFill(long days) {

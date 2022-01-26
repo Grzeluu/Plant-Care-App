@@ -9,6 +9,7 @@ public class Plant implements Serializable {
     String commonName;
     String latinName;
     String description;
+    String type;
 
     long wateringFrequency;
     long fertilizingFrequency;
@@ -24,6 +25,7 @@ public class Plant implements Serializable {
     public Plant(String commonName,
                  String latinName,
                  String description,
+                 String type,
                  long wateringFrequency,
                  long fertilizingFrequency,
                  long sprayingFrequency,
@@ -31,6 +33,7 @@ public class Plant implements Serializable {
                  boolean isVerified) {
         this.commonName = commonName;
         this.latinName = latinName;
+        this.type = type;
         this.description = description;
         this.wateringFrequency = wateringFrequency;
         this.fertilizingFrequency = fertilizingFrequency;
@@ -109,5 +112,13 @@ public class Plant implements Serializable {
 
     public void setVerified(boolean verified) {
         isVerified = verified;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

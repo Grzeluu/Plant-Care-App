@@ -44,6 +44,7 @@ public class CheckPlantPresenter implements CheckPlantMvpPresenter {
                         checkPlantView.setPlantName(plant.getCommonName());
                         checkPlantView.setPlantLatinName(plant.getLatinName());
                         checkPlantView.setPlantDescription(plant.getDescription());
+                        checkPlantView.setPlantType(plant.getType());
 
                         checkPlantView.setPlantPhoto(plant.getImage());
 

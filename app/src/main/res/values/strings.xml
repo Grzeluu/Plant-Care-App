@@ -31,7 +31,7 @@
     <string name="latin_name">Latin Name (optional)</string>
     <string name="add_to_my_plants">Add to my plants</string>
     <string name="cancel">Cancel</string>
-    <string name="description">Description (optional)</string>
+    <string name="description">Description</string>
     <string name="name">Name</string>
     <string name="type">Type</string>
     <string name="message_need_permission">Need permissions</string>
@@ -75,6 +75,8 @@
     <string name="set_plant_requirements">Set plant requirements</string>
     <string name="advice">Advice</string>
     <string name="add">Add</string>
+    <string name="requirements">Requirements</string>
+    <string name="general_information">General Information</string>
     <string-array name="categories">
         <item>@string/leaf_plants</item>
         <item>@string/flowers</item>

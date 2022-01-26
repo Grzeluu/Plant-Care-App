@@ -15,6 +15,15 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <TextView
+            style="@style/common_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/general_information"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,19 +67,20 @@
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@+id/cardView"
                 android:hint="@string/type"
+                android:textColor="@color/green_500"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@+id/tv_latin_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_latin_name" />
 
             <TextView
                 android:id="@+id/tv_common_name"
-                style="@style/common_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="10dp"
                 android:drawablePadding="5dp"
                 android:hint="@string/common_name"
+                android:textColor="@color/black"
                 android:textSize="22sp"
                 app:layout_constraintStart_toEndOf="@+id/cardView"
                 app:layout_constraintTop_toTopOf="@+id/cardView" />
@@ -83,6 +93,7 @@
                 android:layout_marginTop="5dp"
                 android:drawablePadding="5dp"
                 android:text="@string/none"
+                android:textColor="@color/dark_grey"
                 app:layout_constraintStart_toStartOf="@+id/tv_common_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_common_name" />
 
@@ -92,19 +103,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginVertical="15dp"
-                android:drawableStart="@drawable/ic_text"
                 android:drawablePadding="10dp"
-                android:gravity="center|left"
+                android:gravity="center|start"
                 android:hint="@string/description"
-                android:inputType="textCapSentences|textMultiLine"
                 android:lines="10"
                 android:maxLines="15"
                 android:minLines="1"
-                android:textColor="@drawable/text_color_list"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:drawableTint="@color/green_500"
+                app:drawableStartCompat="@drawable/ic_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -113,7 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Requirements"
+            android:text="@string/requirements"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -133,7 +144,6 @@
                 android:layout_marginBottom="16dp"
                 android:progress="10"
                 android:progressDrawable="@drawable/track_spraying"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tv_spraying_days"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -141,11 +151,15 @@
 
             <TextView
                 android:id="@+id/tv_spraying_days"
+                style="@style/small_text_style"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="16dp"
                 android:text="10 days"
+                android:textAlignment="center"
+                android:textColor="@color/green_300"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/pb_spraying"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -159,6 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:text="@string/spraying_frequency"
+                android:textColor="@color/green_300"
                 app:layout_constraintEnd_toEndOf="@+id/pb_spraying"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="@+id/pb_spraying"
@@ -171,6 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/watering_frequency"
+                android:textColor="@color/blue_300"
                 app:layout_constraintEnd_toEndOf="@+id/pb_water"
                 app:layout_constraintStart_toStartOf="@+id/pb_water"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -191,11 +207,15 @@
 
             <TextView
                 android:id="@+id/tv_watering_days"
+                style="@style/small_text_style"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="16dp"
                 android:text="10 days"
+                android:textAlignment="center"
+                android:textColor="@color/blue_300"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/pb_water"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -209,17 +229,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:text="@string/fertilizing_frequency"
+                android:textColor="@color/bronze_500"
                 app:layout_constraintEnd_toEndOf="@+id/pb_fertilizer"
                 app:layout_constraintStart_toStartOf="@+id/pb_fertilizer"
                 app:layout_constraintTop_toBottomOf="@+id/pb_water" />
 
             <TextView
-                android:id="@+id/tv_fertilizng_days"
+                android:id="@+id/tv_fertilizing_days"
+                style="@style/small_text_style"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="16dp"
                 android:text="10 days"
+                android:textAlignment="center"
+                android:textColor="@color/bronze_300"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/pb_fertilizer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -236,10 +261,29 @@
                 android:layout_marginTop="4dp"
                 android:progress="10"
                 android:progressDrawable="@drawable/track_fertilization"
-                app:layout_constraintEnd_toStartOf="@+id/tv_fertilizng_days"
+                app:layout_constraintEnd_toStartOf="@+id/tv_fertilizing_days"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_fertilizer" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_add_plant"
+                style="@style/main_button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:drawableEnd="@drawable/ic_add_circle"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/white"
+                android:padding="10dp"
+                android:text="@string/add_to_your_plants"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pb_spraying" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -256,128 +300,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/bg_grey"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="5dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_advices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginHorizontal="5dp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bt_ask_question"
-                style="@style/secondary_button_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginVertical="5dp"
-                android:layout_marginEnd="10dp"
-                android:drawableEnd="@drawable/ic_question"
-                android:drawablePadding="5dp"
-                android:drawableTint="@color/green_500"
-                android:padding="10dp"
-                android:paddingStart="15dp"
-                android:text="@string/ask_a_question" />
-
         </LinearLayout>
-
-        <TextView
-            style="@style/common_text_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/discussion"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/bg_grey"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_discussion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginHorizontal="5dp" />
-
-            <EditText
-                android:id="@+id/et_post"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/bg_input"
-                android:drawableStart="@drawable/ic_text_selector"
-                android:drawablePadding="5dp"
-                android:gravity="center|left"
-                android:hint="Take part in discussion"
-                android:inputType="textCapSentences|textMultiLine"
-                android:lines="10"
-                android:maxHeight="300dp"
-                android:maxLines="15"
-                android:minLines="3"
-                android:padding="10dp"
-                android:textColor="@drawable/text_color_list" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bt_add_post"
-                style="@style/secondary_button_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                android:drawableEnd="@drawable/ic_add_circle"
-                android:drawablePadding="5dp"
-                android:drawableTint="@color/green_500"
-                android:padding="10dp"
-                android:paddingStart="15dp"
-                android:text="Submit reply" />
-
-        </LinearLayout>
-
-        <TextView
-            style="@style/common_text_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Add"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_white"
-            android:gravity="bottom"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bt_add_plant"
-                style="@style/main_button_style"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="40dp"
-                android:layout_weight="1"
-                android:drawableEnd="@drawable/ic_add"
-                android:drawableTint="@color/white"
-                android:padding="10dp"
-                android:text="@string/add_to_your_plants" />
-
-        </LinearLayout>
-
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

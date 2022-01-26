@@ -1,136 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_photo"
-    tools:context=".view.AddPlantActivity">
+    android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_add_plant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_photo"
+        tools:context=".view.AddPlantActivity">
 
-        <androidx.cardview.widget.CardView
-            style="@style/common_card_view_style"
-            app:cardCornerRadius="15dp">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_add_plant"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
-                    android:layout_width="128dp"
-                    android:layout_height="128dp"
-                    android:layout_marginTop="10dp"
-                    app:cardBackgroundColor="@color/green_300"
-                    app:cardCornerRadius="250dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+            <androidx.cardview.widget.CardView
+                style="@style/common_card_view_style"
+                app:cardCornerRadius="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center"
-                        app:cardCornerRadius="250dp">
+                        android:id="@+id/cardView"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="@color/green_300"
+                        app:cardCornerRadius="250dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:id="@+id/iv_photo"
+                        <androidx.cardview.widget.CardView
                             android:layout_width="120dp"
                             android:layout_height="120dp"
                             android:layout_gravity="center"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_add_photo" />
+                            app:cardCornerRadius="250dp">
+
+                            <ImageView
+                                android:id="@+id/iv_photo"
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:layout_gravity="center"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_add_photo" />
+
+                        </androidx.cardview.widget.CardView>
 
                     </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/choose_plant_photo"
+                        android:textSize="16dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/choose_plant_photo"
-                    android:textSize="16dp" />
+                    <EditText
+                        android:id="@+id/et_name"
+                        style="@style/common_edit_text_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/bg_input"
+                        android:drawableStart="@drawable/ic_flower_selector"
+                        android:hint="@string/name_your_plant"
+                        android:inputType="textPersonName"
+                        android:padding="10dp"
+                        android:textColorHint="@color/green_200"
+                        android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/et_name"
-                    style="@style/common_edit_text_style"
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/common_card_view_style"
+                app:cardCornerRadius="15dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/bg_input"
-                    android:drawableStart="@drawable/ic_flower_selector"
-                    android:hint="@string/name_your_plant"
-                    android:inputType="textPersonName"
-                    android:padding="10dp"
-                    android:textColorHint="@color/green_200"
-                    android:textSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingVertical="4dp">
 
-        </androidx.cardview.widget.CardView>
+                    <include
+                        android:id="@+id/watering_settings"
+                        layout="@layout/layout_watering_settings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-        <androidx.cardview.widget.CardView
-            style="@style/common_card_view_style"
-            app:cardCornerRadius="15dp">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@color/dark_grey" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingVertical="4dp">
+                    <include
+                        android:id="@+id/fertilizing_settings"
+                        layout="@layout/layout_fertilizing_settings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <include
-                    android:id="@+id/watering_settings"
-                    layout="@layout/layout_watering_settings"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@color/dark_grey" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@color/dark_grey" />
+                    <include
+                        android:id="@+id/spraying_settings"
+                        layout="@layout/layout_spraying_settings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
-                <include
-                    android:id="@+id/fertilizing_settings"
-                    layout="@layout/layout_fertilizing_settings"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@color/dark_grey" />
-
-                <include
-                    android:id="@+id/spraying_settings"
-                    layout="@layout/layout_spraying_settings"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
