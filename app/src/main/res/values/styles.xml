@@ -116,4 +116,22 @@
         <item name="android:textSize">@dimen/toolbar_text_size</item>
     </style>
 
+    <style name="common_check_box_style">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+    </style>
+
+    <style name="water_check_theme">
+        <item name="colorAccent">@color/blue_500</item>
+    </style>
+
+    <style name="fertilizer_check_theme">
+        <item name="colorAccent">@color/bronze_500</item>
+    </style>
+
+    <style name="spray_check_theme">
+        <item name="colorAccent">@color/green_500</item>
+    </style>
+
+
 </resources>
