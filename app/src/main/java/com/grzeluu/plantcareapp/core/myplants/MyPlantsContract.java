@@ -10,14 +10,19 @@ import java.util.List;
 public interface MyPlantsContract {
     interface View extends BaseViewContract {
         void updateMyPlants(List<UserPlant> plantList);
+
     }
 
     interface Presenter extends BasePresenterContract {
         void getMyPlantsList();
+
+        void updatePlantNeeds(UserPlant plant, boolean isWatered, boolean isFertilized, boolean isSprayed);
     }
 
     interface Interactor {
         void fetchMyPlantList();
+
+        void performUpdatePlantNeeds(UserPlant plant, boolean isWatered, boolean isFertilized, boolean isSprayed);
     }
 
     interface Listener extends BaseListenerContract {

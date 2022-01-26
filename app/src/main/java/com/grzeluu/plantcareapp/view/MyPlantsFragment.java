@@ -55,7 +55,7 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
     private void init() {
         plantsLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(plantsLayoutManager);
-        myPlantsAdapter = new MyPlantsAdapter(getContext(), new ArrayList<UserPlant>());
+        myPlantsAdapter = new MyPlantsAdapter(getContext(), presenter, new ArrayList<UserPlant>());
         binding.fabAddPlant.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), AddPlantActivity.class);
             startActivity(intent);
@@ -72,7 +72,7 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
     @Override
     public void updateMyPlants(List<UserPlant> plantList) {
         if (plantList != null) {
-            myPlantsAdapter = new MyPlantsAdapter(getContext(), plantList);
+            myPlantsAdapter = new MyPlantsAdapter(getContext(),presenter, plantList);
             recyclerView.setAdapter(myPlantsAdapter);
             myPlantsAdapter.notifyDataSetChanged();
         }

@@ -23,6 +23,11 @@ implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
     }
 
     @Override
+    public void updatePlantNeeds(UserPlant plant, boolean isWatered, boolean isFertilized, boolean isSprayed) {
+        myPlantsInteractor.performUpdatePlantNeeds(plant, isWatered, isFertilized, isSprayed);
+    }
+
+    @Override
     public void onSuccess(List<UserPlant> plantList) {
         myPlantsView.updateMyPlants(plantList);
     }
@@ -31,4 +36,5 @@ implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
     public void onFailure(String message) {
         myPlantsView.showMessage(message);
     }
+
 }
