@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 
 public class Constants {
 
+    public static final String PLANT_INTENT_EXTRAS_KEY = "Plant";
+
     public static final int PICK_IMAGE_CAMERA = 4321;
     public static final int PICK_IMAGE_GALLERY = 1234;
 

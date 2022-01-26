@@ -4,7 +4,9 @@ import static com.grzeluu.plantcareapp.utils.Constants.PERMISSION_CAMERA;
 import static com.grzeluu.plantcareapp.utils.Constants.PERMISSION_STORAGE;
 import static com.grzeluu.plantcareapp.utils.Constants.PICK_IMAGE_CAMERA;
 import static com.grzeluu.plantcareapp.utils.Constants.PICK_IMAGE_GALLERY;
+import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
 import static com.grzeluu.plantcareapp.utils.Constants.WRITE_EXTERNAL_STORAGE;
+import static com.grzeluu.plantcareapp.utils.DaysUtils.daysToProgress;
 import static com.grzeluu.plantcareapp.utils.DaysUtils.progressToDays;
 import static com.grzeluu.plantcareapp.utils.SeekBarUtils.initSeekBarGroupWithText;
 import static com.grzeluu.plantcareapp.utils.TimeUtils.getCurrentDate;
@@ -35,7 +37,6 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
     ActivityAddPlantBinding binding;
     AddContract.Presenter presenter;
 
-    Plant plant;
     private Uri photoURI;
 
     @Override
@@ -52,6 +53,21 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
     private void init() {
         initSeekBars();
         initButtons();
+
+        Plant plant = (Plant) getIntent().getSerializableExtra(PLANT_INTENT_EXTRAS_KEY);
+        if(plant != null)
+            initUIWithPlant(plant);
+    }
+
+    private void initUIWithPlant(Plant plant) {
+        binding.etName.setText(plant.getCommonName());
+
+        if(plant.getImage() != null && !plant.getImage().isEmpty())
+            setPlantPhoto(plant.getImage());
+
+        binding.fertilizingSettings.sbFrequency.setProgress(daysToProgress(plant.getFertilizingFrequency()));
+        binding.wateringSettings.sbFrequency.setProgress(daysToProgress(plant.getWateringFrequency()));
+        binding.sprayingSettings.sbFrequency.setProgress(daysToProgress(plant.getSprayingFrequency()));
     }
 
     private void initSeekBars() {
@@ -84,7 +100,6 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
     private void initButtons() {
         binding.ivPhoto.setOnClickListener(v -> showChoosePhotoDialog());
 
-
         binding.toolbar.btAddPlant.setOnClickListener(v -> {
             String photoURIString = null;
             if(photoURI != null)
@@ -104,10 +119,6 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
                     )
             );
         });
-    }
-
-    public void setPlant(Plant newPlant) {
-        plant = newPlant;
     }
 
     public void setNameError(String error) {

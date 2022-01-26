@@ -12,9 +12,9 @@ public class Plant implements Serializable {
     String description;
     String type;
 
-    long wateringFrequency;
-    long fertilizingFrequency;
-    long sprayingFrequency;
+    int wateringFrequency;
+    int fertilizingFrequency;
+    int sprayingFrequency;
 
     String image;
 
@@ -40,9 +40,9 @@ public class Plant implements Serializable {
                  String latinName,
                  String description,
                  String type,
-                 long wateringFrequency,
-                 long fertilizingFrequency,
-                 long sprayingFrequency,
+                 int wateringFrequency,
+                 int fertilizingFrequency,
+                 int sprayingFrequency,
                  String photoUri,
                  boolean isVerified,
                  List<Advice> advices) {
@@ -90,27 +90,27 @@ public class Plant implements Serializable {
         this.description = description;
     }
 
-    public long getWateringFrequency() {
+    public int getWateringFrequency() {
         return wateringFrequency;
     }
 
-    public void setWateringFrequency(long wateringFrequency) {
+    public void setWateringFrequency(int wateringFrequency) {
         this.wateringFrequency = wateringFrequency;
     }
 
-    public long getFertilizingFrequency() {
+    public int getFertilizingFrequency() {
         return fertilizingFrequency;
     }
 
-    public void setFertilizingFrequency(long fertilizingFrequency) {
+    public void setFertilizingFrequency(int fertilizingFrequency) {
         this.fertilizingFrequency = fertilizingFrequency;
     }
 
-    public long getSprayingFrequency() {
+    public int getSprayingFrequency() {
         return sprayingFrequency;
     }
 
-    public void setSprayingFrequency(long sprayingFrequency) {
+    public void setSprayingFrequency(int sprayingFrequency) {
         this.sprayingFrequency = sprayingFrequency;
     }
 

@@ -1,5 +1,6 @@
 package com.grzeluu.plantcareapp.view;
 
+import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
 import static com.grzeluu.plantcareapp.utils.DaysUtils.getProgressBarFill;
 
 import android.content.Intent;
@@ -35,7 +36,7 @@ public class CheckPlantActivity extends BaseActivity implements CheckContract.Vi
         binding = ActivityCheckPlantBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        plant = (Plant) getIntent().getSerializableExtra("Plant");
+        plant = (Plant) getIntent().getSerializableExtra(PLANT_INTENT_EXTRAS_KEY);
         presenter = new CheckPresenter(this);
 
         init();

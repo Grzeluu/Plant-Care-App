@@ -1,5 +1,7 @@
     package com.grzeluu.plantcareapp.view.adapter;
 
+import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -50,7 +52,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
 
     private void goToCheckPlant(Plant plant) {
         Intent intent = new Intent(context, CheckPlantActivity.class);
-        intent.putExtra("Plant", plant);
+        intent.putExtra(PLANT_INTENT_EXTRAS_KEY, plant);
         context.startActivity(intent);
     }
 
