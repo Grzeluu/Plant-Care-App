@@ -11,7 +11,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.grzeluu.plantcareapp.model.Advice;
 import com.grzeluu.plantcareapp.model.Plant;
-import com.grzeluu.plantcareapp.model.Post;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,19 +18,15 @@ import java.util.List;
 
 public class CheckPlantPresenter implements CheckPlantMvpPresenter {
 
-
     private final CheckPlantMvpView checkPlantView;
     DatabaseReference reference;
     List<Advice> adviceList;
-    List<Post> discussionList;
 
     public CheckPlantPresenter(CheckPlantMvpView checkPlantView) {
         this.checkPlantView = checkPlantView;
         reference = FirebaseDatabase.getInstance().getReference("Plants");
         adviceList = new ArrayList<>();
-        discussionList = new ArrayList<>();
     }
-
 
     @Override
     public void getPlant(String id) {
@@ -45,7 +40,7 @@ public class CheckPlantPresenter implements CheckPlantMvpPresenter {
                         checkPlantView.setPlantLatinName(plant.getLatinName());
                         checkPlantView.setPlantDescription(plant.getDescription());
                         checkPlantView.setPlantType(plant.getType());
-
+                        checkPlantView.updateAdvices(plant.getAdvicesList());
                         checkPlantView.setPlantPhoto(plant.getImage());
 
                         checkPlantView.setWateringFrequency(plant.getWateringFrequency());
@@ -98,28 +93,6 @@ public class CheckPlantPresenter implements CheckPlantMvpPresenter {
                         }
                     });
         }
-    }
-
-    @Override
-    public void refreshDiscussionList(String id) {
-        checkPlantView.showLoading();
-        reference.child(id).child("Posts").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                discussionList.clear();
-                for (DataSnapshot ds: snapshot.getChildren()) {
-                    Post post = ds.getValue(Post.class);
-                    discussionList.add(post);
-                }
-                checkPlantView.hideLoading();
-                checkPlantView.updateDiscussion(discussionList);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                checkPlantView.hideLoading();
-            }
-        });
     }
 
     @Override

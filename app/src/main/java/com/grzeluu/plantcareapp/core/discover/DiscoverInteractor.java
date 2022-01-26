@@ -24,7 +24,7 @@ public class DiscoverInteractor implements DiscoverContract.Interactor {
         discoverListener.onStart();
         List<Plant> plantList = new ArrayList<>();
         FirebaseDatabase.getInstance().getReference("Plants")
-                .limitToFirst(20)
+                .limitToFirst(50)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -1,12 +1,15 @@
 package com.grzeluu.plantcareapp.model;
 
-public class Advice {
+import java.io.Serializable;
+
+public class Advice implements Serializable {
     String id;
     String answer;
     String question;
     boolean isVerified;
 
-    public Advice() { }
+    public Advice() {
+    }
 
     public Advice(String id, String answer, String question, boolean isVerified) {
         this.id = id;

@@ -5,7 +5,5 @@ public interface CheckPlantMvpPresenter {
 
     void refreshAdvicesList(String id);
 
-    void refreshDiscussionList(String id);
-
     void addPost(String id, String author, String text);
 }

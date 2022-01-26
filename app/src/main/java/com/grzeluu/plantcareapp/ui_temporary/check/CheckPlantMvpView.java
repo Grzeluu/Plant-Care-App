@@ -1,6 +1,5 @@
 package com.grzeluu.plantcareapp.ui_temporary.check;
 
-import com.grzeluu.plantcareapp.model.Post;
 import com.grzeluu.plantcareapp.base.BaseViewContract;
 
 import java.util.List;
@@ -22,11 +21,8 @@ public interface CheckPlantMvpView extends BaseViewContract {
 
     void setPlantType(String Type);
 
-    void openAskQuestionDialog();
 
     void updateAdvices(List adviceList);
 
     void setPostError(String s);
-
-    void updateDiscussion(List<Post> discussionList);
 }

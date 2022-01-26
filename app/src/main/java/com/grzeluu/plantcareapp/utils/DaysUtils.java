@@ -26,6 +26,13 @@ public class DaysUtils {
         }
     }
 
+    static public long getProgressBarFill(long days) {
+        if (days <= 60) {
+            return 100 - (days);
+        } else
+            return (long) (40 - (days - 60) / 7.5);
+    }
+
     static public int daysFromLastAction(Date lastDate) {
         Date currentDate = new Date();
         long diff = currentDate.getTime() - lastDate.getTime();

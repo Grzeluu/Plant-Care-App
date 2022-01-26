@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_photo"
-    tools:context=".ui_temporary.check.CheckPlantActivity">
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".view.CheckPlantActivity">
 
     <LinearLayout
         android:id="@+id/constraintLayout"
@@ -110,12 +112,12 @@
                 android:maxLines="15"
                 android:minLines="1"
                 android:textColor="@color/black"
+                app:drawableStartCompat="@drawable/ic_text"
+                app:drawableTint="@color/green_500"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView"
-                app:drawableTint="@color/green_500"
-                app:drawableStartCompat="@drawable/ic_text" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -309,7 +311,8 @@
                 android:id="@+id/rv_advices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp" />
+                android:layout_marginHorizontal="5dp"
+                tools:listitem="@layout/item_advice" />
 
         </LinearLayout>
     </LinearLayout>

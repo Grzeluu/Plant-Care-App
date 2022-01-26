@@ -1,6 +1,7 @@
 package com.grzeluu.plantcareapp.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Plant implements Serializable {
 
@@ -18,8 +19,21 @@ public class Plant implements Serializable {
     String image;
 
     boolean isVerified;
+    List<Advice> advicesList;
 
     public Plant() {
+    }
+
+    public boolean isVerified() {
+        return isVerified;
+    }
+
+    public List<Advice> getAdvicesList() {
+        return advicesList;
+    }
+
+    public void setAdvicesList(List<Advice> advicesList) {
+        this.advicesList = advicesList;
     }
 
     public Plant(String commonName,
@@ -30,7 +44,8 @@ public class Plant implements Serializable {
                  long fertilizingFrequency,
                  long sprayingFrequency,
                  String photoUri,
-                 boolean isVerified) {
+                 boolean isVerified,
+                 List<Advice> advices) {
         this.commonName = commonName;
         this.latinName = latinName;
         this.type = type;
@@ -40,6 +55,7 @@ public class Plant implements Serializable {
         this.sprayingFrequency = sprayingFrequency;
         this.image = photoUri;
         this.isVerified = isVerified;
+        this.advicesList = advices;
     }
 
     public String getId() {
