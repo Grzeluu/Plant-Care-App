@@ -4,6 +4,8 @@ import static com.grzeluu.plantcareapp.utils.TimeUtils.getCurrentDate;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -51,23 +53,55 @@ public class MyPlantsInteractor implements MyPlantsContract.Interactor {
     }
 
     @Override
+    public void performDeletePlant(UserPlant plant) {
+        myPlantsListener.onStart();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+                .child("Users").child(FirebaseAuth.getInstance().getUid()).child("UserPlants");
+        ref.child(plant.getId()).removeValue()
+                .addOnSuccessListener(listener -> {
+                    myPlantsListener.onEnd();
+                    myPlantsListener.onSuccess("Plant deleted successfully");
+                })
+                .addOnFailureListener(listener -> {
+                    myPlantsListener.onEnd();
+                    myPlantsListener.onFailure("Something went wrong");
+                });
+    }
+
+    @Override
     public void performUpdatePlantNeeds(UserPlant plant, boolean isWatered, boolean isFertilized, boolean isSprayed) {
+        myPlantsListener.onStart();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
                 .child("Users").child(FirebaseAuth.getInstance().getUid())
                 .child("UserPlants").child(plant.getId());
         String now = getCurrentDate();
 
-        if(isWatered){
-            ref.child("lastWatering").setValue(now);
-            plant.setLastWatering(now);
+        List<Task> taskList = new ArrayList<Task>();
+
+        if (isWatered) {
+            taskList.add(ref.child("lastWatering").setValue(now));
         }
-        if(isFertilized){
-            ref.child("lastFertilizing").setValue(now);
-            plant.setLastFertilizing(now);
+        if (isFertilized) {
+            taskList.add(ref.child("lastFertilizing").setValue(now));
+
         }
-        if(isSprayed){
-            ref.child("lastSpraying").setValue(now);
-            plant.setLastSpraying(now);
+        if (isSprayed) {
+            taskList.add(ref.child("lastSpraying").setValue(now));
+
         }
+
+        Tasks.whenAllSuccess(taskList.toArray(new Task[0]))
+                .addOnSuccessListener(listener -> {
+                    myPlantsListener.onEnd();
+                    plant.setLastWatering(now);
+                    plant.setLastFertilizing(now);
+                    plant.setLastSpraying(now);
+                    myPlantsListener.onSuccess("Updated");
+                })
+                .addOnFailureListener(listener -> {
+                    myPlantsListener.onEnd();
+                    myPlantsListener.onFailure("Something went wrong");
+                });
+
     }
 }

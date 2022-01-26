@@ -11,7 +11,7 @@ implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
     private MyPlantsContract.View myPlantsView;
     private MyPlantsInteractor myPlantsInteractor;
 
-    public MyPlantsPresenter( MyPlantsContract.View myPlantsView) {
+    public MyPlantsPresenter(MyPlantsContract.View myPlantsView) {
         super(myPlantsView);
         this.myPlantsView = myPlantsView;
         myPlantsInteractor = new MyPlantsInteractor(this);
@@ -20,6 +20,11 @@ implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
     @Override
     public void getMyPlantsList() {
         myPlantsInteractor.fetchMyPlantList();
+    }
+
+    @Override
+    public void deletePlant(UserPlant plant) {
+        myPlantsInteractor.performDeletePlant(plant);
     }
 
     @Override
@@ -34,6 +39,11 @@ implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
 
     @Override
     public void onFailure(String message) {
+        myPlantsView.showMessage(message);
+    }
+
+    @Override
+    public void onSuccess(String message) {
         myPlantsView.showMessage(message);
     }
 

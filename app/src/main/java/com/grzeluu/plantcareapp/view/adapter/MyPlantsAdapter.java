@@ -73,8 +73,8 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
         else holder.binding.warning.setVisibility(View.INVISIBLE);
 
         holder.binding.main.setOnClickListener(v -> changeExpandableVisibility(holder));
-        holder.binding.btDelete.setOnClickListener(v -> showDeletePlantDialog(context, plant));
-        holder.binding.btConfirm.setOnClickListener(v->{
+        holder.binding.btDelete.setOnClickListener(v -> showDeletePlantDialog(context, presenter, plant));
+        holder.binding.btConfirm.setOnClickListener(v -> {
             boolean isWatered;
             boolean isFertilized;
             boolean isSprayed;

@@ -10,17 +10,20 @@ import java.util.List;
 public interface MyPlantsContract {
     interface View extends BaseViewContract {
         void updateMyPlants(List<UserPlant> plantList);
-
     }
 
     interface Presenter extends BasePresenterContract {
         void getMyPlantsList();
+
+        void deletePlant(UserPlant plant);
 
         void updatePlantNeeds(UserPlant plant, boolean isWatered, boolean isFertilized, boolean isSprayed);
     }
 
     interface Interactor {
         void fetchMyPlantList();
+
+        void performDeletePlant(UserPlant plant);
 
         void performUpdatePlantNeeds(UserPlant plant, boolean isWatered, boolean isFertilized, boolean isSprayed);
     }
@@ -29,5 +32,7 @@ public interface MyPlantsContract {
         void onSuccess(List<UserPlant> plantList);
 
         void onFailure(String message);
+
+        void onSuccess(String message);
     }
 }
