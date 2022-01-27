@@ -13,8 +13,6 @@
     <ImageView
         android:id="@+id/iv_icon"
         style="@style/toolbar_icon_style"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_flower"
         app:layout_constraintBottom_toBottomOf="parent"

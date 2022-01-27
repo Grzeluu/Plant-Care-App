@@ -69,8 +69,8 @@
     </style>
 
     <style name="medium_icon_style">
-        <item name="android:layout_width">32dp</item>
-        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
     </style>
 
     <style name="big_icon_style">
