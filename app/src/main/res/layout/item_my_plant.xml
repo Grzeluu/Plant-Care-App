@@ -6,6 +6,7 @@
     android:background="@drawable/bg_white"
     android:orientation="vertical"
     android:layout_marginTop="8dp"
+    android:paddingVertical="2dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -14,15 +15,14 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:layout_width="78dp"
-            android:layout_height="78dp"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
             android:layout_marginStart="8dp"
             app:cardBackgroundColor="@color/green_500"
             app:cardCornerRadius="100dp"
@@ -65,7 +65,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="4dp"
             android:fontFamily="sans-serif-medium"
             android:maxLines="1"
             android:text="@string/name"
@@ -76,14 +75,14 @@
 
         <LinearLayout
             android:id="@+id/ll_tracks"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginEnd="58dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bt_expand"
+            app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toBottomOf="@id/tv_name">
 
             <RelativeLayout
@@ -180,7 +179,7 @@
             android:id="@+id/bt_expand"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -195,6 +194,7 @@
         android:visibility="gone">
 
         <View
+            android:layout_marginTop="6dp"
             android:id="@+id/divider_vertical"
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -228,8 +228,8 @@
         <CheckBox
             android:id="@+id/cb_watering"
             style="@style/common_check_box_style"
-            android:layout_width="46dp"
-            android:layout_height="46dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:layout_marginVertical="4dp"
             android:layout_marginStart="16dp"
             android:button="@drawable/ic_water"
@@ -255,8 +255,8 @@
 
         <CheckBox
             android:id="@+id/cb_spraying"
-            android:layout_width="46dp"
-            android:layout_height="46dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:layout_marginVertical="4dp"
             android:layout_marginEnd="16dp"
             android:button="@drawable/ic_spray"

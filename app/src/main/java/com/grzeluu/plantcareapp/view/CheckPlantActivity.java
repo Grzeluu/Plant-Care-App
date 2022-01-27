@@ -70,7 +70,7 @@ public class CheckPlantActivity extends BaseActivity implements CheckContract.Vi
     }
 
     private void openAddActivity() {
-        Intent intent = new Intent(this, AddPlantFragment.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("Plant", plant);
         startActivity(intent);
     }

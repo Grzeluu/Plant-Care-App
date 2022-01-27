@@ -12,14 +12,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="95dp"
+        android:layout_height="wrap_content"
 
         android:background="@drawable/bg_white">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_plant_photo"
-            android:layout_width="86dp"
-            android:layout_height="86dp"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
             android:layout_marginVertical="8dp"
             android:layout_marginStart="4dp"
             app:cardBackgroundColor="@color/green_500"
@@ -30,15 +30,15 @@
 
 
             <androidx.cardview.widget.CardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 app:cardCornerRadius="250dp">
 
                 <ImageView
                     android:id="@+id/iv_plant_photo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_add_photo" />
 
@@ -74,6 +74,7 @@
             android:id="@+id/iv_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="16dp"
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_more_arrow_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"

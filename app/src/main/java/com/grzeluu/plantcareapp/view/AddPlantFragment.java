@@ -4,6 +4,7 @@ import static com.grzeluu.plantcareapp.utils.Constants.PERMISSION_CAMERA;
 import static com.grzeluu.plantcareapp.utils.Constants.PERMISSION_STORAGE;
 import static com.grzeluu.plantcareapp.utils.Constants.PICK_IMAGE_CAMERA;
 import static com.grzeluu.plantcareapp.utils.Constants.PICK_IMAGE_GALLERY;
+import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
 import static com.grzeluu.plantcareapp.utils.Constants.WRITE_EXTERNAL_STORAGE;
 import static com.grzeluu.plantcareapp.utils.DaysUtils.daysToProgress;
 import static com.grzeluu.plantcareapp.utils.DaysUtils.progressToDays;
@@ -61,10 +62,11 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
         initSeekBars();
         initButtons();
 
-        /*Plant plant =
-                (Plant) getIntent().getSerializableExtra(PLANT_INTENT_EXTRAS_KEY);
-        if(plant != null)
-            initUIWithPlant(plant);*/
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            Plant plant = (Plant) bundle.getSerializable(PLANT_INTENT_EXTRAS_KEY);
+            initUIWithPlant(plant);
+        }
     }
 
     private void initUIWithPlant(Plant plant) {

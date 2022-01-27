@@ -13,14 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="4dp"
             android:text="@string/general_information"
             android:textColor="@color/white"
@@ -125,6 +124,7 @@
             style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="4dp"
             android:text="@string/requirements"
             android:textColor="@color/white"
@@ -293,6 +293,7 @@
             style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="4dp"
             android:text="@string/advices"
             android:textColor="@color/white"

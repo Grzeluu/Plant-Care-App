@@ -1,5 +1,7 @@
 package com.grzeluu.plantcareapp.view;
 
+import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +19,7 @@ import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.core.main.MainContract;
 import com.grzeluu.plantcareapp.core.main.MainPresenter;
 import com.grzeluu.plantcareapp.databinding.ActivityMainBinding;
+import com.grzeluu.plantcareapp.model.Plant;
 
 public class MainActivity extends BaseActivity implements MainContract.View {
 
@@ -30,8 +33,20 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         init();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        checkIfPlantToAddWasGiven();
+    }
+
+    private void checkIfPlantToAddWasGiven() {
+        Plant plant =
+                (Plant) getIntent().getSerializableExtra(PLANT_INTENT_EXTRAS_KEY);
+        if (plant != null)
+            openAddPlant(plant);
     }
 
     private void init() {
@@ -90,6 +105,18 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     private void openAddPlant() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, new AddPlantFragment())
+                .commit();
+    }
+
+    private void openAddPlant(Plant plant) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(PLANT_INTENT_EXTRAS_KEY, plant);
+
+        AddPlantFragment fragment = new AddPlantFragment();
+        fragment.setArguments(bundle);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment)
                 .commit();
     }
 
