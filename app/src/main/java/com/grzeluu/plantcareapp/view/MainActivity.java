@@ -3,28 +3,23 @@ package com.grzeluu.plantcareapp.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.core.main.MainContract;
 import com.grzeluu.plantcareapp.core.main.MainPresenter;
 import com.grzeluu.plantcareapp.databinding.ActivityMainBinding;
 
-public class MainActivity extends BaseActivity
-        implements MainContract.View, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements MainContract.View {
 
     private AppBarConfiguration mAppBarConfiguration;
     private MainPresenter presenter;
@@ -37,6 +32,10 @@ public class MainActivity extends BaseActivity
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        init();
+    }
+
+    private void init() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Your Plants");
         setSupportActionBar(toolbar);
@@ -44,38 +43,27 @@ public class MainActivity extends BaseActivity
         presenter = new MainPresenter(this);
         presenter.checkIfUserIsLoggedIn();
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.open_navigation_drawer, R.string.close_navigation_drawer);
-        drawer.setDrawerListener(toggle);
-
-        binding.navView.setNavigationItemSelectedListener(this);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
+        bottomNavigationView.setOnItemSelectedListener(v -> {
+            switch (v.getItemId()) {
+                case R.id.bottom_my_plants:
+                    openMyPlants();
+                    break;
+                case R.id.bottom_discover:
+                    openDiscover();
+                    break;
+                case R.id.bottom_add_plant:
+                    openAddPlant();
+                    return true;
+                default:
+                    return false;
+            }
+            return true;
+        });
 
         openMyPlants();
     }
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem menuItem) {
-        int id = menuItem.getItemId();
-
-        switch (id) {
-            case R.id.nav_my_plants:
-                openMyPlants();
-                break;
-            case R.id.nav_discover:
-                openDiscover();
-                break;
-            case R.id.nav_logout:
-                presenter.onDrawerOptionLogoutClick();
-                return true;
-            default:
-                return false;
-        }
-
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,6 +76,12 @@ public class MainActivity extends BaseActivity
         NavController navController = Navigation.findNavController(this, R.id.container);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void openAddPlant() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, new AddPlantFragment())
+                .commit();
     }
 
     private void openDiscover() {

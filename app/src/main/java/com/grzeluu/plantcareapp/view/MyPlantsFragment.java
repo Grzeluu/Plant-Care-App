@@ -1,6 +1,5 @@
 package com.grzeluu.plantcareapp.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,11 +55,6 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
         plantsLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(plantsLayoutManager);
         myPlantsAdapter = new MyPlantsAdapter(getContext(), presenter, new ArrayList<UserPlant>());
-        binding.fabAddPlant.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), AddPlantActivity.class);
-            startActivity(intent);
-        });
-
         recyclerView.setAdapter(myPlantsAdapter);
     }
 

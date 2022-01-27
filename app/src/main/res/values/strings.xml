@@ -50,8 +50,7 @@
     <string name="fertilizing">Fertilizing</string>
     <string name="no_plants_added">
         No plants added\n
-        To add, click (+),\n
-        or go to Discover </string>
+        To add, open "Add Plant" </string>
     <string name="adding_new_plant">Adding New Plant</string>
     <string name="reset_password">Reset Password</string>
     <string name="add_to_your_plants">Add to your plants</string>
@@ -77,6 +76,8 @@
     <string name="add">Add</string>
     <string name="requirements">Requirements</string>
     <string name="general_information">General Information</string>
+    <string name="add_plant">Add Plant</string>
+    <string name="discover">Discover</string>
     <string-array name="categories">
         <item>@string/leaf_plants</item>
         <item>@string/flowers</item>

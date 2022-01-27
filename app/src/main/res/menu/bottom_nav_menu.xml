@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_my_plants"
+        android:title="@string/my_plants"
+        android:icon="@drawable/ic_fav"/>
+    <item
+        android:id="@+id/bottom_add_plant"
+        android:title="@string/add_plant"
+        android:icon="@drawable/ic_add_circle"/>
+    <item
+        android:id="@+id/bottom_discover"
+        android:title="@string/discover"
+        android:icon="@drawable/ic_search"/>
+</menu>

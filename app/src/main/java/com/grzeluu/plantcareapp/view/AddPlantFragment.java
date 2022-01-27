@@ -4,7 +4,6 @@ import static com.grzeluu.plantcareapp.utils.Constants.PERMISSION_CAMERA;
 import static com.grzeluu.plantcareapp.utils.Constants.PERMISSION_STORAGE;
 import static com.grzeluu.plantcareapp.utils.Constants.PICK_IMAGE_CAMERA;
 import static com.grzeluu.plantcareapp.utils.Constants.PICK_IMAGE_GALLERY;
-import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
 import static com.grzeluu.plantcareapp.utils.Constants.WRITE_EXTERNAL_STORAGE;
 import static com.grzeluu.plantcareapp.utils.DaysUtils.daysToProgress;
 import static com.grzeluu.plantcareapp.utils.DaysUtils.progressToDays;
@@ -19,44 +18,53 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
-import com.grzeluu.plantcareapp.base.BaseActivity;
+import com.grzeluu.plantcareapp.base.BaseFragment;
 import com.grzeluu.plantcareapp.core.add.AddContract;
 import com.grzeluu.plantcareapp.core.add.AddPresenter;
-import com.grzeluu.plantcareapp.databinding.ActivityAddPlantBinding;
+import com.grzeluu.plantcareapp.databinding.FragmentAddPlantBinding;
 import com.grzeluu.plantcareapp.model.Plant;
 import com.grzeluu.plantcareapp.model.UserPlant;
 
-public class AddPlantActivity extends BaseActivity implements AddContract.View {
+public class AddPlantFragment extends BaseFragment implements AddContract.View {
 
-    ActivityAddPlantBinding binding;
+    FragmentAddPlantBinding binding;
     AddContract.Presenter presenter;
 
     private Uri photoURI;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
-        binding = ActivityAddPlantBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = FragmentAddPlantBinding.inflate(getLayoutInflater());
         presenter = new AddPresenter(this);
 
         init();
+
+        return binding.getRoot();
     }
 
     private void init() {
         initSeekBars();
         initButtons();
 
-        Plant plant = (Plant) getIntent().getSerializableExtra(PLANT_INTENT_EXTRAS_KEY);
+        /*Plant plant =
+                (Plant) getIntent().getSerializableExtra(PLANT_INTENT_EXTRAS_KEY);
         if(plant != null)
-            initUIWithPlant(plant);
+            initUIWithPlant(plant);*/
     }
 
     private void initUIWithPlant(Plant plant) {
@@ -72,23 +80,23 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
 
     private void initSeekBars() {
         initSeekBarGroupWithText(
-                this,
+                getContext(),
                 binding.wateringSettings.sbFrequency,
                 binding.wateringSettings.tvFrequency,
                 binding.wateringSettings.ivPlus,
                 binding.wateringSettings.ivMinus,
-                0
+                10
         );
         initSeekBarGroupWithText(
-                this,
+                getContext(),
                 binding.fertilizingSettings.sbFrequency,
                 binding.fertilizingSettings.tvFrequency,
                 binding.fertilizingSettings.ivPlus,
                 binding.fertilizingSettings.ivMinus,
-                0
+                30
         );
         initSeekBarGroupWithText(
-                this,
+                getContext(),
                 binding.sprayingSettings.sbFrequency,
                 binding.sprayingSettings.tvFrequency,
                 binding.sprayingSettings.ivPlus,
@@ -127,7 +135,7 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
 
     public void plantAdded(String message) {
         showMessage(message);
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
     }
 
@@ -141,7 +149,7 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
     private void showChoosePhotoDialog() {
         final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Choose plant photo");
 
         builder.setItems(options, (dialog, item) -> {
@@ -160,7 +168,7 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
     }
 
     private void tryPickPhotoFromCamera() {
-        if (checkSelfPermission(Manifest.permission.CAMERA) ==
+        if (getActivity().checkSelfPermission(Manifest.permission.CAMERA) ==
                 PackageManager.PERMISSION_DENIED) {
             String[] permission = {Manifest.permission.CAMERA};
             requestPermissions(permission, PERMISSION_CAMERA);
@@ -170,7 +178,7 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
     }
 
     private void tryPickPhotoFromGallery() {
-        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+        if (getActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
                 PackageManager.PERMISSION_DENIED) {
             String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
             requestPermissions(permission, PERMISSION_STORAGE);
@@ -183,7 +191,8 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.TITLE, "new picture");
         values.put(MediaStore.Images.Media.DESCRIPTION, "from camera");
-        photoURI = getApplication().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        photoURI = getActivity().getApplication().getContentResolver()
+                .insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
 
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
@@ -226,7 +235,7 @@ public class AddPlantActivity extends BaseActivity implements AddContract.View {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == RESULT_OK) {
+        if (resultCode == getActivity().RESULT_OK) {
             switch (requestCode) {
                 case PICK_IMAGE_GALLERY:
                     assert data != null;

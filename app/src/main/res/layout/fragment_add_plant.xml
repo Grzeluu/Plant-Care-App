@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".view.AddPlantFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent"
         android:background="@drawable/bg_photo"
-        tools:context=".view.AddPlantActivity">
+        tools:context=".view.AddPlantFragment">
 
         <include
             android:id="@+id/toolbar"

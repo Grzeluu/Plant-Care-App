@@ -26,8 +26,8 @@ import java.util.List;
 
 public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHolder> {
 
-    private Context context;
-    private List<UserPlant> plantList;
+    private final Context context;
+    private final List<UserPlant> plantList;
     private MyPlantsContract.Presenter presenter;
 
     public MyPlantsAdapter(Context context, MyPlantsContract.Presenter presenter, List<UserPlant> plantList) {
@@ -37,7 +37,7 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private ItemMyPlantBinding binding;
+        private final ItemMyPlantBinding binding;
 
         public ViewHolder(ItemMyPlantBinding binding) {
             super(binding.getRoot());
@@ -132,6 +132,7 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
             text.setText("In " + daysLeft + " days");
         }
         if (daysLeft == 1) {
+            text.setText("In 1 day");
         }
         if (daysLeft < 1) {
             text.setText("Today");

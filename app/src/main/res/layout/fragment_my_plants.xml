@@ -24,31 +24,16 @@
         android:id="@+id/tv_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/no_plants_added"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_my_plants"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_plant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/green_500"
-        android:contentDescription="@string/adding_new_plant"
-        app:backgroundTint="@color/white"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_circle"
-        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
