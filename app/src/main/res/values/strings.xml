@@ -49,8 +49,8 @@
 
     <string name="fertilizing">Fertilizing</string>
     <string name="no_plants_added">
-        No plants added\n
-        To add, open "Add Plant" </string>
+        No plants added.\n
+        To add new plant go to "Add Plant." </string>
     <string name="adding_new_plant">Adding New Plant</string>
     <string name="reset_password">Reset Password</string>
     <string name="add_to_your_plants">Add to your plants</string>

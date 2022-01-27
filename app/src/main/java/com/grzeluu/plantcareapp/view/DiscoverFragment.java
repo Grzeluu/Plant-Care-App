@@ -52,7 +52,7 @@ public class DiscoverFragment extends BaseFragment implements DiscoverContract.V
 
     private void initViews() {
 
-        binding.etSearch.setOnEditorActionListener((textView, actionId, event) -> {
+        binding.toolbar.etSearch.setOnEditorActionListener((textView, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 presenter.getMatchingPlants(textView.getText().toString());
                 return true;
@@ -60,9 +60,9 @@ public class DiscoverFragment extends BaseFragment implements DiscoverContract.V
             return false;
         });
 
-        binding.btSearch.setOnClickListener(v ->
+        binding.toolbar.btSearch.setOnClickListener(v ->
                 presenter.getMatchingPlants(
-                        binding.etSearch.getText().toString())
+                        binding.toolbar.etSearch.getText().toString())
         );
     }
 

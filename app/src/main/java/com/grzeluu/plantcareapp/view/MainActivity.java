@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -36,15 +35,24 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     }
 
     private void init() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Your Plants");
-        setSupportActionBar(toolbar);
-
         presenter = new MainPresenter(this);
         presenter.checkIfUserIsLoggedIn();
 
+        binding.navView.setNavigationItemSelectedListener(v -> {
+            switch (v.getItemId()) {
+                case R.id.nav_logout:
+                    requireLogin();
+                    break;
+                default:
+                    return false;
+            }
+            return true;
+        });
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
-        bottomNavigationView.setOnItemSelectedListener(v -> {
+        bottomNavigationView.setOnItemSelectedListener(v ->
+
+        {
             switch (v.getItemId()) {
                 case R.id.bottom_my_plants:
                     openMyPlants();
@@ -54,7 +62,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                     break;
                 case R.id.bottom_add_plant:
                     openAddPlant();
-                    return true;
+                    break;
                 default:
                     return false;
             }
@@ -62,6 +70,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         });
 
         openMyPlants();
+
     }
 
 

@@ -8,6 +8,7 @@
     tools:context=".view.DiscoverFragment">
 
     <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -16,49 +17,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_search"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:background="@drawable/bg_rect"
-        android:cursorVisible="true"
-        android:ems="10"
-        android:hint="@string/search"
-        android:imeOptions="actionDone"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColor="@drawable/text_color_list"
-        app:layout_constraintEnd_toStartOf="@+id/bt_search"
-        app:layout_constraintHorizontal_bias="0.5"
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_discovery"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_plants"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="4dp"
         android:clipToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_search" />
-
-    <ImageButton
-        android:id="@+id/bt_search"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="6dp"
-        android:background="@drawable/bg_first_bt"
-        android:src="@drawable/ic_search"
-        app:layout_constraintBottom_toBottomOf="@+id/et_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_search"
-        app:layout_constraintTop_toTopOf="@+id/et_search" />
-
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

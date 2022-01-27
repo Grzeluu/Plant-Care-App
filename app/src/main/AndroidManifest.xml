@@ -19,7 +19,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LookUpPlant">
-        <activity android:name="com.grzeluu.plantcareapp.view.AddPlantFragment" />
         <activity android:name="com.grzeluu.plantcareapp.view.CheckPlantActivity" />
         <activity
             android:name="com.grzeluu.plantcareapp.view.MainActivity"
