@@ -2,14 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.grzeluu.plantcareapp">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:name=".base.App"
@@ -19,6 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LookUpPlant">
+        <receiver android:name=".utils.PlantNotification"
+            android:enabled="true"/>
         <activity android:name="com.grzeluu.plantcareapp.view.CheckPlantActivity" />
         <activity
             android:name="com.grzeluu.plantcareapp.view.MainActivity"
