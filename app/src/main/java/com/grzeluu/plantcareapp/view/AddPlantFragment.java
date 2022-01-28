@@ -8,6 +8,7 @@ import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
 import static com.grzeluu.plantcareapp.utils.Constants.WRITE_EXTERNAL_STORAGE;
 import static com.grzeluu.plantcareapp.utils.DaysUtils.daysToProgress;
 import static com.grzeluu.plantcareapp.utils.DaysUtils.progressToDays;
+import static com.grzeluu.plantcareapp.utils.NotificationUtils.scheduleNotificationForPlant;
 import static com.grzeluu.plantcareapp.utils.SeekBarUtils.initSeekBarGroupWithText;
 import static com.grzeluu.plantcareapp.utils.TimeUtils.getCurrentDate;
 import static com.grzeluu.plantcareapp.utils.TimeUtils.getTimestamp;
@@ -117,7 +118,7 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
 
             presenter.addPlant(
                     new UserPlant(
-                            getTimestamp(),
+                            "" + getTimestamp(),
                             binding.etName.getText().toString(),
                             progressToDays(binding.wateringSettings.sbFrequency.getProgress()),
                             progressToDays(binding.fertilizingSettings.sbFrequency.getProgress()),
@@ -135,7 +136,12 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
         binding.etName.setError(error);
     }
 
-    public void plantAdded(String message) {
+    public void plantAdded(String message, UserPlant plant) {
+        scheduleNotificationForPlant(
+                getContext(),
+                "Plant needs care",
+                plant.getName() + " probably needs some actions",
+                plant);
         showMessage(message);
         Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);

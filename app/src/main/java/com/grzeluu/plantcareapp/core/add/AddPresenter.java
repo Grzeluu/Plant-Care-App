@@ -30,8 +30,8 @@ public class AddPresenter extends BasePresenter
     }
 
     @Override
-    public void onSuccess(String message) {
-        addView.plantAdded(message);
+    public void onSuccess(String message, UserPlant plant) {
+        addView.plantAdded(message, plant);
     }
 
     @Override

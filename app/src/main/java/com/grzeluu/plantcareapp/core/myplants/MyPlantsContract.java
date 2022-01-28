@@ -10,6 +10,8 @@ import java.util.List;
 public interface MyPlantsContract {
     interface View extends BaseViewContract {
         void updateMyPlants(List<UserPlant> plantList);
+
+        void setNewNotificationForPlant(UserPlant plant);
     }
 
     interface Presenter extends BasePresenterContract {
@@ -34,5 +36,7 @@ public interface MyPlantsContract {
         void onFailure(String message);
 
         void onSuccess(String message);
+        
+        void onSuccess(UserPlant plant);
     }
 }

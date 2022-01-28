@@ -1,5 +1,7 @@
 package com.grzeluu.plantcareapp.view;
 
+import static com.grzeluu.plantcareapp.utils.NotificationUtils.scheduleNotificationForPlant;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,5 +74,14 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
         }
         if (myPlantsAdapter.getItemCount() == 0)
             binding.tvHint.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void setNewNotificationForPlant(UserPlant plant) {
+        scheduleNotificationForPlant(
+                getContext(),
+                "Plant needs care",
+                plant.getName() + " probably needs some attention.",
+                plant);
     }
 }

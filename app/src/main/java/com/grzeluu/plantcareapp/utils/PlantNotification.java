@@ -11,10 +11,14 @@ import androidx.core.app.NotificationCompat;
 import com.grzeluu.plantcareapp.R;
 
 public class PlantNotification extends BroadcastReceiver {
-    private static final String CHANNEL_ID = "Plants Channel";
-    private static final String TITLE_EXTRA = "title_extra";
-    private static final String MESSAGE_EXTRA = "message_extra";
-    private static final String NOTIFICATION_ID_EXTRA = "notification_extra";
+    public static final String CHANNEL_ID = "Plants Channel";
+    public static final String ID_EXTRA = "id_extra";
+    public static final String TITLE_EXTRA = "title_extra";
+    public static final String MESSAGE_EXTRA = "message_extra";
+
+
+    public PlantNotification() {
+    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -26,6 +30,6 @@ public class PlantNotification extends BroadcastReceiver {
 
         NotificationManager manager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(intent.getIntExtra(NOTIFICATION_ID_EXTRA, 1), notification);
+        manager.notify(intent.getIntExtra(ID_EXTRA, 0), notification);
     }
 }

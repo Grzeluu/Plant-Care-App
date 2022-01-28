@@ -9,7 +9,7 @@ public interface AddContract {
     interface View extends BaseViewContract {
         void setNameError(String error);
 
-        void plantAdded(String message);
+        void plantAdded(String message, UserPlant plant);
     }
 
     interface Presenter extends BasePresenterContract {
@@ -21,7 +21,7 @@ public interface AddContract {
     }
 
     interface Listener extends BaseListenerContract {
-        void onSuccess(String message);
+        void onSuccess(String message, UserPlant plant);
         void onFailure(String message);
     }
 }

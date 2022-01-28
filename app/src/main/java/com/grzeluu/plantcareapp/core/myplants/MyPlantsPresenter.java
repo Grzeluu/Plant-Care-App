@@ -47,4 +47,9 @@ implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
         myPlantsView.showMessage(message);
     }
 
+    @Override
+    public void onSuccess(UserPlant plant) {
+        myPlantsView.setNewNotificationForPlant(plant);
+    }
+
 }

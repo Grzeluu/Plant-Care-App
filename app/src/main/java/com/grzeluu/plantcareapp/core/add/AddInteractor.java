@@ -50,7 +50,7 @@ public class AddInteractor implements AddContract.Interactor {
         databaseReference.child(plant.getId()).setValue(plant)
                 .addOnSuccessListener(aVoid -> {
                     addListener.onEnd();
-                    addListener.onSuccess("Plant added to our database");
+                    addListener.onSuccess("Plant added to our database", plant);
                 })
                 .addOnFailureListener(e -> {
                     addListener.onEnd();

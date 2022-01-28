@@ -96,7 +96,7 @@ public class MyPlantsInteractor implements MyPlantsContract.Interactor {
                     plant.setLastWatering(now);
                     plant.setLastFertilizing(now);
                     plant.setLastSpraying(now);
-                    myPlantsListener.onSuccess("Updated");
+                    myPlantsListener.onSuccess(plant);
                 })
                 .addOnFailureListener(listener -> {
                     myPlantsListener.onEnd();

@@ -12,9 +12,9 @@ public class UserPlant implements Serializable {
 
     String name;
 
-    long wateringFrequency;
-    long fertilizingFrequency;
-    long sprayingFrequency;
+    int wateringFrequency;
+    int fertilizingFrequency;
+    int sprayingFrequency;
 
     String lastFertilizing;
     String lastSpraying;
@@ -28,9 +28,9 @@ public class UserPlant implements Serializable {
     public UserPlant(
             String id,
             String name,
-            long wateringFrequency,
-            long fertilizingFrequency,
-            long sprayingFrequency,
+            int wateringFrequency,
+            int fertilizingFrequency,
+            int sprayingFrequency,
             String lastFertilizing,
             String lastSpraying,
             String lastWatering,
@@ -46,11 +46,30 @@ public class UserPlant implements Serializable {
         this.image = image;
     }
 
+    public int getDaysToClosestAction() {
+        int wDays = this.getWateringFrequency();
+        int fDays = this.getFertilizingFrequency();
+        int sDays = this.getSprayingFrequency();
+
+        try {
+            wDays = (wDays == 0) ? Integer.MAX_VALUE :
+                    wateringFrequency - daysFromLastAction(iso_8601_format.parse(this.getLastWatering()));
+            fDays = (fDays == 0) ? Integer.MAX_VALUE :
+                    fertilizingFrequency - daysFromLastAction(iso_8601_format.parse(this.getLastFertilizing()));
+            sDays = (sDays == 0) ? Integer.MAX_VALUE :
+                    sprayingFrequency - daysFromLastAction(iso_8601_format.parse(this.getLastSpraying()));
+            return Math.min(Math.min(wDays, fDays), sDays);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public Boolean isCareNeeded() {
         try {
-            long daysFromWatering = daysFromLastAction(iso_8601_format.parse(lastWatering));
-            long daysFromFertilizing = daysFromLastAction(iso_8601_format.parse(lastFertilizing));
-            long daysFromSpraying = daysFromLastAction(iso_8601_format.parse(lastSpraying));
+            int daysFromWatering = daysFromLastAction(iso_8601_format.parse(lastWatering));
+            int daysFromFertilizing = daysFromLastAction(iso_8601_format.parse(lastFertilizing));
+            int daysFromSpraying = daysFromLastAction(iso_8601_format.parse(lastSpraying));
 
             if (wateringFrequency != 0 && daysFromWatering >= wateringFrequency)
                 return true;
@@ -82,27 +101,27 @@ public class UserPlant implements Serializable {
         this.name = name;
     }
 
-    public long getWateringFrequency() {
+    public int getWateringFrequency() {
         return wateringFrequency;
     }
 
-    public void setWateringFrequency(long wateringFrequency) {
+    public void setWateringFrequency(int wateringFrequency) {
         this.wateringFrequency = wateringFrequency;
     }
 
-    public long getFertilizingFrequency() {
+    public int getFertilizingFrequency() {
         return fertilizingFrequency;
     }
 
-    public void setFertilizingFrequency(long fertilizingFrequency) {
+    public void setFertilizingFrequency(int fertilizingFrequency) {
         this.fertilizingFrequency = fertilizingFrequency;
     }
 
-    public long getSprayingFrequency() {
+    public int getSprayingFrequency() {
         return sprayingFrequency;
     }
 
-    public void setSprayingFrequency(long sprayingFrequency) {
+    public void setSprayingFrequency(int sprayingFrequency) {
         this.sprayingFrequency = sprayingFrequency;
     }
 
