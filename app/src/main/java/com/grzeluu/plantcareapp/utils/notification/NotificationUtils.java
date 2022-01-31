@@ -66,6 +66,6 @@ public class NotificationUtils {
 
     private static int getNotificationID(String id) {
         String subId = id.substring(id.length() - 13, id.length() - 4);
-        return Integer.parseInt(id);
+        return Integer.parseInt(subId);
     }
 }
