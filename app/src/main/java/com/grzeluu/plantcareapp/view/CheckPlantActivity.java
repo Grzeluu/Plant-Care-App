@@ -1,10 +1,12 @@
 package com.grzeluu.plantcareapp.view;
 
 import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
+import static com.grzeluu.plantcareapp.utils.FirebaseConstants.FIREBASE_IMAGE_REFERENCE;
 import static com.grzeluu.plantcareapp.utils.ProgressUtils.getProgressBarFill;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -26,12 +28,6 @@ public class CheckPlantActivity extends BaseActivity implements CheckContract.Vi
     private AdviceAdapter checkPlantAdapter;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCheckPlantBinding.inflate(getLayoutInflater());
@@ -46,21 +42,28 @@ public class CheckPlantActivity extends BaseActivity implements CheckContract.Vi
     }
 
     private void init() {
-        setPlantPhoto(plant.getImage());
+        setPlantPhoto();
 
-        binding.tvCommonName.setText(plant.getCommonName());
-        binding.tvLatinName.setText(plant.getLatinName());
-        binding.tvCategory.setText(plant.getType());
+        if (plant != null) {
+            binding.tvCommonName.setText(plant.getCommonName());
+            binding.tvLatinName.setText(plant.getLatinName());
+            binding.tvCategory.setText(plant.getType());
 
-        binding.tvDescription.setText(plant.getDescription());
+            binding.tvDescription.setText(plant.getDescription());
 
-        initWateringFrequency(plant.getWateringFrequency());
-        initFertilizingFrequency(plant.getFertilizingFrequency());
-        initSprayingFrequency(plant.getSprayingFrequency());
+            initWateringFrequency(plant.getWateringFrequency());
+            initFertilizingFrequency(plant.getFertilizingFrequency());
+            initSprayingFrequency(plant.getSprayingFrequency());
 
-        binding.btAddPlant.setOnClickListener(v -> openAddActivity());
+            binding.btAddPlant.setOnClickListener(v -> openAddActivity());
 
-        initAdapter();
+            if(plant.getAdvicesList() == null || plant.getAdvicesList().size() == 0) {
+                binding.tvAdvices.setVisibility(View.GONE);
+                binding.llAdvices.setVisibility(View.GONE);
+            }
+
+            initAdapter();
+        }
     }
 
     private void initAdapter() {
@@ -92,10 +95,12 @@ public class CheckPlantActivity extends BaseActivity implements CheckContract.Vi
         binding.pbSpraying.setProgress((int) getProgressBarFill(sprayingFrequency));
     }
 
-    public void setPlantPhoto(String uri) {
-        Glide
-                .with(getApplicationContext())
-                .load(uri)
-                .into(binding.ivPhoto);
+    public void setPlantPhoto() {
+        if (plant.getImage() != null) {
+            Glide
+                    .with(this)
+                    .load(FIREBASE_IMAGE_REFERENCE.child(plant.getId()))
+                    .into(binding.ivPhoto);
+        }
     }
 }

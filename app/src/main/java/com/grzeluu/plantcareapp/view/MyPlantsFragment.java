@@ -80,9 +80,8 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
     @Override
     public void updateMyPlants(List<UserPlant> plantList) {
         if (plantList != null) {
-            myPlantsAdapter = new MyPlantsAdapter(getContext(),presenter, plantList);
+            myPlantsAdapter = new MyPlantsAdapter(getContext(), presenter, plantList);
             recyclerView.setAdapter(myPlantsAdapter);
-            myPlantsAdapter.notifyDataSetChanged();
         }
         if (myPlantsAdapter.getItemCount() == 0)
             binding.tvHint.setVisibility(View.VISIBLE);
