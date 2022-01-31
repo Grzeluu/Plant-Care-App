@@ -1,8 +1,8 @@
 package com.grzeluu.plantcareapp.view.adapter;
 
 import static com.grzeluu.plantcareapp.utils.AlertDialogUtils.showDeletePlantDialog;
-import static com.grzeluu.plantcareapp.utils.Constants.iso_8601_format;
-import static com.grzeluu.plantcareapp.utils.DaysUtils.daysFromLastAction;
+import static com.grzeluu.plantcareapp.utils.ProgressUtils.daysFromLastAction;
+import static com.grzeluu.plantcareapp.utils.TimeUtils.DATE_FORMAT;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -96,7 +96,7 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
                 initProgressBar(holder.binding.tvWater,
                         holder.binding.pbWater,
                         plant.getWateringFrequency(),
-                        iso_8601_format.parse(plant.getLastWatering()));
+                        DATE_FORMAT.parse(plant.getLastWatering()));
             } else {
                 holder.binding.rlWater.setVisibility(View.GONE);
             }
@@ -105,7 +105,7 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
                 initProgressBar(holder.binding.tvFertilization,
                         holder.binding.pbFertilizer,
                         plant.getFertilizingFrequency(),
-                        iso_8601_format.parse(plant.getLastFertilizing()));
+                        DATE_FORMAT.parse(plant.getLastFertilizing()));
             } else {
                 holder.binding.rlFertilization.setVisibility(View.GONE);
             }
@@ -114,7 +114,7 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
                 initProgressBar(holder.binding.tvSpraying,
                         holder.binding.pbSpraying,
                         plant.getSprayingFrequency(),
-                        iso_8601_format.parse(plant.getLastSpraying()));
+                        DATE_FORMAT.parse(plant.getLastSpraying()));
             } else {
                 holder.binding.rlSpraying.setVisibility(View.GONE);
             }

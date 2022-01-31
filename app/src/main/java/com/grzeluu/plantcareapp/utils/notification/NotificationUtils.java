@@ -1,11 +1,11 @@
-package com.grzeluu.plantcareapp.utils;
+package com.grzeluu.plantcareapp.utils.notification;
 
-import static com.grzeluu.plantcareapp.utils.PlantNotification.CHANNEL_ID;
-import static com.grzeluu.plantcareapp.utils.PlantNotification.ID_EXTRA;
-import static com.grzeluu.plantcareapp.utils.PlantNotification.MESSAGE_EXTRA;
-import static com.grzeluu.plantcareapp.utils.PlantNotification.TITLE_EXTRA;
+import static com.grzeluu.plantcareapp.utils.notification.PlantNotification.CHANNEL_ID;
+import static com.grzeluu.plantcareapp.utils.notification.PlantNotification.ID_EXTRA;
+import static com.grzeluu.plantcareapp.utils.notification.PlantNotification.MESSAGE_EXTRA;
+import static com.grzeluu.plantcareapp.utils.notification.PlantNotification.TITLE_EXTRA;
 import static com.grzeluu.plantcareapp.utils.TimeUtils.getTimestamp;
-import static com.grzeluu.plantcareapp.utils.TimeUtils.getTimestampForIncomingDate;
+import static com.grzeluu.plantcareapp.utils.TimeUtils.getTimestampForNotification;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
@@ -14,12 +14,16 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
+import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.model.UserPlant;
 
 public class NotificationUtils {
-    public static void scheduleNotificationForPlant(Context context, String title, String message, UserPlant plant) {
+    public static void scheduleNotificationForPlant(Context context, UserPlant plant) {
         String subId = plant.getId();
         subId = subId.substring(subId.length() - 13, subId.length() - 4);
+
+        String title = context.getString(R.string.plant_notification_title);
+        String message = context.getString(R.string.plant_notification_message, plant.getName());
 
         Intent intent = new Intent(context.getApplicationContext(), PlantNotification.class);
         intent.putExtra(MESSAGE_EXTRA, message);
@@ -38,14 +42,14 @@ public class NotificationUtils {
 
         int days = plant.getDaysToClosestAction();
 
-        Long time = getTimestampForIncomingDate(current, days);
+        Long time = getTimestampForNotification(current, days);
 
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, time, pendingIntent);
     }
 
     public static void createNotificationChannel(Context context) {
-        String name = "Plant Notifications";
-        String desc = "Notifications for plants needs";
+        String name = context.getString(R.string.notification_channel_name);
+        String desc = context.getString(R.string.notification_channel_description);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,

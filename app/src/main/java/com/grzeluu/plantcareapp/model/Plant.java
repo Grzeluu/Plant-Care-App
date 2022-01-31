@@ -90,6 +90,14 @@ public class Plant implements Serializable {
         this.description = description;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public int getWateringFrequency() {
         return wateringFrequency;
     }
@@ -122,19 +130,7 @@ public class Plant implements Serializable {
         this.image = image;
     }
 
-    public boolean isIsVerified() {
-        return isVerified;
-    }
-
     public void setVerified(boolean verified) {
         isVerified = verified;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 }

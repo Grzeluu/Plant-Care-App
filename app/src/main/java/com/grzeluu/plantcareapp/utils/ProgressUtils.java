@@ -3,7 +3,7 @@ package com.grzeluu.plantcareapp.utils;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class DaysUtils {
+public class ProgressUtils {
     static public int progressToDays(int frequency) {
 
         if (frequency >= 0 && frequency <= 30) {

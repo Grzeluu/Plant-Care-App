@@ -1,6 +1,6 @@
 package com.grzeluu.plantcareapp.base;
 
-import static com.grzeluu.plantcareapp.utils.NotificationUtils.createNotificationChannel;
+import static com.grzeluu.plantcareapp.utils.notification.NotificationUtils.createNotificationChannel;
 
 import android.app.Application;
 

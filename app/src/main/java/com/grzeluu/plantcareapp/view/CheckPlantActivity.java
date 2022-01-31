@@ -1,7 +1,7 @@
 package com.grzeluu.plantcareapp.view;
 
 import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
-import static com.grzeluu.plantcareapp.utils.DaysUtils.getProgressBarFill;
+import static com.grzeluu.plantcareapp.utils.ProgressUtils.getProgressBarFill;
 
 import android.content.Intent;
 import android.os.Bundle;

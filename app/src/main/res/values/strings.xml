@@ -67,17 +67,28 @@
     <string name="name_your_plant">Name your plant</string>
     <string name="customize_frequency">Customize frequency</string>
     <string name="choose_a_name_and_a_photo">Choose a name and a photo</string>
-    <string name="submit">Submit</string>
-    <string name="confirm">Confirm</string>
+
     <string name="advices">Advices</string>
-    <string name="discussion">Discussion</string>
+
     <string name="set_plant_requirements">Set plant requirements</string>
     <string name="advice">Advice</string>
+
     <string name="add">Add</string>
+    <string name="submit">Submit</string>
+    <string name="confirm">Confirm</string>
     <string name="requirements">Requirements</string>
     <string name="general_information">General Information</string>
+
     <string name="add_plant">Add Plant</string>
     <string name="discover">Discover</string>
+    <string name="delete_plant">Delete plant</string>
+    <string name="delete_plant_question">Are you sure you want to delete this plant?</string>
+
+    <string name="notification_channel_name">Plant Notifications</string>
+    <string name="notification_channel_description">Notifications for plants needs</string>
+    <string name="plant_notification_title">Plant needs care</string>
+    <string name="plant_notification_message">%1$s probably needs some attention.</string>
+
     <string-array name="categories">
         <item>@string/leaf_plants</item>
         <item>@string/flowers</item>

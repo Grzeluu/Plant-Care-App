@@ -19,7 +19,6 @@ public class SeekBarUtils {
         seekBar.setProgress(initialProgress);
 
         initButtons(seekBar, buttonPlus, buttonMinus);
-
     }
 
     private static void initButtons(SeekBar seekBar, View buttonPlus, View buttonMinus) {

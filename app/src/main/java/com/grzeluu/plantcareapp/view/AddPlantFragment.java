@@ -6,9 +6,9 @@ import static com.grzeluu.plantcareapp.utils.Constants.PICK_IMAGE_CAMERA;
 import static com.grzeluu.plantcareapp.utils.Constants.PICK_IMAGE_GALLERY;
 import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
 import static com.grzeluu.plantcareapp.utils.Constants.WRITE_EXTERNAL_STORAGE;
-import static com.grzeluu.plantcareapp.utils.DaysUtils.daysToProgress;
-import static com.grzeluu.plantcareapp.utils.DaysUtils.progressToDays;
-import static com.grzeluu.plantcareapp.utils.NotificationUtils.scheduleNotificationForPlant;
+import static com.grzeluu.plantcareapp.utils.ProgressUtils.daysToProgress;
+import static com.grzeluu.plantcareapp.utils.ProgressUtils.progressToDays;
+import static com.grzeluu.plantcareapp.utils.notification.NotificationUtils.scheduleNotificationForPlant;
 import static com.grzeluu.plantcareapp.utils.SeekBarUtils.initSeekBarGroupWithText;
 import static com.grzeluu.plantcareapp.utils.TimeUtils.getCurrentDate;
 import static com.grzeluu.plantcareapp.utils.TimeUtils.getTimestamp;
@@ -137,11 +137,7 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
     }
 
     public void plantAdded(String message, UserPlant plant) {
-        scheduleNotificationForPlant(
-                getContext(),
-                "Plant needs care",
-                plant.getName() + " probably needs some actions",
-                plant);
+        scheduleNotificationForPlant(getContext(), plant);
         showMessage(message);
         Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);

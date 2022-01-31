@@ -1,7 +1,7 @@
 package com.grzeluu.plantcareapp.model;
 
-import static com.grzeluu.plantcareapp.utils.Constants.iso_8601_format;
-import static com.grzeluu.plantcareapp.utils.DaysUtils.daysFromLastAction;
+import static com.grzeluu.plantcareapp.utils.ProgressUtils.daysFromLastAction;
+import static com.grzeluu.plantcareapp.utils.TimeUtils.DATE_FORMAT;
 
 import java.io.Serializable;
 import java.text.ParseException;
@@ -47,17 +47,19 @@ public class UserPlant implements Serializable {
     }
 
     public int getDaysToClosestAction() {
-        int wDays = this.getWateringFrequency();
-        int fDays = this.getFertilizingFrequency();
-        int sDays = this.getSprayingFrequency();
+        int wDays = this.wateringFrequency;
+        int fDays = this.fertilizingFrequency;
+        int sDays = this.sprayingFrequency;
 
         try {
-            wDays = (wDays == 0) ? Integer.MAX_VALUE :
-                    wateringFrequency - daysFromLastAction(iso_8601_format.parse(this.getLastWatering()));
-            fDays = (fDays == 0) ? Integer.MAX_VALUE :
-                    fertilizingFrequency - daysFromLastAction(iso_8601_format.parse(this.getLastFertilizing()));
-            sDays = (sDays == 0) ? Integer.MAX_VALUE :
-                    sprayingFrequency - daysFromLastAction(iso_8601_format.parse(this.getLastSpraying()));
+            int daysFromWatering = daysFromLastAction(DATE_FORMAT.parse(lastWatering));
+            int daysFromFertilizing = daysFromLastAction(DATE_FORMAT.parse(lastFertilizing));
+            int daysFromSpraying = daysFromLastAction(DATE_FORMAT.parse(lastSpraying));
+
+            wDays = (wDays == 0) ? Integer.MAX_VALUE : wateringFrequency - daysFromWatering;
+            fDays = (fDays == 0) ? Integer.MAX_VALUE : fertilizingFrequency - daysFromFertilizing;
+            sDays = (sDays == 0) ? Integer.MAX_VALUE : sprayingFrequency - daysFromSpraying;
+
             return Math.min(Math.min(wDays, fDays), sDays);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -67,9 +69,9 @@ public class UserPlant implements Serializable {
 
     public Boolean isCareNeeded() {
         try {
-            int daysFromWatering = daysFromLastAction(iso_8601_format.parse(lastWatering));
-            int daysFromFertilizing = daysFromLastAction(iso_8601_format.parse(lastFertilizing));
-            int daysFromSpraying = daysFromLastAction(iso_8601_format.parse(lastSpraying));
+            int daysFromWatering = daysFromLastAction(DATE_FORMAT.parse(lastWatering));
+            int daysFromFertilizing = daysFromLastAction(DATE_FORMAT.parse(lastFertilizing));
+            int daysFromSpraying = daysFromLastAction(DATE_FORMAT.parse(lastSpraying));
 
             if (wateringFrequency != 0 && daysFromWatering >= wateringFrequency)
                 return true;
@@ -77,6 +79,7 @@ public class UserPlant implements Serializable {
                 return true;
             if (sprayingFrequency != 0 && daysFromSpraying >= sprayingFrequency)
                 return true;
+
             return false;
 
         } catch (ParseException e) {

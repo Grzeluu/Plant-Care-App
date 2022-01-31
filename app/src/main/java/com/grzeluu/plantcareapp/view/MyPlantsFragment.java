@@ -1,6 +1,6 @@
 package com.grzeluu.plantcareapp.view;
 
-import static com.grzeluu.plantcareapp.utils.NotificationUtils.scheduleNotificationForPlant;
+import static com.grzeluu.plantcareapp.utils.notification.NotificationUtils.scheduleNotificationForPlant;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -78,10 +78,6 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
 
     @Override
     public void setNewNotificationForPlant(UserPlant plant) {
-        scheduleNotificationForPlant(
-                getContext(),
-                "Plant needs care",
-                plant.getName() + " probably needs some attention.",
-                plant);
+        scheduleNotificationForPlant(getContext(), plant);
     }
 }

@@ -1,4 +1,4 @@
-package com.grzeluu.plantcareapp.utils;
+package com.grzeluu.plantcareapp.utils.notification;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -15,7 +15,6 @@ public class PlantNotification extends BroadcastReceiver {
     public static final String ID_EXTRA = "id_extra";
     public static final String TITLE_EXTRA = "title_extra";
     public static final String MESSAGE_EXTRA = "message_extra";
-
 
     public PlantNotification() {
     }

@@ -19,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LookUpPlant">
-        <receiver android:name=".utils.PlantNotification"
+        <receiver android:name=".utils.notification.PlantNotification"
             android:enabled="true"/>
         <activity android:name="com.grzeluu.plantcareapp.view.CheckPlantActivity" />
         <activity

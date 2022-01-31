@@ -11,9 +11,9 @@ import com.grzeluu.plantcareapp.model.UserPlant;
 public class AlertDialogUtils {
     static public void showDeletePlantDialog(Context context, MyPlantsContract.Presenter presenter, UserPlant plant) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Delete plant");
-        builder.setMessage("Are you sure you want to delete this plant?");
-        builder.setPositiveButton("Confirm", (dialog, id) -> {
+        builder.setTitle(R.string.delete_plant);
+        builder.setMessage(R.string.delete_plant_question);
+        builder.setPositiveButton(R.string.confirm, (dialog, id) -> {
             presenter.deletePlant(plant);
         });
 
