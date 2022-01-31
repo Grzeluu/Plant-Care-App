@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/bt_add_plant"
+        android:id="@+id/bt_show_profile"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:src="@drawable/ic_user"

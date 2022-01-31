@@ -45,7 +45,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
 
         holder.binding.tvCommonName.setText(plant.getCommonName());
         holder.binding.tvLatinName.setText(plant.getLatinName());
-        if (!plant.isIsVerified()) holder.binding.ivVerified.setVisibility(View.GONE);
+        if (!plant.isVerified()) holder.binding.ivVerified.setVisibility(View.GONE);
         
         holder.binding.ivMore.setOnClickListener(v-> goToCheckPlant(plant));
     }

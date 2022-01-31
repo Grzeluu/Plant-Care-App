@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -53,6 +54,12 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         presenter = new MainPresenter(this);
         presenter.checkIfUserIsLoggedIn();
 
+        initBottomNav();
+        initDrawerNav();
+
+    }
+
+    private void initDrawerNav() {
         binding.navView.setNavigationItemSelectedListener(v -> {
             switch (v.getItemId()) {
                 case R.id.nav_logout:
@@ -63,10 +70,19 @@ public class MainActivity extends BaseActivity implements MainContract.View {
             }
             return true;
         });
+    }
 
+    public void openCloseNavigationDrawer(View view) {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            binding.drawerLayout.openDrawer(GravityCompat.START);
+        }
+    }
+
+    private void initBottomNav() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
         bottomNavigationView.setOnItemSelectedListener(v ->
-
         {
             switch (v.getItemId()) {
                 case R.id.bottom_my_plants:
@@ -83,9 +99,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
             }
             return true;
         });
-
         openMyPlants();
-
     }
 
 

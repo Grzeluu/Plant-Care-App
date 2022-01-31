@@ -54,8 +54,19 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
     }
 
     private void init() {
+        binding.toolbar.btShowProfile.setOnClickListener(v -> {
+            MainActivity activity = (MainActivity) getActivity();
+            assert activity != null;
+            activity.openCloseNavigationDrawer(v); }
+        );
+
+        initadApters();
+    }
+
+    private void initadApters() {
         plantsLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(plantsLayoutManager);
+
         myPlantsAdapter = new MyPlantsAdapter(getContext(), presenter, new ArrayList<UserPlant>());
         recyclerView.setAdapter(myPlantsAdapter);
     }
