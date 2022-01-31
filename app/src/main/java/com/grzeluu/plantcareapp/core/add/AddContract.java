@@ -7,9 +7,9 @@ import com.grzeluu.plantcareapp.model.UserPlant;
 
 public interface AddContract {
     interface View extends BaseViewContract {
-        void setNameError(String error);
+        void setNameError(int error);
 
-        void plantAdded(String message, UserPlant plant);
+        void plantAdded(int message, UserPlant plant);
     }
 
     interface Presenter extends BasePresenterContract {
@@ -21,7 +21,7 @@ public interface AddContract {
     }
 
     interface Listener extends BaseListenerContract {
-        void onSuccess(String message, UserPlant plant);
+        void onSuccess(int message, UserPlant plant);
         void onFailure(String message);
     }
 }

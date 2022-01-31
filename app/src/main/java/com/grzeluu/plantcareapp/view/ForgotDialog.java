@@ -14,8 +14,6 @@ import com.grzeluu.plantcareapp.databinding.DialogForgotPasswordBinding;
 import com.grzeluu.plantcareapp.utils.ProgressDialogUtils;
 
 public class ForgotDialog extends Dialog implements ForgotContract.View {
-    private static final String TAG = "ForgotPasswordDialog";
-
     ProgressDialog progressDialog;
     private ForgotPresenter presenter;
     private DialogForgotPasswordBinding binding;
@@ -38,14 +36,14 @@ public class ForgotDialog extends Dialog implements ForgotContract.View {
     }
 
     @Override
-    public void onSendEmailSuccess(String message) {
+    public void onSendEmailSuccess(int message) {
         showMessage(message);
         dismiss();
     }
 
     @Override
-    public void setEmailError(String error) {
-        binding.etEmail.setError(error);
+    public void setEmailError(int error) {
+        binding.etEmail.setError(getContext().getString(error));
     }
 
     @Override

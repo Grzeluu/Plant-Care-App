@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.model.UserPlant;
 
 public class AddInteractor implements AddContract.Interactor {
@@ -32,12 +33,13 @@ public class AddInteractor implements AddContract.Interactor {
         String filePathAndName = "plant_images/" + plant.getId();
         StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
         storageReference.putFile(Uri.parse(plant.getImage()))
-                .addOnSuccessListener(taskSnapshot -> {
-                    addPlant(plant);
-                })
-                .addOnFailureListener(e -> {
+                .addOnSuccessListener(task -> {
                     addListener.onEnd();
-                    addListener.onFailure(e.getMessage());
+                    addListener.onSuccess(R.string.db_plant_added, plant);
+                })
+                .addOnFailureListener(error -> {
+                    addListener.onEnd();
+                    addListener.onFailure(error.getMessage());
                 });
     }
 
@@ -48,13 +50,13 @@ public class AddInteractor implements AddContract.Interactor {
                 .child("UserPlants");
 
         databaseReference.child(plant.getId()).setValue(plant)
-                .addOnSuccessListener(aVoid -> {
+                .addOnSuccessListener(task -> {
                     addListener.onEnd();
-                    addListener.onSuccess("Plant added to our database", plant);
+                    addListener.onSuccess(R.string.db_plant_added, plant);
                 })
-                .addOnFailureListener(e -> {
+                .addOnFailureListener(error -> {
                     addListener.onEnd();
-                    addListener.onFailure(e.getMessage());
+                    addListener.onFailure(error.getMessage());
                 });
     }
 }

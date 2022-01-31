@@ -1,6 +1,7 @@
 package com.grzeluu.plantcareapp.core.forgot;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.grzeluu.plantcareapp.R;
 
 public class ForgotInteractor implements ForgotContract.Interactor {
 
@@ -14,14 +15,13 @@ public class ForgotInteractor implements ForgotContract.Interactor {
     public void performResetPassword(String email) {
         forgotListener.onStart();
         FirebaseAuth.getInstance().sendPasswordResetEmail(email)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
+                .addOnSuccessListener(task -> {
                         forgotListener.onEnd();
-                        forgotListener.onSuccess("Email sent.");
-                    } else {
-                        forgotListener.onEnd();
-                        forgotListener.onFailure("Something wrong happened");
-                    }
+                        forgotListener.onSuccess(R.string.email_sent);
+                })
+                .addOnFailureListener(error -> {
+                    forgotListener.onEnd();
+                    forgotListener.onFailure(error.getMessage());
                 });
     }
 }

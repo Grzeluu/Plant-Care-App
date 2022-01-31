@@ -1,8 +1,10 @@
 package com.grzeluu.plantcareapp.base;
 
 import android.app.ProgressDialog;
+import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.grzeluu.plantcareapp.R;
@@ -11,6 +13,11 @@ import com.grzeluu.plantcareapp.utils.ProgressDialogUtils;
 public abstract class BaseActivity extends AppCompatActivity implements BaseViewContract {
 
     ProgressDialog progressDialog;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public void showLoading() {

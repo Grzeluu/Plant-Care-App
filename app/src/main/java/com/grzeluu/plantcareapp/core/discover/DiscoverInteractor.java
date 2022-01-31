@@ -39,7 +39,7 @@ public class DiscoverInteractor implements DiscoverContract.Interactor {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         discoverListener.onEnd();
-                        discoverListener.onFailure("Cannot download plants list");
+                        discoverListener.onFailure(error.getMessage());
                     }
                 });
     }
@@ -66,7 +66,7 @@ public class DiscoverInteractor implements DiscoverContract.Interactor {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         discoverListener.onEnd();
-                        discoverListener.onFailure("Cannot download plants list");
+                        discoverListener.onFailure(error.getMessage());
                     }
                 });
     }

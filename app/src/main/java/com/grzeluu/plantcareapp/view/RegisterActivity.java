@@ -34,27 +34,27 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
     }
 
     @Override
-    public void setUsernameError(String error) {
-        binding.etUsername.setError(error);
+    public void setUsernameError(int error) {
+        binding.etUsername.setError(getString(error));
     }
 
     @Override
-    public void setEmailError(String error) {
-        binding.etEmail.setError(error);
+    public void setEmailError(int error) {
+        binding.etEmail.setError(getString(error));
     }
 
     @Override
-    public void setPasswordError(String error) {
-        binding.etPassword.setError(error);
+    public void setPasswordError(int error) {
+        binding.etPassword.setError(getString(error));
     }
 
     @Override
-    public void setRepeatedPasswordError(String error) {
-        binding.etRepeatPassword.setError(error);
+    public void setRepeatedPasswordError(int error) {
+        binding.etRepeatPassword.setError(getString(error));
     }
 
     @Override
-    public void onRegisterSuccess(String message) {
+    public void onRegisterSuccess(int message) {
         showMessage(message);
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);

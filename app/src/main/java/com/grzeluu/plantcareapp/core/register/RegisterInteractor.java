@@ -2,6 +2,7 @@ package com.grzeluu.plantcareapp.core.register;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.model.User;
 
 public class RegisterInteractor implements RegisterContract.Interactor {
@@ -34,14 +35,13 @@ public class RegisterInteractor implements RegisterContract.Interactor {
         FirebaseDatabase.getInstance().getReference("Users")
                 .child(user.getUid())
                 .setValue(user)
-                .addOnCompleteListener(addUserTask -> {
-                    if (addUserTask.isSuccessful()) {
+                .addOnSuccessListener(task -> {
                         registerListener.onEnd();
-                        registerListener.onSuccess("User registered successfully");
-                    } else {
-                        registerListener.onEnd();
-                        registerListener.onFailure(addUserTask.getException().getMessage());
-                    }
+                        registerListener.onSuccess(R.string.register_success);
+                })
+                .addOnFailureListener(error -> {
+                    registerListener.onEnd();
+                    registerListener.onFailure(error.getMessage());
                 });
     }
 }

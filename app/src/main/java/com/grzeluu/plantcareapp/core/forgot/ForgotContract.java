@@ -5,9 +5,9 @@ import com.grzeluu.plantcareapp.base.BaseViewContract;
 
 public interface ForgotContract {
     interface View extends BaseViewContract {
-        void onSendEmailSuccess(String message);
+        void onSendEmailSuccess(int message);
 
-        void setEmailError(String message);
+        void setEmailError(int message);
 
         void onSendEmailFailure(String message);
     }
@@ -21,7 +21,7 @@ public interface ForgotContract {
     }
 
     interface ForgotListener extends BaseListenerContract {
-        void onSuccess(String message);
+        void onSuccess(int message);
         void onFailure(String message);
     }
 }

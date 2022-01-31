@@ -43,7 +43,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
-    public void onLoginSuccess(String message) {
+    public void onLoginSuccess(int message) {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -67,14 +67,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
-    public void setEmailError(String error) {
-        binding.etEmail.setError(error);
+    public void setEmailError(int error) {
+        binding.etEmail.setError(getString(error));
     }
 
     @Override
-    public void setPasswordError(String error) {
-        binding.etPassword.setError(error);
+    public void setPasswordError(int error) {
+        binding.etPassword.setError(getString(error));
     }
-
-
 }

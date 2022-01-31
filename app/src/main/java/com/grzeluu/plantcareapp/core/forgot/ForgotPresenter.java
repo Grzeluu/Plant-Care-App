@@ -2,6 +2,7 @@ package com.grzeluu.plantcareapp.core.forgot;
 
 import android.util.Patterns;
 
+import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.base.BasePresenter;
 
 public class ForgotPresenter extends BasePresenter implements ForgotContract.Presenter, ForgotContract.ForgotListener {
@@ -26,17 +27,17 @@ public class ForgotPresenter extends BasePresenter implements ForgotContract.Pre
     private boolean checkResetPasswordRequirements(String email) {
         boolean isCorrect = true;
         if (email.isEmpty()) {
-            forgotView.setEmailError("This field can\'t be empty.");
+            forgotView.setEmailError(R.string.this_field_cant_be_empty);
             isCorrect = false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            forgotView.setEmailError("This is not a valid email.");
+            forgotView.setEmailError(R.string.email_not_valid);
             isCorrect = false;
         }
         return isCorrect;
     }
 
     @Override
-    public void onSuccess(String message) {
+    public void onSuccess(int message) {
         forgotView.hideLoading();
         forgotView.onSendEmailSuccess(message);
     }

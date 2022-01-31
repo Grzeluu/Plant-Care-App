@@ -6,15 +6,15 @@ import com.grzeluu.plantcareapp.base.BaseViewContract;
 
 public interface RegisterContract {
     interface View extends BaseViewContract {
-        void setUsernameError(String error);
+        void setUsernameError(int error);
 
-        void setEmailError(String error);
+        void setEmailError(int error);
 
-        void setPasswordError(String error);
+        void setPasswordError(int error);
 
-        void setRepeatedPasswordError(String error);
+        void setRepeatedPasswordError(int error);
 
-        void onRegisterSuccess(String message);
+        void onRegisterSuccess(int message);
 
         void onRegisterFailure(String message);
     }
@@ -28,7 +28,7 @@ public interface RegisterContract {
     }
 
     interface Listener extends BaseListenerContract {
-        void onSuccess(String message);
+        void onSuccess(int message);
 
         void onFailure(String message);
     }

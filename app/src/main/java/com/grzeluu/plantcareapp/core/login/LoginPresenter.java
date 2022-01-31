@@ -2,6 +2,7 @@ package com.grzeluu.plantcareapp.core.login;
 
 import android.util.Patterns;
 
+import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.base.BasePresenter;
 
 public class LoginPresenter extends BasePresenter
@@ -25,14 +26,14 @@ public class LoginPresenter extends BasePresenter
     private boolean checkLoginRequirements(String email, String password) {
         boolean errorsFree = true;
         if (email.isEmpty()) {
-            loginView.setEmailError("This field can\'t be empty.");
+            loginView.setEmailError(R.string.this_field_cant_be_empty);
             errorsFree = false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            loginView.setEmailError("This is not a valid email.");
+            loginView.setEmailError(R.string.this_field_cant_be_empty);
             errorsFree = false;
         }
         if (password.isEmpty()) {
-            loginView.setPasswordError("This field can\'t be empty.");
+            loginView.setPasswordError(R.string.this_field_cant_be_empty);
             errorsFree = false;
         }
         return errorsFree;
@@ -40,7 +41,7 @@ public class LoginPresenter extends BasePresenter
 
 
     @Override
-    public void onSuccess(String message) {
+    public void onSuccess(int message) {
         loginView.onLoginSuccess(message);
     }
 

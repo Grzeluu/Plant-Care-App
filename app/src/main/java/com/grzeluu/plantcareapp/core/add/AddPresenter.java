@@ -1,5 +1,6 @@
 package com.grzeluu.plantcareapp.core.add;
 
+import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.base.BasePresenter;
 import com.grzeluu.plantcareapp.model.UserPlant;
 
@@ -25,12 +26,12 @@ public class AddPresenter extends BasePresenter
         if (!plant.getName().isEmpty())
             return true;
 
-        addView.setNameError("This field can\'t be empty.");
+        addView.setNameError(R.string.this_field_cant_be_empty);
         return false;
     }
 
     @Override
-    public void onSuccess(String message, UserPlant plant) {
+    public void onSuccess(int message, UserPlant plant) {
         addView.plantAdded(message, plant);
     }
 

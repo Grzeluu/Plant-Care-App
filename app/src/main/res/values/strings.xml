@@ -30,17 +30,12 @@
     <string name="choose_plant_photo">Take or choose a new plant photo.</string>
     <string name="latin_name">Latin Name (optional)</string>
     <string name="add_to_my_plants">Add to my plants</string>
-    <string name="cancel">Cancel</string>
     <string name="description">Description</string>
     <string name="name">Name</string>
     <string name="type">Type</string>
     <string name="message_need_permission">Need permissions</string>
     <string name="message_grant_permission">Grant permission</string>
     <string name="label_setting">Settings</string>
-
-    <string name="leaf_plants">Leaf Plants</string>
-    <string name="flowers">Flowers</string>
-    <string name="succulents">Succulents</string>
 
     <string name="never">Never</string>
     <string name="one_day">1 Day</string>
@@ -88,11 +83,36 @@
     <string name="notification_channel_description">Notifications for plants needs</string>
     <string name="plant_notification_title">Plant needs care</string>
     <string name="plant_notification_message">%1$s probably needs some attention.</string>
+    <string name="db_plant_added">The plant has been added</string>
+    <string name="this_field_cant_be_empty">This field can\'t be empty.</string>
+    <string name="email_sent">Email sent.</string>
+    <string name="email_not_valid">This is not a valid email.</string>
+    <string name="logged_successfully">User logged in successfully</string>
+    <string name="plant_delete_success">Plant deleted successfully</string>
+    <string name="register_success">User registered successfully</string>
+    <string name="permissions_denied">Permissions denied</string>
+    <string name="choose_photo">Choose plant photo</string>
+
+    <string name="leaf_plants">Leaf Plants</string>
+    <string name="flowers">Flowers</string>
+    <string name="succulents">Succulents</string>
 
     <string-array name="categories">
         <item>@string/leaf_plants</item>
         <item>@string/flowers</item>
         <item>@string/succulents</item>
+    </string-array>
+
+    <string name="take_photo">Take Photo</string>
+    <string name="gallery">Choose from Gallery</string>
+    <string name="cancel">Cancel</string>
+    <string name="password_too_short">Password too short! At least 6 char.</string>
+    <string name="passwords_didnt_match">Passwords didn\'t match</string>
+
+    <string-array name="photo_options">
+        <item>@string/leaf_plants</item>
+        <item>@string/gallery</item>
+        <item>@string/cancel</item>
     </string-array>
 
 </resources>

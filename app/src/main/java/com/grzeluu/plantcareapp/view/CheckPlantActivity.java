@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
+import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.core.check.CheckContract;
 import com.grzeluu.plantcareapp.core.check.CheckPresenter;
@@ -71,23 +72,23 @@ public class CheckPlantActivity extends BaseActivity implements CheckContract.Vi
 
     private void openAddActivity() {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("Plant", plant);
+        intent.putExtra(PLANT_INTENT_EXTRAS_KEY, plant);
         startActivity(intent);
     }
 
 
     public void initWateringFrequency(long wateringFrequency) {
-        binding.tvWateringDays.setText(wateringFrequency + " Days");
+        binding.tvWateringDays.setText(getString(R.string.days, wateringFrequency));
         binding.pbWater.setProgress((int) getProgressBarFill(wateringFrequency));
     }
 
     public void initFertilizingFrequency(long fertilizingFrequency) {
-        binding.tvFertilizingDays.setText(fertilizingFrequency + " Days");
+        binding.tvFertilizingDays.setText(getString(R.string.days, fertilizingFrequency));
         binding.pbFertilizer.setProgress((int) getProgressBarFill(fertilizingFrequency));
     }
 
     public void initSprayingFrequency(long sprayingFrequency) {
-        binding.tvSprayingDays.setText(sprayingFrequency + " Days");
+        binding.tvSprayingDays.setText(getString(R.string.days, sprayingFrequency));
         binding.pbSpraying.setProgress((int) getProgressBarFill(sprayingFrequency));
     }
 

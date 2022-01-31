@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.model.UserPlant;
 
 import java.util.ArrayList;
@@ -58,13 +59,13 @@ public class MyPlantsInteractor implements MyPlantsContract.Interactor {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
                 .child("Users").child(FirebaseAuth.getInstance().getUid()).child("UserPlants");
         ref.child(plant.getId()).removeValue()
-                .addOnSuccessListener(listener -> {
+                .addOnSuccessListener(task -> {
                     myPlantsListener.onEnd();
-                    myPlantsListener.onSuccess("Plant deleted successfully");
+                    myPlantsListener.onSuccess(R.string.plant_delete_success);
                 })
-                .addOnFailureListener(listener -> {
+                .addOnFailureListener(error -> {
                     myPlantsListener.onEnd();
-                    myPlantsListener.onFailure("Something went wrong");
+                    myPlantsListener.onFailure(error.toString());
                 });
     }
 
@@ -91,16 +92,16 @@ public class MyPlantsInteractor implements MyPlantsContract.Interactor {
         }
 
         Tasks.whenAllSuccess(taskList.toArray(new Task[0]))
-                .addOnSuccessListener(listener -> {
+                .addOnSuccessListener(task -> {
                     myPlantsListener.onEnd();
                     plant.setLastWatering(now);
                     plant.setLastFertilizing(now);
                     plant.setLastSpraying(now);
                     myPlantsListener.onSuccess(plant);
                 })
-                .addOnFailureListener(listener -> {
+                .addOnFailureListener(error -> {
                     myPlantsListener.onEnd();
-                    myPlantsListener.onFailure("Something went wrong");
+                    myPlantsListener.onFailure(error.getMessage());
                 });
 
     }

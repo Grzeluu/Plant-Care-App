@@ -8,10 +8,10 @@ import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
 import static com.grzeluu.plantcareapp.utils.Constants.WRITE_EXTERNAL_STORAGE;
 import static com.grzeluu.plantcareapp.utils.ProgressUtils.daysToProgress;
 import static com.grzeluu.plantcareapp.utils.ProgressUtils.progressToDays;
-import static com.grzeluu.plantcareapp.utils.notification.NotificationUtils.scheduleNotificationForPlant;
 import static com.grzeluu.plantcareapp.utils.SeekBarUtils.initSeekBarGroupWithText;
 import static com.grzeluu.plantcareapp.utils.TimeUtils.getCurrentDate;
 import static com.grzeluu.plantcareapp.utils.TimeUtils.getTimestamp;
+import static com.grzeluu.plantcareapp.utils.notification.NotificationUtils.scheduleNotificationForPlant;
 
 import android.Manifest;
 import android.content.ContentValues;
@@ -29,6 +29,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
+import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.base.BaseFragment;
 import com.grzeluu.plantcareapp.core.add.AddContract;
 import com.grzeluu.plantcareapp.core.add.AddPresenter;
@@ -132,13 +133,13 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
         });
     }
 
-    public void setNameError(String error) {
-        binding.etName.setError(error);
+    public void setNameError(int error) {
+        binding.etName.setError(getString(error));
     }
 
-    public void plantAdded(String message, UserPlant plant) {
-        scheduleNotificationForPlant(getContext(), plant);
+    public void plantAdded(int message, UserPlant plant) {
         showMessage(message);
+        scheduleNotificationForPlant(getContext(), plant);
         Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
     }
@@ -151,20 +152,20 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
     }
 
     private void showChoosePhotoDialog() {
-        final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
+        final CharSequence[] options = getResources().getStringArray(R.array.photo_options);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Choose plant photo");
+        builder.setTitle(R.string.choose_photo);
 
         builder.setItems(options, (dialog, item) -> {
 
-            if (options[item].equals("Take Photo")) {
+            if (options[item].equals(R.string.take_photo)) {
                 tryPickPhotoFromCamera();
 
-            } else if (options[item].equals("Choose from Gallery")) {
+            } else if (options[item].equals(R.string.gallery)) {
                 tryPickPhotoFromGallery();
 
-            } else if (options[item].equals("Cancel")) {
+            } else if (options[item].equals(R.string.cancel)) {
                 dialog.dismiss();
             }
         });
@@ -216,21 +217,21 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     pickPhotoFromCamera();
                 } else {
-                    showMessage("Permissions denied");
+                    showMessage(R.string.permissions_denied);
                 }
             }
             case PERMISSION_STORAGE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     pickPhotoFromGallery();
                 } else {
-                    showMessage("Permissions denied");
+                    showMessage(R.string.permissions_denied);
                 }
             }
             case WRITE_EXTERNAL_STORAGE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     pickPhotoFromCamera();
                 } else {
-                    showMessage("Permissions denied");
+                    showMessage(R.string.permissions_denied);
                 }
             }
         }

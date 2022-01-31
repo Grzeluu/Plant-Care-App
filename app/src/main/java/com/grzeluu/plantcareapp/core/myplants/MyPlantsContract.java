@@ -35,7 +35,7 @@ public interface MyPlantsContract {
 
         void onFailure(String message);
 
-        void onSuccess(String message);
+        void onSuccess(int message);
         
         void onSuccess(UserPlant plant);
     }

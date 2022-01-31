@@ -43,7 +43,7 @@ implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
     }
 
     @Override
-    public void onSuccess(String message) {
+    public void onSuccess(int message) {
         myPlantsView.showMessage(message);
     }
 

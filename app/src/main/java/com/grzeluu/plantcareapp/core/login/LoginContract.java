@@ -6,11 +6,11 @@ import com.grzeluu.plantcareapp.base.BaseViewContract;
 
 public interface LoginContract {
     interface View extends BaseViewContract {
-        void setEmailError(String error);
+        void setEmailError(int error);
 
-        void setPasswordError(String error);
+        void setPasswordError(int error);
 
-        void onLoginSuccess(String message);
+        void onLoginSuccess(int message);
 
         void onLoginFailure(String message);
     }
@@ -24,7 +24,7 @@ public interface LoginContract {
     }
 
     interface Listener extends BaseListenerContract {
-        void onSuccess(String message);
+        void onSuccess(int message);
         void onFailure(String message);
     }
 }
