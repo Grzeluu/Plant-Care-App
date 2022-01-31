@@ -86,7 +86,6 @@
                         android:hint="@string/name_your_plant"
                         android:inputType="textPersonName"
                         android:padding="10dp"
-                        android:textColorHint="@color/green_200"
                         android:textSize="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

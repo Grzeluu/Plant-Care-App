@@ -64,7 +64,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                     prepareUserCheck();
                 }
         );
-
         prepareUserCheck();
     }
 
@@ -134,9 +133,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                 default:
                     return false;
             }
-            openMyPlants();
             return true;
         });
+        openMyPlants();
     }
 
 
@@ -199,8 +198,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
         drawerNameTextView.setText(user.getUsername());
         drawerEmailTextView.setText(user.getEmail());
-
-        openMyPlants();
     }
 
     @Override

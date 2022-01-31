@@ -93,28 +93,29 @@
     <string name="permissions_denied">Permissions denied</string>
     <string name="choose_photo">Choose plant photo</string>
 
-    <string name="leaf_plants">Leaf Plants</string>
-    <string name="flowers">Flowers</string>
-    <string name="succulents">Succulents</string>
-
     <string-array name="categories">
         <item>@string/leaf_plants</item>
         <item>@string/flowers</item>
         <item>@string/succulents</item>
     </string-array>
 
+    <string name="leaf_plants">Leaf Plants</string>
+    <string name="flowers">Flowers</string>
+    <string name="succulents">Succulents</string>
+
+    <string-array name="photo_options">
+        <item>@string/take_photo</item>
+        <item>@string/gallery</item>
+        <item>@string/cancel</item>
+    </string-array>
+
     <string name="take_photo">Take Photo</string>
     <string name="gallery">Choose from Gallery</string>
     <string name="cancel">Cancel</string>
+
     <string name="password_too_short">Password too short! At least 6 char.</string>
     <string name="passwords_didnt_match">Passwords didn\'t match</string>
     <string name="connection_error">Connection Error! \nCheck your network settings.</string>
     <string name="refresh">Refresh</string>
-
-    <string-array name="photo_options">
-        <item>@string/leaf_plants</item>
-        <item>@string/gallery</item>
-        <item>@string/cancel</item>
-    </string-array>
 
 </resources>

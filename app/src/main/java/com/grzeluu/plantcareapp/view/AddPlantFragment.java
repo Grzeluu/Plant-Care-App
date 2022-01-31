@@ -138,8 +138,8 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
     }
 
     public void plantAdded(int message, UserPlant plant) {
-        showMessage(message);
         scheduleNotificationForPlant(getContext(), plant);
+        showMessage(message);
         Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
     }
@@ -159,13 +159,13 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
 
         builder.setItems(options, (dialog, item) -> {
 
-            if (options[item].equals(R.string.take_photo)) {
+            if (options[item].equals(getString(R.string.take_photo))) {
                 tryPickPhotoFromCamera();
 
-            } else if (options[item].equals(R.string.gallery)) {
+            } else if (options[item].equals(getString(R.string.gallery))) {
                 tryPickPhotoFromGallery();
 
-            } else if (options[item].equals(R.string.cancel)) {
+            } else if (options[item].equals(getString(R.string.cancel))) {
                 dialog.dismiss();
             }
         });

@@ -3,6 +3,7 @@ package com.grzeluu.plantcareapp.view.adapter;
 import static com.grzeluu.plantcareapp.utils.AlertDialogUtils.showDeletePlantDialog;
 import static com.grzeluu.plantcareapp.utils.ProgressUtils.daysFromLastAction;
 import static com.grzeluu.plantcareapp.utils.TimeUtils.DATE_FORMAT;
+import static com.grzeluu.plantcareapp.utils.FirebaseConstants.FIREBASE_IMAGE_REFERENCE;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -153,7 +154,7 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
         if (plant.getImage() != null) {
             Glide
                     .with(context)
-                    .load(plant.getImage())
+                    .load(FIREBASE_IMAGE_REFERENCE.child(plant.getId()))
                     .into(holder.binding.ivPhoto);
         }
     }

@@ -34,8 +34,7 @@ public class AddInteractor implements AddContract.Interactor {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
         storageReference.putFile(Uri.parse(plant.getImage()))
                 .addOnSuccessListener(task -> {
-                    addListener.onEnd();
-                    addListener.onSuccess(R.string.db_plant_added, plant);
+                    addPlant(plant);
                 })
                 .addOnFailureListener(error -> {
                     addListener.onEnd();

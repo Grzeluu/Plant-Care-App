@@ -1,6 +1,7 @@
-    package com.grzeluu.plantcareapp.view.adapter;
+package com.grzeluu.plantcareapp.view.adapter;
 
 import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
+import static com.grzeluu.plantcareapp.utils.FirebaseConstants.FIREBASE_IMAGE_REFERENCE;
 
 import android.content.Context;
 import android.content.Intent;
@@ -38,16 +39,17 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull DiscoverAdapter.ViewHolder holder, int position) {
         Plant plant = plantList.get(position);
+
         Glide
                 .with(context)
-                .load(plant.getImage())
+                .load(FIREBASE_IMAGE_REFERENCE.child(plant.getId()))
                 .into(holder.binding.ivPlantPhoto);
 
         holder.binding.tvCommonName.setText(plant.getCommonName());
         holder.binding.tvLatinName.setText(plant.getLatinName());
         if (!plant.isVerified()) holder.binding.ivVerified.setVisibility(View.GONE);
-        
-        holder.binding.ivMore.setOnClickListener(v-> goToCheckPlant(plant));
+
+        holder.binding.ivMore.setOnClickListener(v -> goToCheckPlant(plant));
     }
 
     private void goToCheckPlant(Plant plant) {
