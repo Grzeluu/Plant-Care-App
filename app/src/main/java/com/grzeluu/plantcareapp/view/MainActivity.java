@@ -1,6 +1,7 @@
 package com.grzeluu.plantcareapp.view;
 
 import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
+import static com.grzeluu.plantcareapp.utils.NetworkUtils.isNetworkAvailable;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,6 +23,7 @@ import com.grzeluu.plantcareapp.core.main.MainContract;
 import com.grzeluu.plantcareapp.core.main.MainPresenter;
 import com.grzeluu.plantcareapp.databinding.ActivityMainBinding;
 import com.grzeluu.plantcareapp.model.Plant;
+import com.grzeluu.plantcareapp.model.User;
 
 public class MainActivity extends BaseActivity implements MainContract.View {
 
@@ -52,11 +55,45 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     private void init() {
         presenter = new MainPresenter(this);
-        presenter.checkIfUserIsLoggedIn();
 
         initBottomNav();
         initDrawerNav();
 
+        binding.mainLayout.content.btRefresh.setOnClickListener(v -> {
+                    hideConnectionError();
+                    prepareUserCheck();
+                }
+        );
+
+        prepareUserCheck();
+    }
+
+    private void prepareUserCheck() {
+        if (isNetworkAvailable(getApplicationContext())) {
+            presenter.checkIfUserIsLoggedIn();
+        } else {
+            showConnectionError();
+        }
+    }
+
+    private void showConnectionError() {
+        binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        binding.mainLayout.content.ivError.setVisibility(View.VISIBLE);
+        binding.mainLayout.content.tvError.setVisibility(View.VISIBLE);
+        binding.mainLayout.content.btRefresh.setVisibility(View.VISIBLE);
+
+        binding.mainLayout.content.container.setVisibility(View.INVISIBLE);
+        binding.mainLayout.content.bottomNavView.setVisibility(View.INVISIBLE);
+    }
+
+    private void hideConnectionError() {
+        binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        binding.mainLayout.content.ivError.setVisibility(View.INVISIBLE);
+        binding.mainLayout.content.tvError.setVisibility(View.INVISIBLE);
+        binding.mainLayout.content.btRefresh.setVisibility(View.INVISIBLE);
+
+        binding.mainLayout.content.container.setVisibility(View.VISIBLE);
+        binding.mainLayout.content.bottomNavView.setVisibility(View.VISIBLE);
     }
 
     private void initDrawerNav() {
@@ -97,9 +134,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                 default:
                     return false;
             }
+            openMyPlants();
             return true;
         });
-        openMyPlants();
     }
 
 
@@ -154,10 +191,16 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     }
 
     @Override
-    public void setUsername(String username) {
-        View headerView = binding.navView.getHeaderView(0).findViewById(R.id.tv_username);
+    public void setUser(User user) {
+        View headerView = binding.navView.getHeaderView(0);
+
         TextView drawerNameTextView = headerView.findViewById(R.id.tv_username);
-        drawerNameTextView.setText(username);
+        TextView drawerEmailTextView = headerView.findViewById(R.id.tv_email);
+
+        drawerNameTextView.setText(user.getUsername());
+        drawerEmailTextView.setText(user.getEmail());
+
+        openMyPlants();
     }
 
     @Override

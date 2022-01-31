@@ -108,6 +108,8 @@
     <string name="cancel">Cancel</string>
     <string name="password_too_short">Password too short! At least 6 char.</string>
     <string name="passwords_didnt_match">Passwords didn\'t match</string>
+    <string name="connection_error">Connection Error! \nCheck your network settings.</string>
+    <string name="refresh">Refresh</string>
 
     <string-array name="photo_options">
         <item>@string/leaf_plants</item>

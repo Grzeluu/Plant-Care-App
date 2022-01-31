@@ -9,7 +9,7 @@ public interface MainContract {
     interface View extends BaseViewContract {
         void requireLogin();
 
-        void setUsername(String username);
+        void setUser(User username);
 
         void setEmail(String email);
     }

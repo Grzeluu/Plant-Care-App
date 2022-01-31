@@ -27,8 +27,7 @@ public class MainPresenter extends BasePresenter
 
     @Override
     public void onSuccess(User user) {
-        mainView.setEmail(user.getEmail());
-        mainView.setUsername(user.getUsername());
+        mainView.setUser(user);
     }
 
     @Override
