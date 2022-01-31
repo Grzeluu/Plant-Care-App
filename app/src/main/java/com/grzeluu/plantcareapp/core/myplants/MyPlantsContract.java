@@ -12,6 +12,8 @@ public interface MyPlantsContract {
         void updateMyPlants(List<UserPlant> plantList);
 
         void setNewNotificationForPlant(UserPlant plant);
+
+        void plantDeleted(String id);
     }
 
     interface Presenter extends BasePresenterContract {
@@ -38,5 +40,7 @@ public interface MyPlantsContract {
         void onSuccess(int message);
         
         void onSuccess(UserPlant plant);
+
+        void onPlantDeleted(String id);
     }
 }

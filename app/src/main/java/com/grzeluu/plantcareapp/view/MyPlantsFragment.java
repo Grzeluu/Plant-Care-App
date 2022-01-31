@@ -1,5 +1,6 @@
 package com.grzeluu.plantcareapp.view;
 
+import static com.grzeluu.plantcareapp.utils.notification.NotificationUtils.deleteNotification;
 import static com.grzeluu.plantcareapp.utils.notification.NotificationUtils.scheduleNotificationForPlant;
 
 import android.os.Bundle;
@@ -60,10 +61,10 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
             activity.openCloseNavigationDrawer(v); }
         );
 
-        initadApters();
+        initAdapters();
     }
 
-    private void initadApters() {
+    private void initAdapters() {
         plantsLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(plantsLayoutManager);
 
@@ -90,5 +91,10 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
     @Override
     public void setNewNotificationForPlant(UserPlant plant) {
         scheduleNotificationForPlant(getContext(), plant);
+    }
+
+    @Override
+    public void plantDeleted(String id) {
+        deleteNotification(getContext(), id);
     }
 }

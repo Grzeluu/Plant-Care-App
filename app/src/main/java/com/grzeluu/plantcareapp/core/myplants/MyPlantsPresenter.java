@@ -52,4 +52,9 @@ implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
         myPlantsView.setNewNotificationForPlant(plant);
     }
 
+    @Override
+    public void onPlantDeleted(String id) {
+        myPlantsView.plantDeleted(id);
+    }
+
 }

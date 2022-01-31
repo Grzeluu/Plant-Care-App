@@ -62,6 +62,7 @@ public class MyPlantsInteractor implements MyPlantsContract.Interactor {
                 .addOnSuccessListener(task -> {
                     myPlantsListener.onEnd();
                     myPlantsListener.onSuccess(R.string.plant_delete_success);
+                    myPlantsListener.onPlantDeleted(plant.getId());
                 })
                 .addOnFailureListener(error -> {
                     myPlantsListener.onEnd();
