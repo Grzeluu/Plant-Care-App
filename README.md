@@ -22,4 +22,4 @@ To keep maintainability and code scalability application was implemented with a 
 * Listeners to work with queries results.
 
 ## Instalation
-Plant Care app requires a minimum API level of 23
+Plant Care app requires a minimum API level of 23.
