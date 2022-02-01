@@ -58,7 +58,7 @@ public class CheckPlantActivity extends BaseActivity implements CheckContract.Vi
 
             binding.btAddPlant.setOnClickListener(v -> openAddActivity());
 
-            if(plant.getAdvicesList() == null || plant.getAdvicesList().size() == 0) {
+            if (plant.getAdvicesList() == null || plant.getAdvicesList().size() == 0) {
                 binding.tvAdvices.setVisibility(View.GONE);
                 binding.llAdvices.setVisibility(View.GONE);
             }
@@ -82,18 +82,33 @@ public class CheckPlantActivity extends BaseActivity implements CheckContract.Vi
 
 
     public void initWateringFrequency(long wateringFrequency) {
-        binding.tvWateringDays.setText(getString(R.string.days, wateringFrequency));
-        binding.pbWater.setProgress((int) getProgressBarFill(wateringFrequency));
+        if (wateringFrequency != 0) {
+            binding.tvWateringDays.setText(getString(R.string.days, wateringFrequency));
+            binding.pbWater.setProgress((int) getProgressBarFill(wateringFrequency));
+        } else {
+            binding.tvWateringDays.setText(getString(R.string.never));
+            binding.pbWater.setProgress(0);
+        }
     }
 
     public void initFertilizingFrequency(long fertilizingFrequency) {
-        binding.tvFertilizingDays.setText(getString(R.string.days, fertilizingFrequency));
-        binding.pbFertilizer.setProgress((int) getProgressBarFill(fertilizingFrequency));
+        if (fertilizingFrequency != 0) {
+            binding.tvFertilizingDays.setText(getString(R.string.days, fertilizingFrequency));
+            binding.pbFertilizer.setProgress((int) getProgressBarFill(fertilizingFrequency));
+        } else {
+            binding.tvFertilizingDays.setText(getString(R.string.never));
+            binding.pbFertilizer.setProgress(0);
+        }
     }
 
     public void initSprayingFrequency(long sprayingFrequency) {
-        binding.tvSprayingDays.setText(getString(R.string.days, sprayingFrequency));
-        binding.pbSpraying.setProgress((int) getProgressBarFill(sprayingFrequency));
+        if (sprayingFrequency != 0) {
+            binding.tvSprayingDays.setText(getString(R.string.days, sprayingFrequency));
+            binding.pbSpraying.setProgress((int) getProgressBarFill(sprayingFrequency));
+        } else {
+            binding.tvSprayingDays.setText(getString(R.string.never));
+            binding.pbSpraying.setProgress(0);
+        }
     }
 
     public void setPlantPhoto() {
