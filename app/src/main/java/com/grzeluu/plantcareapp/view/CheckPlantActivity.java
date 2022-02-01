@@ -30,6 +30,7 @@ public class CheckPlantActivity extends BaseActivity implements CheckContract.Vi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityCheckPlantBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

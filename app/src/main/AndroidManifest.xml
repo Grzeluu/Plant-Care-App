@@ -29,6 +29,7 @@
         <activity
             android:name="com.grzeluu.plantcareapp.view.CheckPlantActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.LookUpPlant.NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name="com.grzeluu.plantcareapp.view.MainActivity"
