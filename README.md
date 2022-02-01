@@ -20,3 +20,6 @@ Application was created with:
 To keep maintainability and code scalability application was implemented with a classic MVP architectural pattern. Additionally, there was implemented two additional layers: 
 * Interactors to separate Presenters logic from network queries.
 * Listeners to work with queries results.
+
+## Instalation
+Plant Care app requires a minimum API level of 23
