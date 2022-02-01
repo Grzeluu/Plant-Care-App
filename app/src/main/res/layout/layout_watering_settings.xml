@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/tv_content"
         style="@style/common_text_style"
-        android:text="@string/spraying_frequency"
+        android:text="@string/watering_frequency"
         android:textColor="@color/blue_500"
         app:layout_constraintEnd_toEndOf="@+id/iv_plus"
         app:layout_constraintStart_toStartOf="@+id/iv_minus"
