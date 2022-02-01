@@ -2,6 +2,7 @@
 # Plant-Care-App
 An android application for controlling and reminding about plants needs to the user.
 Also, the application makes it possible to search through plants in the database or search for information and advice about them.
+To remind users from outside the app about their plants, notifications with calculated time are implemented to notify at the right time. 
 The application is implemented with FirebaseAuth to manage users accounts and Firebase Realtime Database to store data about plants also Firebase Storage to keep all plants photos.
 The implementation of the MVP architectural pattern helps to maintain clean code.
 
@@ -19,4 +20,3 @@ Application was created with:
 To keep maintainability and code scalability application was implemented with a classic MVP architectural pattern. Additionally, there was implemented two additional layers: 
 * Interactors to separate Presenters logic from network queries.
 * Listeners to work with queries results.
-
