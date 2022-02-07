@@ -94,6 +94,7 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
     private void initProgressBars(@NonNull ViewHolder holder, UserPlant plant) {
         try {
             if (plant.getWateringFrequency() > 0) {
+                holder.binding.rlWater.setVisibility(View.VISIBLE);
                 initProgressBar(holder.binding.tvWater,
                         holder.binding.pbWater,
                         plant.getWateringFrequency(),
@@ -103,6 +104,7 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
             }
 
             if (plant.getFertilizingFrequency() > 0) {
+                holder.binding.rlFertilization.setVisibility(View.VISIBLE);
                 initProgressBar(holder.binding.tvFertilization,
                         holder.binding.pbFertilizer,
                         plant.getFertilizingFrequency(),
@@ -112,6 +114,7 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
             }
 
             if (plant.getSprayingFrequency() > 0) {
+                holder.binding.rlSpraying.setVisibility(View.VISIBLE);
                 initProgressBar(holder.binding.tvSpraying,
                         holder.binding.pbSpraying,
                         plant.getSprayingFrequency(),
