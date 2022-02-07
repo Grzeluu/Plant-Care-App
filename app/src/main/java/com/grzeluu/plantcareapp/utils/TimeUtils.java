@@ -1,7 +1,5 @@
 package com.grzeluu.plantcareapp.utils;
 
-import static com.grzeluu.plantcareapp.utils.Constants.TIME_DELAY;
-
 import android.annotation.SuppressLint;
 
 import java.text.SimpleDateFormat;
@@ -16,8 +14,8 @@ public class TimeUtils {
         return System.currentTimeMillis();
     }
 
-    public static Long getTimestampForNotification(Long current, int days) {
-        return current + (long) days * 24 * 60 * 60 * 1000 + TIME_DELAY;
+    public static Long getTimestampForNotification(int days) {
+        return getTimestamp() + (long) (days) * 24 * 60 * 60 * 1000;
     }
 
     public static String getCurrentDate() {

@@ -1,6 +1,5 @@
 package com.grzeluu.plantcareapp.utils.notification;
 
-import static com.grzeluu.plantcareapp.utils.TimeUtils.getTimestamp;
 import static com.grzeluu.plantcareapp.utils.TimeUtils.getTimestampForNotification;
 import static com.grzeluu.plantcareapp.utils.notification.PlantNotification.CHANNEL_ID;
 import static com.grzeluu.plantcareapp.utils.notification.PlantNotification.ID_EXTRA;
@@ -35,11 +34,10 @@ public class NotificationUtils {
         );
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Long current = getTimestamp();
 
         int days = plant.getDaysToClosestAction();
 
-        Long time = getTimestampForNotification(current, days);
+        Long time = getTimestampForNotification(days);
 
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, time, pendingIntent);
     }

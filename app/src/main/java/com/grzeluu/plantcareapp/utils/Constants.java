@@ -10,6 +10,4 @@ public class Constants {
     public static final int PERMISSION_CAMERA = 1111;
     public static final int PERMISSION_STORAGE = 2222;
     public static final int WRITE_EXTERNAL_STORAGE = 3333;
-
-    public static final int TIME_DELAY = 12 * 60 * 60 * 1000;
 }
