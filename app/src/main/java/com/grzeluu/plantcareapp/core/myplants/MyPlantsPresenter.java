@@ -3,10 +3,12 @@ package com.grzeluu.plantcareapp.core.myplants;
 import com.grzeluu.plantcareapp.base.BasePresenter;
 import com.grzeluu.plantcareapp.model.UserPlant;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MyPlantsPresenter extends BasePresenter
-implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
+        implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
 
     private MyPlantsContract.View myPlantsView;
     private MyPlantsInteractor myPlantsInteractor;
@@ -34,6 +36,7 @@ implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
 
     @Override
     public void onSuccess(List<UserPlant> plantList) {
+        Collections.sort(plantList, new UserPlantsComparator());
         myPlantsView.updateMyPlants(plantList);
     }
 
@@ -55,6 +58,13 @@ implements MyPlantsContract.Presenter, MyPlantsContract.Listener {
     @Override
     public void onPlantDeleted(String id) {
         myPlantsView.plantDeleted(id);
+    }
+
+    static class UserPlantsComparator implements Comparator<UserPlant> {
+        @Override
+        public int compare(UserPlant a, UserPlant b) {
+            return Integer.compare(a.getDaysToClosestAction(), b.getDaysToClosestAction());
+        }
     }
 
 }
