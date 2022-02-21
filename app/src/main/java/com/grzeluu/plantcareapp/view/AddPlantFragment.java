@@ -138,9 +138,9 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
     }
 
     public void plantAdded(int message, UserPlant plant) {
-        scheduleNotificationForPlant(getContext(), plant);
+        scheduleNotificationForPlant(requireContext(), plant);
         showMessage(message);
-        Intent intent = new Intent(getContext(), MainActivity.class);
+        Intent intent = new Intent(requireContext(), MainActivity.class);
         startActivity(intent);
     }
 
@@ -154,7 +154,7 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
     private void showChoosePhotoDialog() {
         final CharSequence[] options = getResources().getStringArray(R.array.photo_options);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle(R.string.choose_photo);
 
         builder.setItems(options, (dialog, item) -> {

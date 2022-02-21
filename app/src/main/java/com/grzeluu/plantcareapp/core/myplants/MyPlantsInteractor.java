@@ -12,7 +12,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.model.UserPlant;
 
 import java.util.ArrayList;
@@ -61,7 +60,6 @@ public class MyPlantsInteractor implements MyPlantsContract.Interactor {
         ref.child(plant.getId()).removeValue()
                 .addOnSuccessListener(task -> {
                     myPlantsListener.onEnd();
-                    myPlantsListener.onSuccess(R.string.plant_delete_success);
                     myPlantsListener.onPlantDeleted(plant.getId());
                 })
                 .addOnFailureListener(error -> {

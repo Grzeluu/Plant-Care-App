@@ -89,11 +89,11 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
 
     @Override
     public void setNewNotificationForPlant(UserPlant plant) {
-        scheduleNotificationForPlant(getContext(), plant);
+        scheduleNotificationForPlant(requireContext(), plant);
     }
 
     @Override
     public void plantDeleted(String id) {
-        deleteNotification(getContext(), id);
+        deleteNotification(requireContext(), id);
     }
 }

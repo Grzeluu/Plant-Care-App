@@ -159,6 +159,11 @@ public class MyPlantsAdapter extends RecyclerView.Adapter<MyPlantsAdapter.ViewHo
                     .with(context)
                     .load(FIREBASE_IMAGE_REFERENCE.child(plant.getId()))
                     .into(holder.binding.ivPhoto);
+        } else {
+            Glide
+                    .with(context)
+                    .load(context.getDrawable(R.drawable.ic_flower_selected))
+                    .into(holder.binding.ivPhoto);
         }
     }
 }
