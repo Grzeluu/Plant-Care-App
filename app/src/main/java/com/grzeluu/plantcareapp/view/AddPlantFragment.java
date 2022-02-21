@@ -138,9 +138,9 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
     }
 
     public void plantAdded(int message, UserPlant plant) {
-        scheduleNotificationForPlant(requireContext(), plant);
+        scheduleNotificationForPlant(plant);
         showMessage(message);
-        Intent intent = new Intent(requireContext(), MainActivity.class);
+        Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
     }
 

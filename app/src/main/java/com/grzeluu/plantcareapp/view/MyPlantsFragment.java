@@ -41,24 +41,25 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentMyPlantsBinding.inflate(getLayoutInflater());
-        presenter = new MyPlantsPresenter(this);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        presenter = new MyPlantsPresenter(this);
         recyclerView = view.findViewById(R.id.rv_my_plants);
-        init();
 
+        init();
         presenter.getMyPlantsList();
         super.onViewCreated(binding.getRoot(), savedInstanceState);
     }
 
     private void init() {
         binding.toolbar.btShowProfile.setOnClickListener(v -> {
-            MainActivity activity = (MainActivity) getActivity();
-            assert activity != null;
-            activity.openCloseNavigationDrawer(v); }
+                    MainActivity activity = (MainActivity) getActivity();
+                    assert activity != null;
+                    activity.openCloseNavigationDrawer(v);
+                }
         );
 
         initAdapters();
@@ -89,7 +90,9 @@ public class MyPlantsFragment extends BaseFragment implements MyPlantsContract.V
 
     @Override
     public void setNewNotificationForPlant(UserPlant plant) {
-        scheduleNotificationForPlant(requireContext(), plant);
+        if (plant != null) {
+            scheduleNotificationForPlant(plant);
+        }
     }
 
     @Override
