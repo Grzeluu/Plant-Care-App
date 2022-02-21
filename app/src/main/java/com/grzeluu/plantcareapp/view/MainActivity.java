@@ -47,8 +47,8 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     }
 
     private void checkIfPlantToAddWasGiven() {
-        Plant plant =
-                (Plant) getIntent().getSerializableExtra(PLANT_INTENT_EXTRAS_KEY);
+        Plant plant = (Plant) getIntent().getSerializableExtra(PLANT_INTENT_EXTRAS_KEY);
+        getIntent().removeExtra(PLANT_INTENT_EXTRAS_KEY);
         if (plant != null)
             openAddPlant(plant);
     }

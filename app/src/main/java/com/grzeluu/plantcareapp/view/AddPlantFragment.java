@@ -67,15 +67,12 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             Plant plant = (Plant) bundle.getSerializable(PLANT_INTENT_EXTRAS_KEY);
-            initUIWithPlant(plant);
+            initPlantData(plant);
         }
     }
 
-    private void initUIWithPlant(Plant plant) {
+    private void initPlantData(Plant plant) {
         binding.etName.setText(plant.getCommonName());
-
-        if(plant.getImage() != null && !plant.getImage().isEmpty())
-            setPlantPhoto(plant.getImage());
 
         binding.fertilizingSettings.sbFrequency.setProgress(daysToProgress(plant.getFertilizingFrequency()));
         binding.wateringSettings.sbFrequency.setProgress(daysToProgress(plant.getWateringFrequency()));
