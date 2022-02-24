@@ -56,23 +56,20 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     private void init() {
         presenter = new MainPresenter(this);
 
-        initBottomNav();
-        initDrawerNav();
-
-        binding.mainLayout.content.btRefresh.setOnClickListener(v -> {
-                    hideConnectionError();
-                    prepareUserCheck();
-                }
-        );
-        prepareUserCheck();
-    }
-
-    private void prepareUserCheck() {
         if (isNetworkAvailable(getApplicationContext())) {
+            initBottomNav();
+            initDrawerNav();
+            hideConnectionError();
             presenter.checkIfUserIsLoggedIn();
         } else {
             showConnectionError();
         }
+
+        binding.mainLayout.content.btRefresh.setOnClickListener(v -> {
+                    hideConnectionError();
+                    init();
+                }
+        );
     }
 
     private void showConnectionError() {
@@ -135,7 +132,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
             }
             return true;
         });
-        openMyPlants();
     }
 
 
@@ -198,6 +194,8 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
         drawerNameTextView.setText(user.getUsername());
         drawerEmailTextView.setText(user.getEmail());
+
+        openMyPlants();
     }
 
     @Override

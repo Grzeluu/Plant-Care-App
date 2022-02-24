@@ -31,7 +31,6 @@ public class SeekBarUtils {
         });
     }
 
-
     private static SeekBar.OnSeekBarChangeListener createProgressBarChangeListener(Context context, TextView tv) {
         return new SeekBar.OnSeekBarChangeListener() {
             @Override
