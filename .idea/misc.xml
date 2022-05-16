@@ -12,6 +12,7 @@
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/drawable/bg_second_bt.xml" value="0.259375" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/drawable/bg_white.xml" value="0.1" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/drawable/check_box_water_selector.xml" value="0.290625" />
+        <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/drawable/ic_account.xml" value="0.39166666666666666" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/drawable/ic_account_selected.xml" value="0.1" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/drawable/ic_account_selector.xml" value="0.39166666666666666" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/drawable/ic_add.xml" value="0.39166666666666666" />
@@ -67,9 +68,9 @@
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/fragment_check_plant.xml" value="0.2598958333333333" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/fragment_discover.xml" value="0.27239583333333334" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/fragment_host.xml" value="0.33" />
-        <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/fragment_login.xml" value="0.2598958333333333" />
+        <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/fragment_my_plants.xml" value="0.24322916666666666" />
-        <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/fragment_register.xml" value="0.2598958333333333" />
+        <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/fragment_register.xml" value="0.33" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/fragment_suggest.xml" value="0.26918075422626786" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/item_advice.xml" value="0.31979166666666664" />
         <entry key="..\:/Workspace/Plant-Care-App/app/src/main/res/layout/item_discover_plant.xml" value="0.24322916666666666" />

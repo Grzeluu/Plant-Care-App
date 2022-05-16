@@ -11,12 +11,13 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
 
-        <action
-            android:id="@+id/action_loginActivity_to_registerActivity"
-            app:destination="@id/fragment_register" />
+
         <action
             android:id="@+id/action_fragment_login_to_fragment_host"
             app:destination="@id/fragment_host" />
+        <action
+            android:id="@+id/action_fragment_login_to_fragment_register"
+            app:destination="@id/fragment_register" />
     </fragment>
 
     <fragment

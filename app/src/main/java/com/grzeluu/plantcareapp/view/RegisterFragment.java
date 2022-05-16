@@ -1,5 +1,7 @@
 package com.grzeluu.plantcareapp.view;
 
+import static com.grzeluu.plantcareapp.utils.TextViewUtils.setErrorBehavior;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,26 +44,31 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
                 binding.etPassword.getText().toString(),
                 binding.etRepeatPassword.getText().toString()
         ));
+
+        setErrorBehavior(binding.etUsername, binding.tilUsername);
+        setErrorBehavior(binding.etEmail, binding.tilEmail);
+        setErrorBehavior(binding.etPassword, binding.tilPassword);
+        setErrorBehavior(binding.etRepeatPassword, binding.tilRepeatPassword);
     }
 
     @Override
     public void setUsernameError(int error) {
-        binding.etUsername.setError(getString(error));
+        binding.tilUsername.setError(getString(error));
     }
 
     @Override
     public void setEmailError(int error) {
-        binding.etEmail.setError(getString(error));
+        binding.tilEmail.setError(getString(error));
     }
 
     @Override
     public void setPasswordError(int error) {
-        binding.etPassword.setError(getString(error));
+        binding.tilPassword.setError(getString(error));
     }
 
     @Override
     public void setRepeatedPasswordError(int error) {
-        binding.etRepeatPassword.setError(getString(error));
+        binding.tilRepeatPassword.setError(getString(error));
     }
 
     @Override
