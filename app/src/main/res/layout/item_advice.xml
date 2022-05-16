@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:background="@drawable/bg_white"
     android:orientation="horizontal">
 
     <TextView
@@ -21,7 +20,6 @@
         android:maxLines="3"
         android:minLines="1"
         android:text="Question?"
-        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/iv_verified"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +37,6 @@
         android:maxLines="4"
         android:minLines="1"
         android:text="@string/add_your_solution_here"
-        android:textColor="@color/dark_grey"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

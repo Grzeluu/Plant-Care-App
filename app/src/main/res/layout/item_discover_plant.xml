@@ -12,9 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:background="@drawable/bg_white">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_plant_photo"
@@ -53,7 +51,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/common_name"
-            android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/cv_plant_photo"
             app:layout_constraintTop_toTopOf="parent" />
@@ -65,7 +62,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="2dp"
             android:text="@string/latin_name"
-            android:textColor="@color/dark_grey"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/cv_plant_photo"
             app:layout_constraintTop_toBottomOf="@+id/tv_common_name" />

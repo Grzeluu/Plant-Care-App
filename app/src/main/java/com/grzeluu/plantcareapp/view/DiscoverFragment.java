@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -52,18 +51,6 @@ public class DiscoverFragment extends BaseFragment implements DiscoverContract.V
 
     private void initViews() {
 
-        binding.toolbar.etSearch.setOnEditorActionListener((textView, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                presenter.getMatchingPlants(textView.getText().toString());
-                return true;
-            }
-            return false;
-        });
-
-        binding.toolbar.btSearch.setOnClickListener(v ->
-                presenter.getMatchingPlants(
-                        binding.toolbar.etSearch.getText().toString())
-        );
     }
 
     private void initAdapter() {

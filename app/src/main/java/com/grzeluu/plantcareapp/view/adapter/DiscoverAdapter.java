@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.grzeluu.plantcareapp.databinding.ItemDiscoverPlantBinding;
 import com.grzeluu.plantcareapp.model.Plant;
-import com.grzeluu.plantcareapp.view.CheckPlantActivity;
+import com.grzeluu.plantcareapp.view.CheckPlantFragment;
 
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
     }
 
     private void goToCheckPlant(Plant plant) {
-        Intent intent = new Intent(context, CheckPlantActivity.class);
+        Intent intent = new Intent(context, CheckPlantFragment.class);
         intent.putExtra(PLANT_INTENT_EXTRAS_KEY, plant);
         context.startActivity(intent);
     }

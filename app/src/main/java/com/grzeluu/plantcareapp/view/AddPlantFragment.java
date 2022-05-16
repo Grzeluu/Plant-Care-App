@@ -6,13 +6,7 @@ import static com.grzeluu.plantcareapp.utils.Constants.PICK_IMAGE_CAMERA;
 import static com.grzeluu.plantcareapp.utils.Constants.PICK_IMAGE_GALLERY;
 import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
 import static com.grzeluu.plantcareapp.utils.Constants.WRITE_EXTERNAL_STORAGE;
-import static com.grzeluu.plantcareapp.utils.ProgressUtils.daysToProgress;
-import static com.grzeluu.plantcareapp.utils.ProgressUtils.progressToDays;
-import static com.grzeluu.plantcareapp.utils.SeekBarUtils.initSeekBarGroupWithText;
-import static com.grzeluu.plantcareapp.utils.TimeUtils.getCurrentDate;
-import static com.grzeluu.plantcareapp.utils.TimeUtils.getTimestamp;
 import static com.grzeluu.plantcareapp.utils.notification.NotificationUtils.scheduleNotificationForPlant;
-
 import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -23,12 +17,9 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-
-import com.bumptech.glide.Glide;
 import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.base.BaseFragment;
 import com.grzeluu.plantcareapp.core.add.AddContract;
@@ -55,14 +46,19 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
         binding = FragmentAddPlantBinding.inflate(getLayoutInflater());
         presenter = new AddPresenter(this);
 
-        init();
-
         return binding.getRoot();
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        init();
+    }
+
     private void init() {
-        initSeekBars();
-        initButtons();
+        //initSeekBars();
+        //initButtons();
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -74,11 +70,12 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
     private void initPlantData(Plant plant) {
         binding.etName.setText(plant.getCommonName());
 
-        binding.fertilizingSettings.sbFrequency.setProgress(daysToProgress(plant.getFertilizingFrequency()));
-        binding.wateringSettings.sbFrequency.setProgress(daysToProgress(plant.getWateringFrequency()));
-        binding.sprayingSettings.sbFrequency.setProgress(daysToProgress(plant.getSprayingFrequency()));
+        //binding.fertilizingSettings.sbFrequency.setProgress(daysToProgress(plant.getFertilizingFrequency()));
+        //binding.wateringSettings.sbFrequency.setProgress(daysToProgress(plant.getWateringFrequency()));
+        //binding.sprayingSettings.sbFrequency.setProgress(daysToProgress(plant.getSprayingFrequency()));
     }
 
+    /*
     private void initSeekBars() {
         initSeekBarGroupWithText(
                 getContext(),
@@ -129,23 +126,15 @@ public class AddPlantFragment extends BaseFragment implements AddContract.View {
             );
         });
     }
+    */
 
     public void setNameError(int error) {
         binding.etName.setError(getString(error));
     }
 
     public void plantAdded(int message, UserPlant plant) {
-        scheduleNotificationForPlant(plant);
+        scheduleNotificationForPlant(plant, getContext());
         showMessage(message);
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void setPlantPhoto(String uri) {
-        Glide
-                .with(this)
-                .load(uri)
-                .into(binding.ivPhoto);
     }
 
     private void showChoosePhotoDialog() {

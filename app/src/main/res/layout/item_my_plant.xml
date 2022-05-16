@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_white"
     android:orientation="vertical"
     android:layout_marginTop="8dp"
     android:paddingVertical="2dp"
@@ -105,12 +104,13 @@
 
                 <ImageView
                     android:id="@+id/iv_water"
-                    style="@style/small_icon_style"
+                    android:layout_height="16dp"
+                    android:layout_width="16dp"
                     android:layout_alignStart="@+id/pb_water"
                     android:layout_alignTop="@+id/pb_water"
                     android:layout_alignBottom="@+id/pb_water"
                     app:srcCompat="@drawable/ic_water"
-                    app:tint="@color/white" />
+                    app:tint="@android:color/white" />
 
             </RelativeLayout>
 
@@ -135,12 +135,12 @@
 
                 <ImageView
                     android:id="@+id/iv_fertilization"
-                    style="@style/small_icon_style"
+                    android:layout_height="16dp"
+                    android:layout_width="16dp"
                     android:layout_alignStart="@+id/pb_fertilizer"
                     android:layout_alignTop="@+id/pb_fertilizer"
                     android:layout_alignBottom="@+id/pb_fertilizer"
-                    app:srcCompat="@drawable/ic_fertilizer"
-                    app:tint="@color/white" />
+                    app:srcCompat="@drawable/ic_fertilizer" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -164,12 +164,12 @@
 
                 <ImageView
                     android:id="@+id/iv_rotate"
-                    style="@style/small_icon_style"
+                    android:layout_height="16dp"
+                    android:layout_width="16dp"
                     android:layout_alignStart="@+id/pb_spraying"
                     android:layout_alignTop="@+id/pb_spraying"
                     android:layout_alignBottom="@+id/pb_spraying"
-                    app:srcCompat="@drawable/ic_spray"
-                    app:tint="@color/white" />
+                    app:srcCompat="@drawable/ic_spray"/>
             </RelativeLayout>
 
         </LinearLayout>
@@ -198,7 +198,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginHorizontal="16dp"
-            android:background="@color/dark_grey"
+            android:background="?attr/colorOutline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -211,15 +211,13 @@
             android:src="@drawable/ic_delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider_vertical"
-            app:tint="@color/red_200" />
+            app:layout_constraintTop_toBottomOf="@id/divider_vertical" />
 
         <View
             android:id="@+id/divider_horizontal"
             android:layout_width="1dp"
             android:layout_height="38dp"
             android:layout_marginHorizontal="16dp"
-            android:background="@color/dark_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bt_delete"
             app:layout_constraintTop_toTopOf="parent" />
@@ -232,7 +230,6 @@
             android:layout_marginVertical="4dp"
             android:layout_marginStart="16dp"
             android:button="@drawable/ic_water"
-            android:theme="@style/water_check_theme"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cb_fertilizing"
             app:layout_constraintHorizontal_bias="0.5"
@@ -245,7 +242,6 @@
             android:layout_height="42dp"
             android:layout_marginVertical="4dp"
             android:button="@drawable/ic_fertilizer"
-            android:theme="@style/fertilizer_check_theme"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cb_spraying"
             app:layout_constraintHorizontal_bias="0.5"
@@ -259,7 +255,6 @@
             android:layout_marginVertical="4dp"
             android:layout_marginEnd="16dp"
             android:button="@drawable/ic_spray"
-            android:theme="@style/spray_check_theme"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/bt_confirm"
             app:layout_constraintHorizontal_bias="0.5"

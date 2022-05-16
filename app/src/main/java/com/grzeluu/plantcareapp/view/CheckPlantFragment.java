@@ -1,40 +1,47 @@
 package com.grzeluu.plantcareapp.view;
 
-import static com.grzeluu.plantcareapp.utils.Constants.PLANT_INTENT_EXTRAS_KEY;
 import static com.grzeluu.plantcareapp.utils.FirebaseConstants.FIREBASE_IMAGE_REFERENCE;
 import static com.grzeluu.plantcareapp.utils.ProgressUtils.getProgressBarFill;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.grzeluu.plantcareapp.R;
-import com.grzeluu.plantcareapp.base.BaseActivity;
+import com.grzeluu.plantcareapp.base.BaseFragment;
 import com.grzeluu.plantcareapp.core.check.CheckContract;
 import com.grzeluu.plantcareapp.core.check.CheckPresenter;
-import com.grzeluu.plantcareapp.databinding.ActivityCheckPlantBinding;
+import com.grzeluu.plantcareapp.databinding.FragmentCheckPlantBinding;
 import com.grzeluu.plantcareapp.model.Plant;
 import com.grzeluu.plantcareapp.view.adapter.AdviceAdapter;
 
-public class CheckPlantActivity extends BaseActivity implements CheckContract.View {
+public class CheckPlantFragment extends BaseFragment implements CheckContract.View {
 
-    private ActivityCheckPlantBinding binding;
+    private FragmentCheckPlantBinding binding;
     private CheckContract.Presenter presenter;
     private Plant plant;
     private LinearLayoutManager advicesLayoutManager;
     private AdviceAdapter checkPlantAdapter;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = FragmentCheckPlantBinding.inflate(getLayoutInflater());
+        presenter = new CheckPresenter(this);
 
-        binding = ActivityCheckPlantBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        return binding.getRoot();
+    }
 
-        plant = (Plant) getIntent().getSerializableExtra(PLANT_INTENT_EXTRAS_KEY);
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         presenter = new CheckPresenter(this);
 
         init();
@@ -68,16 +75,14 @@ public class CheckPlantActivity extends BaseActivity implements CheckContract.Vi
     }
 
     private void initAdapter() {
-        advicesLayoutManager = new LinearLayoutManager(this);
+        advicesLayoutManager = new LinearLayoutManager(getContext());
         binding.rvAdvices.setLayoutManager(advicesLayoutManager);
-        checkPlantAdapter = new AdviceAdapter(this, plant.getAdvicesList());
+        checkPlantAdapter = new AdviceAdapter(getContext(), plant.getAdvicesList());
         binding.rvAdvices.setAdapter(checkPlantAdapter);
     }
 
     private void openAddActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(PLANT_INTENT_EXTRAS_KEY, plant);
-        startActivity(intent);
+
     }
 
 

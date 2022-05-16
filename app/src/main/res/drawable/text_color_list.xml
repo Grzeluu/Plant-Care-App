@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:color="@color/green_500" />
+    <item android:state_focused="true" android:color="?attr/colorControlNormal" />
     <item android:color="?attr/colorControlNormal" />
 </selector>

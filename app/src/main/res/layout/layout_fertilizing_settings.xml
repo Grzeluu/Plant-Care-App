@@ -5,8 +5,9 @@
     style="@style/frequency_settings_style">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/tv_content"
-        style="@style/common_text_style"
         android:text="@string/fertilizing_frequency"
         android:textColor="@color/bronze_500"
         app:layout_constraintEnd_toEndOf="@+id/iv_plus"
@@ -21,7 +22,6 @@
         android:progress="10"
         android:progressDrawable="@drawable/track_fertilization"
         android:thumb="@drawable/thumb_fertilizer"
-        android:thumbTint="@color/bronze_thumb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_plus"
         app:layout_constraintStart_toEndOf="@+id/iv_minus"

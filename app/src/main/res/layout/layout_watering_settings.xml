@@ -6,7 +6,8 @@
 
     <TextView
         android:id="@+id/tv_content"
-        style="@style/common_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/watering_frequency"
         android:textColor="@color/blue_500"
         app:layout_constraintEnd_toEndOf="@+id/iv_plus"
@@ -21,7 +22,7 @@
         android:progress="10"
         android:progressDrawable="@drawable/track_watering"
         android:thumb="@drawable/thumb_water"
-        android:thumbTint="@color/blue_thumb"
+        android:thumbTint="@color/blue_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_plus"
         app:layout_constraintStart_toEndOf="@+id/iv_minus"

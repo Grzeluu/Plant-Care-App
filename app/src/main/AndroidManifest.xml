@@ -21,21 +21,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LookUpPlant">
+        android:theme="@style/AppTheme">
         <receiver
             android:name=".utils.notification.PlantNotification"
             android:enabled="true" />
 
         <activity
-            android:name="com.grzeluu.plantcareapp.view.CheckPlantActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.LookUpPlant.NoActionBar"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
             android:name="com.grzeluu.plantcareapp.view.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.LookUpPlant.NoActionBar"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,14 +37,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.grzeluu.plantcareapp.view.RegisterActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name="com.grzeluu.plantcareapp.view.LoginActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
     </application>
 
 </manifest>
