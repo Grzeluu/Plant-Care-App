@@ -6,7 +6,6 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/abl_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -14,13 +13,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay_Toolbar"
             app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
             app:contentInsetStartWithNavigation="0dp"
-            app:navigationIcon="@drawable/ic_flower"
-            tools:title="Welcome, Patryk" />
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_user"
+            tools:title="Witaj, Patryk" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -38,9 +38,6 @@
         android:id="@+id/bottom_nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/green_300"
-        app:itemIconTint="@drawable/icon_color_selector"
-        app:itemTextColor="@drawable/icon_color_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

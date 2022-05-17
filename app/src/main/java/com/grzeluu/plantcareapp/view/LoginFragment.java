@@ -2,11 +2,11 @@ package com.grzeluu.plantcareapp.view;
 
 import static com.grzeluu.plantcareapp.utils.TextViewUtils.setErrorBehavior;
 
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -65,15 +65,14 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
 
     public void showForgotPasswordDialog() {
         ForgotDialog forgotDialog = new ForgotDialog(requireContext());
-        forgotDialog
-                .getWindow()
-                .setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         forgotDialog.show();
+        Window window = forgotDialog.getWindow();
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
     @Override
     public void onLoginFailure(String message) {
-        Toast.makeText(requireContext(), "Bad credentials", Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
