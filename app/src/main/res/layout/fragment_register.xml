@@ -34,7 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
-                android:layout_marginVertical="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="24dp"
                 android:text="@string/register" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +44,6 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_account"
                 android:hint="@string/username"
-                app:errorEnabled="true"
                 app:startIconDrawable="@drawable/ic_account">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_account_selector"
                 android:hint="@string/e_mail"
-                app:errorEnabled="true"
+                android:layout_marginTop="4dp"
                 app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -75,9 +75,9 @@
                 android:id="@+id/til_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:drawableStart="@drawable/ic_account_selector"
                 android:hint="@string/password"
-                app:errorEnabled="true"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_password">
 
@@ -93,9 +93,9 @@
                 android:id="@+id/til_repeat_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:drawableStart="@drawable/ic_account_selector"
                 android:hint="@string/repeat_password"
-                app:errorEnabled="true"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_password">
 
@@ -111,8 +111,8 @@
                 android:id="@+id/bt_register"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="16dp"
                 android:text="@string/register" />
 
         </LinearLayout>
