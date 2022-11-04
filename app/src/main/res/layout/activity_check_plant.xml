@@ -6,7 +6,7 @@
     android:background="@drawable/bg_photo"
     android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".view.CheckPlantFragment">
+    tools:context=".view.CheckPlantActivity">
 
     <LinearLayout
         android:id="@+id/constraintLayout"
@@ -16,16 +16,19 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
             android:text="@string/general_information"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -78,17 +81,20 @@
                 android:layout_marginVertical="10dp"
                 android:drawablePadding="5dp"
                 android:hint="@string/common_name"
+                android:textColor="@color/black"
                 android:textSize="22sp"
                 app:layout_constraintStart_toEndOf="@+id/cardView"
                 app:layout_constraintTop_toTopOf="@+id/cardView" />
 
             <TextView
                 android:id="@+id/tv_latin_name"
+                style="@style/common_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:drawablePadding="5dp"
                 android:text="@string/none"
+                android:textColor="@color/dark_grey"
                 app:layout_constraintStart_toStartOf="@+id/tv_common_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_common_name" />
 
@@ -104,6 +110,7 @@
                 android:lines="10"
                 android:maxLines="15"
                 android:minLines="1"
+                android:textColor="@color/black"
                 app:drawableStartCompat="@drawable/ic_text"
                 app:drawableTint="@color/green_500"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -114,17 +121,20 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
             android:text="@string/requirements"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_white">
 
             <ProgressBar
                 android:id="@+id/pb_spraying"
@@ -160,6 +170,7 @@
 
             <TextView
                 android:id="@+id/tv_spraying"
+                style="@style/common_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -172,6 +183,7 @@
 
             <TextView
                 android:id="@+id/tv_water"
+                style="@style/common_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -214,6 +226,7 @@
 
             <TextView
                 android:id="@+id/tv_fertilizer"
+                style="@style/common_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -257,6 +270,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_add_plant"
+                style="@style/main_button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
@@ -265,6 +279,7 @@
                 android:layout_weight="1"
                 android:drawableEnd="@drawable/ic_add_circle"
                 android:drawablePadding="10dp"
+                android:drawableTint="@color/white"
                 android:padding="10dp"
                 android:text="@string/add_to_your_plants"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -276,11 +291,13 @@
 
         <TextView
             android:id="@+id/tv_advices"
+            style="@style/common_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
             android:text="@string/advices"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -289,6 +306,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="15dp"
+            android:background="@drawable/bg_grey"
             android:orientation="vertical"
             android:paddingBottom="5dp">
 

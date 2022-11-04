@@ -1,41 +1,30 @@
 package com.grzeluu.plantcareapp.view;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.grzeluu.plantcareapp.base.BaseFragment;
 import com.grzeluu.plantcareapp.core.register.RegisterContract;
 import com.grzeluu.plantcareapp.core.register.RegisterPresenter;
-import com.grzeluu.plantcareapp.databinding.FragmentRegisterBinding;
+import com.grzeluu.plantcareapp.databinding.ActivityRegisterBinding;
+import com.grzeluu.plantcareapp.base.BaseActivity;
 
-public class RegisterFragment extends BaseFragment implements RegisterContract.View {
+public class RegisterActivity extends BaseActivity implements RegisterContract.View {
 
-    FragmentRegisterBinding binding;
+    ActivityRegisterBinding binding;
     RegisterContract.Presenter registerPresenter;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = FragmentRegisterBinding.inflate(getLayoutInflater());
-        registerPresenter = new RegisterPresenter(this);
-
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         initViews();
     }
 
     private void initViews() {
+        registerPresenter = new RegisterPresenter(this);
+
         binding.btRegister.setOnClickListener(v -> registerPresenter.register(
                 binding.etUsername.getText().toString(),
                 binding.etEmail.getText().toString(),
@@ -67,7 +56,8 @@ public class RegisterFragment extends BaseFragment implements RegisterContract.V
     @Override
     public void onRegisterSuccess(int message) {
         showMessage(message);
-
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @Override

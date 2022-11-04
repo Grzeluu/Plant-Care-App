@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/green_500"
+        app:cardCornerRadius="250dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="250dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_add_photo" />
+
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/wateringTv"
+        style="@style/common_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/watering"
+        app:layout_constraintBottom_toBottomOf="@+id/waterIcon"
+        app:layout_constraintStart_toEndOf="@+id/waterIcon"
+        app:layout_constraintTop_toTopOf="@+id/waterIcon" />
+
+    <ImageView
+        android:id="@+id/waterIcon"
+        style="@style/common_icon_style"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:srcCompat="@drawable/ic_water"
+        app:tint="@color/blue_500" />
+
+    <TextView
+        android:id="@+id/fertilizationTv"
+        style="@style/common_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/fertilizing"
+        app:layout_constraintBottom_toBottomOf="@+id/fertilizationIcon"
+        app:layout_constraintStart_toEndOf="@+id/fertilizationIcon"
+        app:layout_constraintTop_toTopOf="@+id/fertilizationIcon" />
+
+    <ImageView
+        android:id="@+id/fertilizationIcon"
+        style="@style/common_icon_style"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waterIcon"
+        app:srcCompat="@drawable/ic_fertilizer"
+        app:tint="@color/bronze_500" />
+
+    <TextView
+        android:id="@+id/sprayingTv"
+        style="@style/common_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/spraying"
+        app:layout_constraintBottom_toBottomOf="@+id/sprayingIcon"
+        app:layout_constraintStart_toEndOf="@+id/sprayingIcon"
+        app:layout_constraintTop_toTopOf="@+id/sprayingIcon" />
+
+    <ImageView
+        android:id="@+id/sprayingIcon"
+        style="@style/common_icon_style"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fertilizationIcon"
+        app:srcCompat="@drawable/ic_spray"
+        app:tint="@color/green_500" />
+
+
+    <CheckBox
+        android:id="@+id/wateringCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/wateringTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/wateringTv" />
+
+    <CheckBox
+        android:id="@+id/fertilizingCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fertilizationTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fertilizationTv" />
+
+    <CheckBox
+        android:id="@+id/sprayingCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sprayingTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sprayingTv" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_first_bt"
+        android:paddingHorizontal="26sp"
+        android:text="@string/confirm"
+        android:layout_marginTop="16dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sprayingTv" />
+
+    <TextView
+        android:id="@+id/nameTv"
+        style="@style/common_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="100dp"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

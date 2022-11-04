@@ -14,26 +14,27 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.grzeluu.plantcareapp.R;
+import com.grzeluu.plantcareapp.base.App;
 import com.grzeluu.plantcareapp.model.UserPlant;
 
 public class NotificationUtils {
-    public static void scheduleNotificationForPlant(UserPlant plant, Context context) {
-        String title = context.getString(R.string.plant_notification_title);
-        String message = context.getString(R.string.plant_notification_message, plant.getName());
+    public static void scheduleNotificationForPlant(UserPlant plant) {
+        String title = App.getAppContext().getString(R.string.plant_notification_title);
+        String message = App.getAppContext().getString(R.string.plant_notification_message, plant.getName());
 
-        Intent intent = new Intent(context.getApplicationContext(), PlantNotification.class);
+        Intent intent = new Intent(App.getAppContext().getApplicationContext(), PlantNotification.class);
         intent.putExtra(MESSAGE_EXTRA, message);
         intent.putExtra(TITLE_EXTRA, title);
         intent.putExtra(ID_EXTRA, getNotificationID(plant.getId()));
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                context.getApplicationContext(),
+                App.getAppContext().getApplicationContext(),
                 getNotificationID(plant.getId()),
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
         );
 
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) App.getAppContext().getSystemService(Context.ALARM_SERVICE);
 
         int days = plant.getDaysToClosestAction();
 

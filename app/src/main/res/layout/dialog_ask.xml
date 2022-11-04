@@ -41,6 +41,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_ask_a_question"
+        style="@style/main_button_style"
         android:paddingHorizontal="20dp"
         android:layout_marginBottom="16dp"
         android:layout_width="wrap_content"

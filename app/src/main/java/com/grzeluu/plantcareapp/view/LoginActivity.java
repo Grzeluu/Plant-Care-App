@@ -1,37 +1,26 @@
 package com.grzeluu.plantcareapp.view;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.grzeluu.plantcareapp.base.BaseFragment;
+import com.grzeluu.plantcareapp.base.BaseActivity;
 import com.grzeluu.plantcareapp.core.login.LoginContract;
 import com.grzeluu.plantcareapp.core.login.LoginPresenter;
-import com.grzeluu.plantcareapp.databinding.FragmentLoginBinding;
+import com.grzeluu.plantcareapp.databinding.ActivityLoginBinding;
 
-public class LoginFragment extends BaseFragment implements LoginContract.View {
+public class LoginActivity extends BaseActivity implements LoginContract.View {
 
-    FragmentLoginBinding binding;
+    ActivityLoginBinding binding;
     LoginContract.Presenter presenter;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentLoginBinding.inflate(getLayoutInflater());
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        presenter = new LoginPresenter(this);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         initViews();
-        super.onViewCreated(binding.getRoot(), savedInstanceState);
     }
 
     private void initViews() {
@@ -48,16 +37,25 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     }
 
     @Override
-    public void onLoginSuccess(int message) {
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 
+    @Override
+    public void onLoginSuccess(int message) {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void openRegisterActivity() {
-
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     public void showForgotPasswordDialog() {
-        ForgotDialog forgotDialog = new ForgotDialog(getContext());
+        ForgotDialog forgotDialog = new ForgotDialog(this);
         forgotDialog.getWindow()
                 .setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         forgotDialog.show();

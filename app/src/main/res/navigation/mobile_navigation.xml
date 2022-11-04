@@ -3,42 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/fragment_login">
+    app:startDestination="@+id/nav_my_plants">
 
     <fragment
-        android:id="@+id/fragment_login"
-        android:name="com.grzeluu.plantcareapp.view.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-
-        <action
-            android:id="@+id/action_loginActivity_to_registerActivity"
-            app:destination="@id/fragment_register" />
-        <action
-            android:id="@+id/action_fragment_login_to_fragment_host"
-            app:destination="@id/fragment_host" />
-    </fragment>
+        android:id="@+id/nav_my_plants"
+        android:name="com.grzeluu.plantcareapp.view.MyPlantsFragment"
+        tools:layout="@layout/fragment_my_plants" />
 
     <fragment
-        android:id="@+id/fragment_register"
-        android:name="com.grzeluu.plantcareapp.view.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        android:id="@+id/nav_discover"
+        android:name="com.grzeluu.plantcareapp.view.DiscoverFragment"
+        tools:layout="@layout/fragment_discover" />
 
     <fragment
-        android:id="@+id/fragment_host"
-        android:name="com.grzeluu.plantcareapp.view.HostFragment"
-        android:label="fragment_host"
-        tools:layout="@layout/fragment_host" >
-        <action
-            android:id="@+id/action_nav_my_plants_to_checkPlantActivity"
-            app:destination="@id/fragment_check_plant" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/fragment_check_plant"
-        android:name="com.grzeluu.plantcareapp.view.CheckPlantFragment"
-        android:label="fragment_check_plant"
-        tools:layout="@layout/fragment_check_plant" />
-
+        android:id="@+id/nav_suggest_new_plant"
+        android:name="com.grzeluu.plantcareapp.ui_temporary.suggest.SuggestFragment"
+        tools:layout="@layout/fragment_suggest" />
 </navigation>

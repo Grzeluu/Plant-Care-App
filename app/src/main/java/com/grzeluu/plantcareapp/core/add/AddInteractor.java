@@ -10,8 +10,6 @@ import com.google.firebase.storage.StorageReference;
 import com.grzeluu.plantcareapp.R;
 import com.grzeluu.plantcareapp.model.UserPlant;
 
-import java.util.Objects;
-
 public class AddInteractor implements AddContract.Interactor {
 
     AddContract.Listener addListener;
@@ -47,7 +45,7 @@ public class AddInteractor implements AddContract.Interactor {
     private void addPlant(UserPlant plant) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance()
                 .getReference("Users")
-                .child(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
+                .child(FirebaseAuth.getInstance().getUid())
                 .child("UserPlants");
 
         databaseReference.child(plant.getId()).setValue(plant)
