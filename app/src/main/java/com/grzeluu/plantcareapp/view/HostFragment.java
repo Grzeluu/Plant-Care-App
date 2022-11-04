@@ -45,26 +45,14 @@ public class HostFragment extends BaseFragment implements MainContract.View {
         fragments.add(new DiscoverFragment());
         fragments.add(new AddPlantFragment());
 
-        viewPagerAdapter = new HostViewPagerAdapter(fragments, getChildFragmentManager(), getLifecycle());
-        binding.viewPager.setAdapter(viewPagerAdapter);
-        binding.viewPager.setCurrentItem(0);
+        viewPagerAdapter = new HostViewPagerAdapter(fragments ,getChildFragmentManager(), getLifecycle() );
 
         binding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                int item = 0;
                 switch (position) {
-                    case 0:
-                        item = R.id.bottom_my_plants;
-                        break;
-                    case 1:
-                        item = R.id.bottom_discover;
-                        break;
-                    case 2:
-                        item = R.id.bottom_add_plant;
-                        break;
+                    case 0: R.id.menu
                 }
-                binding.bottomNav.getMenu().findItem(item).setChecked(true);
             }
         });
 
