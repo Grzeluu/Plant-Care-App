@@ -26,14 +26,17 @@ public class MainInteractor implements MainContract.Interactor {
 
         if (firebaseAuth.getCurrentUser() != null) {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-            reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
+            reference.child(firebaseAuth.getCurrentUser().getUid())
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot userSnapShot : snapshot.getChildren()) {
-                                User user = userSnapShot.getValue(User.class);
+                            if (snapshot.exists()) {
+                                User user = snapshot.getValue(User.class);
                                 mainListener.onEnd();
                                 mainListener.onSuccess(user);
+                            } else {
+                                mainListener.onEnd();
+                                mainListener.onFailure();
                             }
                         }
 
